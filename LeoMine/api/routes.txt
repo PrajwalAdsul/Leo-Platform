@@ -1,0 +1,10 @@
+addCrime
+addArea
+deleteAllAreas
+deleteAllCrimes
+addCrimeCSV
+addAreaCSV
+allCrimes
+allAreas
+getPrecautions    //request from android
+
