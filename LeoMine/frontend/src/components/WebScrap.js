@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch, Link} from "react-router-dom";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Header from './Header';
 
 const SList = props => (
-    <tr>
-        <td>{props.data.name}</td>
-        <td>{props.data.description}</td>
-        <td>{props.data.precautions.map(u => (<p>{u}</p>))}</td>
-    </tr>
+    <div>
+   <div className="media">
+        <img className="align-self-start mr-3" src="..." alt="placeholder image" />
+          <div className="media-body">
+            <h3 className="mt-0">{props.data.name}</h3>
+            <p><b><i>{props.data.description}</i></b></p>
+            <div><span className="change-color"><b>Precautions: </b><br /></span>{props.data.precautions.map(u => (<p>{u}</p>))}</div>
+          </div>
+   
+    </div>
+    </div>
 )
 
 export default class WebScrap extends Component {
@@ -37,34 +44,17 @@ export default class WebScrap extends Component {
     }
     render() {
         return (
-                <div className = 'container'>
-                    <Link to="/AddCrime">add a crime</Link>
-                    <br/><br/>
-                    <Link to="/AddArea">add a area</Link>
-                    <br/><br/>
-                    <Link to="/ShowAreas">show all areas</Link>
-                    <br/><br/>
-                    <Link to="/ShowCrimes">show all crimes</Link>
-                   
-                    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                    </nav>
-                    <div>
-                        <h3>Web Scraping results</h3>
+                <div>
+                    <Header />
+                    <div className = 'container show'>
+                        <center><h2>WEBSCRAPING RESULTS</h2></center>
                         <h3> Sources used </h3>
                             <h5>News1</h5>
                             <h5>New2</h5><h5>Twitter api</h5><h5>Facebook api</h5>
-                        <table className = 'table table-striped' style={{marginTop: 20}}>
-                            <thead>
-                                <tr>
-                                    <th> place </th>
-                                     <th> news </th>
-                                    <th> Description </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.crimesList()}
-                            </tbody>
-                        </table>
+
+                            <div> {this.crimesList()}</div>
+
+                       
                     </div>
                     
                 </div>

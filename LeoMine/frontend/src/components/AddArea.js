@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link ,Route, Redirect, Switch, BrowserRouter as Router} from "react-router-dom";
 import classNames from 'classnames';
 //import { UserRegistration, UsernameValidation } from '../services/RegistrationService';
 import Error from '../elements/Error';
@@ -7,6 +7,8 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import axios from 'axios';
 
 import Header from './Header';
+import Form from 'react-bootstrap/Form';
+
 
 export default class AddArea extends Component {
 	constructor(props) {
@@ -99,37 +101,74 @@ export default class AddArea extends Component {
 		//const { register, error, user_name_taken } = this.state;
 
 		return (
-			<div><center>
+			<div>
 				<Header />
-				<br/> <br/> <br/> <br/>
-				<h2>Add Area </h2>
-				<form onSubmit = {this.onSubmit}>
-					<p>name </p>
-					<input type="text" value={this.state.name} name="name" onChange={this.handleOnChangeName}/>
-					<p>crimes</p>
-					<input type="text" value={this.state.crimes} name="crimes" onChange={this.handleOnChangeCrimes}/>
-					<p>min longitude</p>
-					<input type="text" value={this.state.minlongitude} name="precautions" onChange={this.handleOnChangeMinlo}/>
-					<p>max longitude</p>
-					<input type="text" value={this.state.maxlongitude} name="precautions" onChange={this.handleOnChangeMaxlo}/>
-					<p>min latitude</p>
-					<input type="text" value={this.state.minlatitude} name="precautions" onChange={this.handleOnChangeMinla}/>
-					<p>max latitude</p>
-					<input type="text" value={this.state.maxlatitude} name="precautions" onChange={this.handleOnChangeMaxla}/>
-					
-					<br/><br/>
-					<button type="submit" className="btn btn-primary">add</button>
-							
-				</form>
+
+				<center>
+				<div className="jumbotron">
+				
+					<h2>ADD <span className="change-color">AREA</span> </h2>
+					<hr />
+
+					<form onSubmit = {this.onSubmit}>
+					<div className="form-group">
+					<div className="row">
+					<div className="col-md-2">
+						<label htmlFor="name">Name:</label>
+						</div>
+						<div className="col-md-10">
+						<input type="text" className="form-control" value={this.state.name} name="name" id="name" onChange={this.handleOnChangeName}/>
+						</div>
+					</div>
+					</div>
+
+					<div className="form-group">
+					<div className="row">
+					<div className="col-md-2">
+						<label htmlFor="crimes">Crimes:</label>
+						</div>
+							<div className="col-md-10">
+						<input type="text" className="form-control" value={this.state.crimes} name="crimes" id="crimes" onChange={this.handleOnChangeCrimes}/>
+					</div>
+					</div>
+					</div>
+
+
+					<div className="form-row">
+					<div className="form-group col-md-6">
+						<label htmlFor="minlongitude" >Min Longitude:</label>
+						<input type="number" className="form-control" value={this.state.minlongitude} name="minlongitude" id="minlongitude" onChange={this.handleOnChangeMinlo}/>
+					</div>
+						
+					<div className="form-group col-md-6">
+						<label htmlFor="maxlongitude" >Max Longitude:</label>
+						<input type="number" className="form-control" value={this.state.maxlongitude} name="maxlongitude" id="maxlongitude" onChange={this.handleOnChangeMaxlo}/>
+					</div>
+					</div>
+
+					<div className="form-row">
+					<div className="form-group col-md-6">
+						<label htmlFor="minlatitude" >Min Latitude:</label>
+						<input type="number" className="form-control" value={this.state.minlatitude} name="minlatitude" id="minlatitude" onChange={this.handleOnChangeMinla}/>
+					</div>
+						
+					<div className="form-group col-md-6">
+						<label htmlFor="maxlatitude" >Max Latitude:</label>
+						<input type="number" className="form-control" value={this.state.maxlatitude} name="maxlatitude" id="maxlatitude" onChange={this.handleOnChangeMaxla}/>
+						</div>
+					</div>
+						
+						
+						<br/><br/>
+						<center> <button type="submit" className="btn btn-primary btn-lg"><h3>ADD</h3></button> </center>
+								
+					</form>
+				
+				</div>
+
+
 				</center>
-			<Link to="/AddCrime">add a crime</Link>
-			<br/><br/>
-			<Link to="/ShowCrimes">show all crimes</Link>
-			<br/><br/>
-			<Link to="/ShowAreas">show all areas</Link>
-			<br/><br/>
-            <Link to="/WebScrap">web scrap</Link>
-                   									
+			
 		
 			</div>
 		)

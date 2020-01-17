@@ -2,12 +2,18 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch, Link} from "react-router-dom";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import Header from './Header';
 
 const SList = props => (
-    <tr>
-        <td>{props.data.name}</td>
-        <td>{props.data.crimes.map(u => (<p>{u}</p>))}</td>
-    </tr>
+    <div>
+    <div className="card">
+        <div className="card-body">
+          <h3 className="card-title"><b>{props.data.name}</b></h3>
+          <div className="card-text"><span className="change-color"><b>Crimes: </b><br /></span>{props.data.crimes.map(u => (<p>{u}</p>))}</div>
+        </div>
+      </div>
+   
+    </div>
 )
 
 export default class ShowAreas extends Component {
@@ -36,36 +42,16 @@ export default class ShowAreas extends Component {
     }
     render() {
         return (
-                <div className = 'container'>
-              
-
-                    <Link to="/AddCrime">add a crime</Link>
-                    <br/><br/>
-                    <Link to="/ShowCrimes">show all crimes</Link>
-                    <br/><br/>
-                    <Link to="/AddArea">Add an area</Link>
-                    <br/><br/>
-                    <Link to="/WebScrap">web scrap</Link>
-           
-
-                    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                    </nav>
-                    <div>
-                        <h3>List</h3>
-                        <table className = 'table table-striped' style={{marginTop: 20}}>
-                            <thead>
-                                <tr>
-                                    <th> Name </th>
-                                    <th> crimes </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.areasList()}
-                            </tbody>
-                        </table>
-                    </div>
-              
+        <div>
+        <Header />
+                <div className = 'container show'>
+                        <center><h2>ALL AREAS </h2></center>   
                     
+                     {this.areasList()}
+                   
+                </div>
+
+                
                 </div>
         )
     }

@@ -51,28 +51,29 @@ export default class ShowTroubles extends Component {
         )
     }*/
     render() {
+        if(localStorage.getItem('DRO_start') !== "start"){
+            return <Redirect push to = "/DROSignIn" />;
+        }
         return (
-                <div className = 'container'>
-                    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                    </nav>
-                    <div>
-                        <h3>List</h3>
+            <div>
+               <div className = 'container list'>  
+                        <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
                         <table className = 'table table-striped' style={{marginTop: 20}}>
                             <thead>
                                 <tr>
-                                    <th> username</th>
-                                    <th> latitude </th>
-                                    <th> longitude </th>
-                                    <th> area </th>
-                                    <th> Map </th>
+                                    <th><h4><b>USERNAME</b></h4></th>
+                                    <th><h4><b>LATITUDE</b></h4></th>
+                                    <th><h4><b>LONGITUDE</b></h4></th>
+                                    <th><h4><b>AREA</b></h4></th>
+                                    <th><h4><b>MAP</b></h4></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.troublesListf()}
                             </tbody>
                         </table>
-                    </div>
                 </div>
+            </div>
         )
     }
 }

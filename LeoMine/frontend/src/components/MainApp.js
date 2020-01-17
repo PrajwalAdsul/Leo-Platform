@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch, Link } from "react-router-dom";
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'bootstrap/dist/css/bootstrap.css';
+
 import AddCrime from './AddCrime';
 import AddArea from './AddArea';
 import ShowCrimes from './ShowCrimes';
 import ShowAreas from './ShowAreas';
 import WebScrap from './WebScrap';
-import DROLogin from './DROLogin';
 
 /*
 //import SignIn from './SignIn'
@@ -17,8 +15,12 @@ import ApplicationList from './ApplicationList';
 */
 class App extends Component {
 	render() {
+		if(localStorage.getItem("session_start") !== "start") {
+            return <Redirect to ='/DROLogin'/>
+        }
 		return (
 			<div>
+			<center><h1>Leo Mine</h1></center>
 			<Router>
 					<div className="App">
 					<Switch>
@@ -30,16 +32,9 @@ class App extends Component {
 						<Redirect from="/" to="AddArea" />
 					</Switch>
 					</div>
-				</Router>
-				<link
-			  rel="stylesheet"
-			  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-			  crossOrigin="anonymous"
-			/>
-			
+				</Router>		
 			</div>
 		);
 	}
 }
 export default App;
-

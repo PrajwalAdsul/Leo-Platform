@@ -13,7 +13,7 @@ export default class ShowECs extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            EClist : ["praj", "praj"]
+            EClist : []
         };
     }
     componentDidMount() {
@@ -49,22 +49,18 @@ export default class ShowECs extends Component {
     }
     render() {
         return (
-                <div className = 'container'>
-                    <h3> Your emergency contacts are </h3>
-                              
-                    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                    </nav>
+                <div className = 'user-jumbotron'>
+                    <div className="container">
+                    <center><h3><b>EMERGENCY <span className="change-color">CONTACTS</span></b></h3></center>
+                
                     <div>
                         <table className = 'table table-striped' style={{marginTop: 20}}>
-                            <thead>
-                                <tr>
-                                    <th> Contacts </th>
-                                </tr>
-                            </thead>
+                           
                             <tbody>
                                 {this.ECList()}
                             </tbody>
                         </table>
+                    </div>
                     </div>
                     
                 </div>

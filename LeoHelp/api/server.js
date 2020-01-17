@@ -29,7 +29,7 @@ app.listen(PORT, () => {
     console.log('App running on port $(PORT)');
 });
 
-// 
+// Login for user
 LeoHelp.route('/login').post(function(req, res){
     const user_name = req.body.user_name;
     const password = req.body.password;
@@ -59,28 +59,50 @@ LeoHelp.route('/login').post(function(req, res){
 LeoHelp.route('/loginIn').post( async (req, res) => {
 	try{
  		 let data = await user.findOne({user_name : req.body.user_name, password : req.body.password });
-		 console.log(data)
+		 //console.log(data)
 		 if(data !== null){
 			 res.status(200).json({'msg': " login successful"});    	 	
 		 }
-		res.status(204).json({'msg': " login unsuccessfull"});
+		res.status(400).json({'msg': " login unsuccessfull"});
    	}
 	catch(e){
-		 res.status(204).json({'msg': "error"});
+		 res.status(400).json({'msg': "error"});
 	}  
 });
 
 // Add a new user
 LeoHelp.route('/addUser').post(function(req, res) {
-    let cr = new user(req.body);
-    cr.save()
-        .then(cr => {
-            res.status(200).json({'message ': cr.user_name + " added successfully"});
-        })
-        .catch(err => {
-            res.status(400).json({Error: "Error adding new user"});
-        });
-    });
+	try{
+
+		  	// console.log("Hello");
+	   	//  console.log(req.body.user_name.length);	 
+	   	//  console.log(req.body.password.length);
+	   	//  console.log(req.body.phone.length);
+	   	//  console.log(req.body.name.length);
+	
+
+	   	 if(req.body.user_name.length != 0 && req.body.phone.toString().length >= 8 && req.body.password.length >= 8 && req.body.name.length != 0 )
+		  {  
+		  	// console.log("Hello");
+		  	// console.log(req.body.user_name.length);
+		  	let cr = new user(req.body);
+		    cr.save()
+		        .then(cr => {
+		            res.status(200).json({'message ': cr.user_name + " added successfully"});
+		        })
+		        .catch(err => {
+		            res.status(400).json({Error: "Error adding new user"});
+		        });
+		    }
+		    else
+		    {
+		    	res.status(400).json({'msg' : " bad username or password"});
+		    }
+	}
+	catch(e){
+			res.status(400).json({'msg' : " Wrong entries"});	
+	}
+});
 
 // Add a new DRO
 LeoHelp.route('/addDRO').post(function(req, res) {
@@ -97,7 +119,9 @@ LeoHelp.route('/addDRO').post(function(req, res) {
 // Get ECs from username
 LeoHelp.route('/getECs').post(async (req, res) => {
 	console.log(req.body);
-
+	req.body.user_name = req.body.user_name.replace('"', '');
+	req.body.user_name = req.body.user_name.replace('"', '');
+	console.log(req.body);
 	let data = await user.findOne({user_name : req.body.user_name });
 	if(data != null){
 		res.status(200).json(data.emergencyContacts)
@@ -139,20 +163,7 @@ LeoHelp.route('/deleteAllDROs').delete( async (req, res) => {
     res.status(200).json({'result ':  " All DROs deleted successfully"});  
 });
 
-LeoHelp.route('/markTrouble').put(async (req, res) => {
-	let data = await user.findOne({user_name : req.body.user_name });
-	user.findByIdAndUpdate(data._id, {
-		$set : req.body
-	},	(error, data) => {
-		if(error)
-			console.log(error);
-		else
-			console.log(data);
-	}
-	)
-	res.status(200).json({'msg' : 'msg'});
-});
-
+// Upadate ECs, query by user_name
 LeoHelp.route('/updateEC').put(async (req, res) => {
 	let data = await user.findOne({user_name : req.body.user_name });
 	neww = {
@@ -167,8 +178,7 @@ LeoHelp.route('/updateEC').put(async (req, res) => {
 	    email : data.email,
 	    area : data.area,
 	    inTrouble : data.inTrouble
-	}
-	
+	}	
 	await user.findByIdAndUpdate(data._id, {
 		$set : neww
 	},	(error, data) => {
@@ -181,49 +191,35 @@ LeoHelp.route('/updateEC').put(async (req, res) => {
 	res.status(200).json({'msg' : neww});
 });
 
-// Mark a user in trouble
-LeoHelp.route('/markTroublee').post( async (req, res) => {
-	try{
-		 let data = await user.findOne({user_name : req.body.user_name });
-		 console.log(data);
-		 data = _.extend(data, req.body);
-		 console.log(data);
-		/*
-			Code to trigger authority, contacts
-		*/
-			
-		  console.log("api");
-		
-		let start = "http://api.opencagedata.com/geocode/v1/json?key=4a4590286e2c474ca287e179cd718be9&q=";
-		let mid = "%2C+";
-		let end = "&pretty=1&no_annotations=1";
-		let url = start + req.body.latitude + mid + req.body.longitude + end;
- 		let settings = { method: "Get" };
-		await fetch(url, settings)
-		    .then(res => res.json())
-		    .then((json) => {
-		    	
-		    	let continent = json.results[0].components.continent;
-		    	let country_code = json.results[0].components.country_code;
-		    	let country = json.results[0].components.country;
-		    	let postcode = json.results[0].components.postcode;
-		    	let state = json.results[0].components.state;
-		    	let state_district = json.results[0].components.state_district;
-		    	
-		    	formatted = json.results[0].formatted;
-		    	data.area = formatted;
-		    });
-		 data.inTrouble = true;
-		 data.longitude = req.body.longitude;
-		 data.latitude = req.body.latitude;
-		 data.area = formatted;
-		 data.save();
-		 //console.log(data);
+// Mark an user in trouble
+LeoHelp.route('/markTrouble').put(async (req, res) => {
+	req.body.user_name = req.body.user_name.replace('"', '');
+	req.body.user_name = req.body.user_name.replace('"', '');
+	let data = await user.findOne({user_name : req.body.user_name });
+	let start = "http://api.opencagedata.com/geocode/v1/json?key=4a4590286e2c474ca287e179cd718be9&q=";
+	let mid = "%2C+";
+	let end = "&pretty=1&no_annotations=1";
+	let url = start + req.body.latitude + mid + req.body.longitude + end;
+		let settings = { method: "Get" };
+	await fetch(url, settings)
+	    .then(res => res.json())
+	    .then((json) => {
+	    	formatted = json.results[0].formatted;
+	     });
+	req.body.area = formatted;
+	console.log(req.body.area);
+	console.log(formatted);
+
+	user.findByIdAndUpdate(data._id, {
+		$set : req.body
+	},	(error, data) => {
+		if(error)
+			console.log(error);
+		else
+			console.log(data);
 	}
-	catch(e){
-		res.status(400).json({Error: "Error marking user in trouble"});
-	}
-	res.status(200).json({'message ' : req.body.user_name + " is marked introuble at latitude " + req.body.latitude + " and " + req.body.longitude});	
+	)
+	res.status(200).json({'msg' : 'msg'});
 });
 
 // Unmark inTrouble (false) for an user
@@ -243,6 +239,7 @@ LeoHelp.route('/unmarkTrouble').post( async (req, res) => {
 	res.status(400).json({'message ' : req.body.user_name + " is unmarked "});	
 });
 
+// Mark an user in trouble who doesnt have Leo app
 LeoHelp.route('/markMobileUser').post( async (req, res) => {
 	try{
 		let start = "https://api.opencagedata.com/geocode/v1/json?q=";
@@ -323,3 +320,48 @@ LeoHelp.route('/markMobileUser').post( async (req, res) => {
 	}
 	res.status(200).json({"msg" : " Correct"});
 });
+
+// Mark a user in trouble
+/*
+LeoHelp.route('/markTroublee').post( async (req, res) => {
+	try{
+		 let data = await user.findOne({user_name : req.body.user_name });
+		 console.log(data);
+		 data = _.extend(data, req.body);
+		 console.log(data);
+		
+			
+		console.log("api");
+		
+		let start = "http://api.opencagedata.com/geocode/v1/json?key=4a4590286e2c474ca287e179cd718be9&q=";
+		let mid = "%2C+";
+		let end = "&pretty=1&no_annotations=1";
+		let url = start + req.body.latitude + mid + req.body.longitude + end;
+ 		let settings = { method: "Get" };
+		await fetch(url, settings)
+		    .then(res => res.json())
+		    .then((json) => {
+		    	
+		    	let continent = json.results[0].components.continent;
+		    	let country_code = json.results[0].components.country_code;
+		    	let country = json.results[0].components.country;
+		    	let postcode = json.results[0].components.postcode;
+		    	let state = json.results[0].components.state;
+		    	let state_district = json.results[0].components.state_district;
+		    	
+		    	formatted = json.results[0].formatted;
+		    	data.area = formatted;
+		    });
+		 data.inTrouble = true;
+		 data.longitude = req.body.longitude;
+		 data.latitude = req.body.latitude;
+		 data.area = formatted;
+		 data.save();
+		 //console.log(data);
+	}
+	catch(e){
+		res.status(400).json({Error: "Error marking user in trouble"});
+	}
+	res.status(200).json({'message ' : req.body.user_name + " is marked introuble at latitude " + req.body.latitude + " and " + req.body.longitude});	
+});
+*/

@@ -46,7 +46,7 @@ export default class Registration extends Component {
 		//Add axios cod3e
 		var isUsernameTaken = 0;
 		console.log(data);	
-		await axios.post('http://localhost:4000/LeoMine/addCrime', data)
+		await axios.post('http://localhost:4000/login/userexists', data)
 		.then(response => {
 			console.log(response);
 			isUsernameTaken = response.status;
@@ -99,9 +99,8 @@ export default class Registration extends Component {
 		//const { register, error, user_name_taken } = this.state;
 
 		return (
-			<div><center>
-				<br/> <br/> <br/> <br/>
-				<h2>Add Crime </h2>
+			<div>
+				<h1>Add Crime </h1>
 				<form onSubmit = {this.onSubmit}>
 					<p>name </p>
 					<input type="text" value={this.state.name} name="name" onChange={this.handleOnChangeName}/>
@@ -109,12 +108,9 @@ export default class Registration extends Component {
 					<input type="text" value={this.state.description} name="description" onChange={this.handleOnChangeDescription}/>
 					<p>precautions</p>
 					<input type="text" value={this.state.precautions} name="precautions" onChange={this.handleOnChangePrecautions}/>
-					
-					<br/><br/>
 					<button type="submit" className="btn btn-primary">add</button>
 							
 				</form>
-				</center>
 			</div>
 		)
 	}

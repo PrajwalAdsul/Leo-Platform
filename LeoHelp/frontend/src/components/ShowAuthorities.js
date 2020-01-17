@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch, Link} from "react-router-dom";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import DROHeader from './DROHeader';
+ 
 const SList = props => (
     <tr>
         <td>{props.data.name}</td>
-        <td>{props.data.phone}</td>
+        <td>{props.data.phone_no}</td>
         <td>{props.data.area}</td>
         <td>{props.data.latitude}</td>
         <td>{props.data.longitude}</td>
@@ -38,28 +39,33 @@ export default class StartupList extends Component {
         })
     }
     render() {
+        if(localStorage.getItem('DRO_start') !== "start"){
+            return <Redirect push to = "/DROSignIn" />;
+        }
         return (
-                <div className = 'container'>
-                    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                    </nav>
-                    <div>
-                        <h3>List</h3>
+            <div>
+                <DROHeader />
+               
+                <div className = 'container list'>
+                    
+                        <h2>ALL <span className="change-color">AUTHORITIES</span></h2>
                         <table className = 'table table-striped' style={{marginTop: 20}}>
                             <thead>
                                 <tr>
-                                    <th> Name </th>
-                                    <th> Phone </th>
-                                    <th> Area </th>
-                                    <th> latitude </th>
-                                    <th> longitude </th>
+                                    <th><h4><b>NAME</b></h4></th>
+                                    <th><h4><b>MOBILE NO</b></h4></th>
+                                    <th><h4><b>AREA</b></h4></th>
+                                    <th><h4><b>LATITUDE</b></h4></th>
+                                    <th><h4><b>LONGITUDE</b></h4></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.DROsList()}
                             </tbody>
                         </table>
-                    </div>
+                    
                 </div>
+            </div>
         )
     }
 }

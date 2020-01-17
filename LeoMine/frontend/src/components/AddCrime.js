@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link , Redirect} from "react-router-dom";
 import classNames from 'classnames';
 //import { UserRegistration, UsernameValidation } from '../services/RegistrationService';
 import Error from '../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
 import axios from 'axios';
+import Header from './Header';
 
 export default class AddCrime extends Component {
 	constructor(props) {
@@ -99,31 +100,56 @@ export default class AddCrime extends Component {
 		//const { register, error, user_name_taken } = this.state;
 
 		return (
-			<div><center>
-				<br/> <br/> <br/> <br/>
-				<h2>Add Crime </h2>
-				<form onSubmit = {this.onSubmit}>
-					<p>name </p>
-					<input type="text" value={this.state.name} name="name" onChange={this.handleOnChangeName}/>
-					<p>description</p>
-					<input type="text" value={this.state.description} name="description" onChange={this.handleOnChangeDescription}/>
-					<p>precautions</p>
-					<input type="text" value={this.state.precautions} name="precautions" onChange={this.handleOnChangePrecautions}/>
-					
-					<br/><br/>
-					<button type="submit" className="btn btn-primary">add</button>
-							
-				</form>
+			<div>
+			<Header />
+			<center>
+
+				<div className="jumbotron">
+				
+					<h2>ADD <span className="change-color">CRIME</span> </h2>
+					<hr />
+					<form onSubmit = {this.onSubmit}>
+						<div className="form-group">
+							<div className="row">
+								<div className="col-md-2">
+									<label htmlFor="name">Name:</label>
+								</div>
+								<div className="col-md-10">
+								<input type="text" className="form-control" value={this.state.name} name="name" id="name" onChange={this.handleOnChangeName}/>
+								</div>
+							</div>
+						</div>
+
+						<div className="form-group">
+							<div className="row">
+								<div className="col-md-2">
+									<label htmlFor="description">Description:</label>
+								</div>
+								<div className="col-md-10">
+								<input type="text" className="form-control" value={this.state.description} name="description" id="description" onChange={this.handleOnChangeDescription}/>
+								</div>
+							</div>
+						</div>
+
+						<div className="form-group">
+							<div className="row">
+								<div className="col-md-2">
+									<label htmlFor="precautions">Precautions:</label>
+								</div>
+								<div className="col-md-10">
+									<input type="text" className="form-control" value={this.state.precautions} name="precautions" id="precautions" onChange={this.handleOnChangePrecautions}/>
+								</div>
+							</div>
+						</div>
+						
+						<br/><br/>
+						<center><button type="submit" className="btn btn-primary btn-lg"><h3>ADD</h3></button></center>
+								
+					</form>
+				</div>
 				</center>
 
-				<Link to="/AddArea">add a Area</Link>
-				<br/><br/>
-				<Link to="/ShowCrimes">show all crimes</Link>
-				<br/><br/>
-				<Link to="/ShowAreas">show all areas</Link>
-				<br/><br/>
-           		<Link to="/WebScrap">web scrap</Link>
-           
+				
 			</div>
 		)
 	}

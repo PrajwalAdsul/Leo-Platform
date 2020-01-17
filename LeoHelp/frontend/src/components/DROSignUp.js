@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import Error from '../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
 import DROPanel from './DROPanel';
+import Header from './Header';
 
 export default class DROSignUp extends React.Component {
 	constructor(props) {
@@ -125,7 +126,9 @@ export default class DROSignUp extends React.Component {
 		return (
 
 
-		
+			<div>
+			<Header />
+			<center>
 			<form onSubmit={this.handleSubmit}>
 				<h1>DRO Sign Up</h1>
 				<h3>Name: </h3>
@@ -156,6 +159,8 @@ export default class DROSignUp extends React.Component {
 				
 				<h3>{this.state.user_name} {this.state.password}</h3>
 			</form>
+			</center>
+			</div>
 
 		)
 

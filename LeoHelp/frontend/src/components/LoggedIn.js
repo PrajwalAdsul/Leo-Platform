@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-d
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import classNames from 'classnames';
+import className from 'classnames';
 //import { UserRegistration, user_nameValidation } from '../services/RegistrationService';
 import Error from '../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SimpleMap from './SimpleMap';
 import ShowECs from './ShowECs';
-
-export default class LoggedIn extends React.Component {
+import MarkTrouble from './MarkTrouble';
+ 
+export default class LoggedIn extends Component {
 	constructor(props) {
 		super(props)
 		this.state= {
@@ -126,52 +127,145 @@ export default class LoggedIn extends React.Component {
 
 
 	render() {
-
-		// if(localStorage.getItem("session_start") !== "start") {
-  //           return <Redirect to ='/UserSignIn'/>
-  //       }
+		if(localStorage.getItem('session') !== "start"){
+			return <Redirect push to = "/UserSignIn" />;
+	
+		}
 		return (
-			<div>
-			<nav className='navbar navbar-expand-lg navbar-light bg-light'></nav>
+			<div className="user-panel">
+			<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+			<a className="navbar-brand" href="#">
+            <img className="logo" src = {require('./Logo.png')} />
+            
+          	</a>
+          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>      
+			</nav>
 
-			<h3>Logged In as {localStorage.getItem("user_name")}</h3>
+			
+			<nav className='navbar navbar-expand-lg navbar-light header'>
+			<a className="navbar-brand" href="#">
+            <h1><b>LEO HELP</b></h1>
+          	</a>
+			<div className="nav navbar-nav ml-auto">
 
-			<ShowECs user_name = {this.props.user_name}/>
-			<form onSubmit={this.handleSubmit}>
-				<h1>Add / Update emergency contacts</h1>
-				<h2>Enter your Username </h2>
-				<input type="text" name = "user_name" value={this.state.user_name} placeholder="user_name" onChange={this.handleOnChangeUserName} />
+          	<Link to="/UserSignIn" className='nav-item nav-link'>LOGOUT</Link>
+            
+            </div>
+              
+			</nav>
+
+			<div className="user">
+			<div className="row">
+				<div className="col-md-3">
+				<div className="container">
+					<ShowECs user_name = {localStorage.getItem("user_name")}/>
+				</div>
+
+				<div className = 'container'>
 				
-				<h3>ec1 </h3>
-				<input type="number" name = "ec1" value={this.state.ec1} placeholder="ec1" onChange={this.handleOnChangeEC1} />
-				<h3>ec2 </h3>
-				<input type="number" name="ec2" value={this.state.ec2} placeholder="ec2" onChange={this.handleOnChangeEC2} />
-				<h3>ec3 </h3>
-				<input type="number" name="ec3" value={this.state.ec3} placeholder="ec3" onChange={this.handleOnChangeEC3} />
-				<h3>ec4 </h3>
-				<input type="number" name = "ec4" value={this.state.ec4} placeholder="ec4" onChange={this.handleOnChangeEC4} />
-				<h3>ec5 </h3>
-				<input type="number" name="ec5" value={this.state.ec5} placeholder="ec5" onChange={this.handleOnChangeEC5} />
-				
-				
-				<button type="button" onClick={this.onSubmit} className="btn btn-primary">Click</button>
-				
 
-				<Link to = "/UserSignIn">SignIn </Link>
+					
+
+					<center>
+				<div className="user-jumbotron">
 				
-				<h3>{this.state.user_name} {this.state.password}</h3>
-			</form>
+					<h2>UPDATE <span className="change-color">CONTACTS</span> </h2>
+					<hr />
 
-			<h3> Your current location </h3>
-			<SimpleMap latitude = {18.1213} longitude = {73.1232} />
+					<form onSubmit = {this.handleSubmit}>
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-4">
+								<label htmlFor="user_name">Username:</label>
+							</div>
+							<div className="col-md-8">
+								<input type="text" className="form-control" name = "user_name" value={this.state.user_name} placeholder="user_name" id="username" onChange={this.handleOnChangeUserName} />
+						
+							</div>
+						</div>
+					</div>
 
-			<link
-			  rel="stylesheet"
-			  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-			  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-			  Crossorigin="anonymous"
-			/>
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-4">
+								<label htmlFor="ec1">Contact1:</label>
+							</div>
+							<div className="col-md-8">
+								<input type="number" name = "ec1" className="form-control" value={this.state.ec1} placeholder="ec1" id="ec1" onChange={this.handleOnChangeEC1} />
+							</div>
+						</div>
+					</div>
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-4">
+								<label htmlFor="ec2">Contact2:</label>
+							</div>
+							<div className="col-md-8">
+								<input type="number" name="ec2" className="form-control" id="ec2" value={this.state.ec2} placeholder="ec2" onChange={this.handleOnChangeEC2} />
+							</div>
+						</div>
+					</div>
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-4">
+								<label htmlFor="ec3">Contact3:</label>
+							</div>
+							<div className="col-md-8">
+								<input type="number" name="ec3" className="form-control" id="ec3" value={this.state.ec3} placeholder="ec3" onChange={this.handleOnChangeEC3} />
+						
+							</div>
+						</div>
+					</div>
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-4">
+								<label htmlFor="ec4">Contact4:</label>
+							</div>
+							<div className="col-md-8">
+								<input type="number" name="ec4" className="form-control" id="ec4" value={this.state.ec4} placeholder="ec4" onChange={this.handleOnChangeEC4} />
+							
+							</div>
+						</div>
+					</div>
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-4">
+								<label htmlFor="ec5">Contact5:</label>
+							</div>
+							<div className="col-md-8">
+								<input type="number" name="ec5" className="form-control" id="ec5" value={this.state.ec5} placeholder="ec5" onChange={this.handleOnChangeEC5} />
+						
+							</div>
+						</div>
+					</div>
 
+
+					<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
+
+						
+						<br/><br/>
+						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary"><h4>UPDATE</h4></button><br /><br />
+						</center>
+								
+					</form>
+				
+				</div>
+
+
+				</center>
+
+				</div>
+
+				</div>
+				<div className="col-md-9">
+					<center><h3 className="map"><b>CURRENT <span className="change-color">LOCATION</span></b></h3>
+					<SimpleMap latitude = {18.1213} longitude = {73.1232} /></center>
+
+				</div>
+			</div>
+			</div>
+			<MarkTrouble />
+				
 			</div>
 
 		)

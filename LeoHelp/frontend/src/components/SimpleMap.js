@@ -41,8 +41,8 @@ export default class SimpleMap extends Component {
          
     this.state = {
       viewport: {
-        width: 800,
-        height: 800,
+        width: 1200,
+        height: 700,
         latitude: props.latitude,
         longitude: props.longitude,
         zoom: 8

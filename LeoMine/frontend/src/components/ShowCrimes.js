@@ -2,13 +2,21 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch, Link} from "react-router-dom";
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import Header from './Header';
 
 const SList = props => (
-    <tr>
-        <td>{props.data.name}</td>
-        <td>{props.data.description}</td>
-        <td>{props.data.precautions.map(u => (<p>{u}</p>))}</td>
-    </tr>
+    <div>
+    <div className="card">
+                <img src="..." className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h3 className="card-title"><b>{props.data.name}</b></h3>
+                  <div className="card-text">{props.data.description}</div>
+                  <div className="card-text"><span className="change-color"><b>Precautions: </b><br /></span>{props.data.precautions.map(u => (<p>{u}</p>))}</div>
+                </div>
+              </div>
+   
+    </div>
 )
 
 export default class ShowCrimes extends Component {
@@ -37,34 +45,17 @@ export default class ShowCrimes extends Component {
     }
     render() {
         return (
-                <div className = 'container'>
-                    <Link to="/AddCrime">add a crime</Link>
-                    <br/><br/>
-                    <Link to="/AddArea">add a area</Link>
-                    <br/><br/>
-                    <Link to="/ShowAreas">show all areas</Link>
-                    <br/><br/>
-                    <Link to="/WebScrap">web scrap</Link>
-           
-                   
-                    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                    </nav>
-                    <div>
-                        <h3>List</h3>
-                        <table className = 'table table-striped' style={{marginTop: 20}}>
-                            <thead>
-                                <tr>
-                                    <th> Name </th>
-                                    <th> Description </th>
-                                    <th> precautions </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.crimesList()}
-                            </tbody>
-                        </table>
-                    </div>
+        <div>
+        <Header />
+
+            
+                <div className = 'container show'>
+                        <center><h2>ALL CRIMES </h2></center>   
                     
+                     {this.crimesList()}
+                   
+                </div>
+                   
                 </div>
         )
     }

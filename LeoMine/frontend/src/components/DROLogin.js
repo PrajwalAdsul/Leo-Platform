@@ -7,10 +7,13 @@ import classNames from 'classnames';
 //import { UserRegistration, user_nameValidation } from '../services/RegistrationService';
 import Error from '../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
-import DROPanel from './DROPanel';
-import Header from './Header';
+//import DROPanel from './DROPanel';
+import MainApp from './MainApp';
 
-export default class DROSignIn extends React.Component {
+
+
+
+export default class DROLogin extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state= {
@@ -32,7 +35,13 @@ export default class DROSignIn extends React.Component {
 	}
 
 	onSubmit = async e => {
-
+		
+		if(this.state.user_name == "DRO" && this.state.password == "DRO"){
+			this.setState({
+					loginSuccess : true
+					});
+		}
+		/*
 		//e.preventDefault();
 		const data = {
 			user_name : this.state.user_name,
@@ -67,7 +76,7 @@ export default class DROSignIn extends React.Component {
 		//		error: true,
 		//		register: false
 			});
-		}
+		}*/
 	}
 
 	componentWillMount() {
@@ -99,60 +108,25 @@ export default class DROSignIn extends React.Component {
 
 	render() {
 		
-
 		const { loginSuccess, error } = this.state;
 		if (this.state.loginSuccess == true) {
-			localStorage.setItem('DRO_start', "start");
+			localStorage.setItem("session_start", "start");
 			console.log(localStorage.getItem('user_name'))
-			return <Redirect push to = "/DROPanel" />;
+			return <MainApp />
 		}
-
 		return (
-			<div className="user-panel">
-			<Header />
-			<center>
-				<div className="jumbotron">
+			<form onSubmit={this.handleSubmit}>
+				<h1>DRO Sign In</h1>
+				<h3>user_name: </h3>
+				<input type="text" name="user_name" value={this.state.user_name} placeholder="user_name" onChange={this.handleChange} />
+				<h3>Password: </h3>
+				<input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} />
 				
-					<h2>DRO <span className="change-color">LOGIN</span> </h2>
-					<hr />
-
-					<form onSubmit = {this.handleSubmit}>
-					<div className="form-group">
-						<div className="row">
-							<div className="col-md-2">
-								<label htmlFor="user_name">Username:</label>
-							</div>
-							<div className="col-md-10">
-								<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="username" id="username" onChange={this.handleChange}/>
-							</div>
-						</div>
-					</div>
-
-					<div className="form-group">
-						<div className="row">
-							<div className="col-md-2">
-								<label htmlFor="password">Password:</label>
-							</div>
-							<div className="col-md-10">
-								<input type="password" className="form-control" name="password" id="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} />
-							</div>
-						</div>
-					</div>
-
-					<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
-
+				<button type="button" onClick={this.onSubmit} className="btn btn-primary">Sign In</button>
 						
-						<br/><br/>
-						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary"><h4>LOGIN</h4></button><br /><br />
-						</center>
-								
-					</form>
-				
-				</div>
-
-
-				</center>
-			</div>
+				<h3>{this.state.user_name} {this.state.password}</h3>
+				<h3>{this.state.errorMessage}</h3>
+			</form>
 		)
 
 	}

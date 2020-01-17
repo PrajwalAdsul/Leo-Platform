@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import Error from '../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
 import LoggedIn from './LoggedIn';
+import Header from './Header';
 
 export default class UserSignIn extends React.Component {
 	constructor(props) {
@@ -93,7 +94,7 @@ export default class UserSignIn extends React.Component {
 
 	componentWillUpdate(nextProps, nextState) {
 		localStorage.setItem('user_name', JSON.stringify(nextState.user_name));
-		localStorage.setItem('password', JSON.stringify(nextState.password));
+		localStorage.setItem('parseassword', JSON.stringify(nextState.password));
 	}
 
 	render() {
@@ -101,25 +102,57 @@ export default class UserSignIn extends React.Component {
 
 		const { loginSuccess, error } = this.state;
 		if (this.state.loginSuccess == true) {
-			localStorage.setItem('session_start', "start");
+			localStorage.setItem('session', "start");
 			console.log(localStorage.getItem('user_name'))
-			return <LoggedIn user_name = {this.state.user_name}  />
+			return <Redirect push to  = "/LoggedIn" />;
 		}
 
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<h1>User Sign In</h1>
-				<h3>user_name: </h3>
-				<input type="text" name="user_name" value={this.state.user_name} placeholder="user_name" onChange={this.handleChange} />
-				<h3>Password: </h3>
-				<input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} />
+			<div>
+			<Header />
+ 			<center>
+				<div className="jumbotron">
 				
-				<button type="button" onClick={this.onSubmit} className="btn btn-primary">Sign In</button>
+					<h2>USER <span className="change-color">LOGIN</span> </h2>
+					<hr />
+
+					<form onSubmit = {this.handleSubmit}>
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-2">
+								<label htmlFor="user_name">Username:</label>
+							</div>
+							<div className="col-md-10">
+								<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="username" id="username" onChange={this.handleChange}/>
+							</div>
+						</div>
+					</div>
+
+					<div className="form-group">
+						<div className="row">
+							<div className="col-md-2">
+								<label htmlFor="password">Password:</label>
+							</div>
+							<div className="col-md-10">
+								<input type="password" className="form-control" name="password" id="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} />
+							</div>
+						</div>
+					</div>
+
+					<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
+
 						
-				<Link to = "/UserSignUp">SignUp </Link>
-				<h3>{this.state.user_name} {this.state.password}</h3>
-				<h3>{this.state.errorMessage}</h3>
-			</form>
+						<br/><br/>
+						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary"><h4>LOGIN</h4></button><br /><br />
+						<h4>Not a user ?<Link to = "/UserSignUp" className="link"> SignUp </Link></h4></center>
+								
+					</form>
+				
+				</div>
+
+
+				</center>
+			</div>
 		)
 
 	}
