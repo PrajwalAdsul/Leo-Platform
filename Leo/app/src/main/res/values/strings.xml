@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Leo</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="ip_address">192.168.137.1</string>
+    <string name="tag">MainActivity</string>
+    <string name="update_emergency_contact">Update Emergency Contacts</string>
+    <string name="settings">Logout</string>
+</resources>
