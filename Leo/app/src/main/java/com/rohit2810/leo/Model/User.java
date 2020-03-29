@@ -1,4 +1,4 @@
-package com.example.leo.Model;
+package com.rohit2810.leo.Model;
 
 import com.google.gson.annotations.SerializedName;
 

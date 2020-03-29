@@ -1,7 +1,7 @@
-package com.example.leo.Interface;
+package com.rohit2810.leo.Interface;
 
-import com.example.leo.Model.Trouble;
-import com.example.leo.Model.User;
+import com.rohit2810.leo.Model.Trouble;
+import com.rohit2810.leo.Model.User;
 
 import java.util.List;
 import java.util.Map;

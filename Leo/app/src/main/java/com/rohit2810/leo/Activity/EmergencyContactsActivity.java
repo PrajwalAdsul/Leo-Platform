@@ -1,4 +1,4 @@
-package com.example.leo.Activity;
+package com.rohit2810.leo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,19 +15,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.leo.App;
-import com.example.leo.Interface.UserInterfaceAPI;
-import com.example.leo.Model.Trouble;
-import com.example.leo.R;
+import com.rohit2810.leo.App;
+import com.rohit2810.leo.Interface.UserInterfaceAPI;
+import com.rohit2810.leo.Model.Trouble;
+import com.rohit2810.leo.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -65,9 +62,8 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                     getLocation();
                     Trouble trouble = new Trouble(App.name, latitude, longitude, false, "", list);
                     addEmergencyContacts(trouble);
+                    finish();
                     Log.d(TAG, "onClick: " + trouble.getUsername());
-//                    startActivity(new Intent(EmergencyContactsActivity.this, MapsActivity.class));
-//                    finish();
                 }else {
                     Toast.makeText(EmergencyContactsActivity.this, "Please enter atleast 3 emergency numbers", Toast.LENGTH_SHORT).show();
                 }
@@ -129,7 +125,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
 
     private void setupRetrofit() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://"+ getString(R.string.ip_address) + ":4001/LeoHelp/")
+                .baseUrl("http://"+ App.retrofitAdd + ":4001/LeoHelp/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         userInterfaceAPI = retrofit.create(UserInterfaceAPI.class);

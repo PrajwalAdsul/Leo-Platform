@@ -1,4 +1,4 @@
-package com.example.leo;
+package com.rohit2810.leo;
 
 import android.app.Application;
 import android.app.NotificationChannel;
@@ -10,11 +10,12 @@ public class App extends Application {
     public static boolean triggerInProgress = false;
     public static String name;
     public static String pass;
+    public static String retrofitAdd;
     NotificationChannel channel;
     @Override
     public void onCreate() {
         super.onCreate();
-
+        retrofitAdd = "192.168.43.67";
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             channel = new NotificationChannel(
                     CHANNEL_1_ID,

@@ -1,9 +1,8 @@
-package com.example.leo.Model;
+package com.rohit2810.leo.Model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Trouble {
     @SerializedName("user_name")

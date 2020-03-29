@@ -1,4 +1,4 @@
-package com.example.leo.Receiver;
+package com.rohit2810.leo.Receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.speech.tts.TextToSpeech;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
-import com.example.leo.App;
-import com.example.leo.Service.GPSService;
+import com.rohit2810.leo.App;
+import com.rohit2810.leo.Service.GPSService;
 
 import java.util.Locale;
 

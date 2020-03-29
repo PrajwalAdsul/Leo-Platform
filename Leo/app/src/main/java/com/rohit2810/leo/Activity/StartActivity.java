@@ -1,7 +1,6 @@
-package com.example.leo.Activity;
+package com.rohit2810.leo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,26 +9,16 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.leo.App;
-import com.example.leo.Interface.UserInterfaceAPI;
-import com.example.leo.Model.User;
-import com.example.leo.R;
-
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.rohit2810.leo.App;
+import com.rohit2810.leo.Interface.UserInterfaceAPI;
+import com.rohit2810.leo.Model.User;
+import com.rohit2810.leo.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.Manifest.permission.ACCESS_BACKGROUND_LOCATION;
-import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static android.Manifest.permission.READ_SMS;
-import static android.Manifest.permission.SEND_SMS;
 
 public class StartActivity extends AppCompatActivity {
     Retrofit retrofit;
@@ -95,7 +84,7 @@ public class StartActivity extends AppCompatActivity {
     //Setup the retrofit
     private void setupRetrofit() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://" +  getString(R.string.ip_address) +":4001/LeoHelp/")
+                .baseUrl("http://" +  App.retrofitAdd +":4001/LeoHelp/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         userInterfaceAPI = retrofit.create(UserInterfaceAPI.class);

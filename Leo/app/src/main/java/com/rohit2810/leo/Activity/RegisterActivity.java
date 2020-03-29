@@ -1,4 +1,4 @@
-package com.example.leo.Activity;
+package com.rohit2810.leo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.leo.App;
-import com.example.leo.Interface.UserInterfaceAPI;
-import com.example.leo.Model.User;
-import com.example.leo.R;
+import com.rohit2810.leo.App;
+import com.rohit2810.leo.Interface.UserInterfaceAPI;
+import com.rohit2810.leo.Model.User;
+import com.rohit2810.leo.R;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -101,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
     //Setup the retrofit
     private void setupRetrofit() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://" + getString(R.string.ip_address) + ":4001/LeoHelp/")
+                .baseUrl("http://" + App.retrofitAdd + ":4001/LeoHelp/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         userInterfaceAPI = retrofit.create(UserInterfaceAPI.class);
