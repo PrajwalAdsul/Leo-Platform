@@ -462,7 +462,7 @@ def saving_articles(df, data) :
     region_lst = []
     city_lst = []
     for loc in df['location'] :
-        s = loc.split('/').split(":")
+        s = loc.split('/')[1].split(":")
         region_lst.append(s[0])
         city_lst.append(s[1])
     try :
