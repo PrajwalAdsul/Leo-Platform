@@ -22,7 +22,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/LeoHelp', LeoHelp);
 
-mongoose.connect('mongodb+srv://praj:pra@cluster0-jpt7l.mongodb.net/Leo?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, });
+var atlas_url =  "put correct url of atlas";
+
+mongoose.connect(atlas_url, {useNewUrlParser: true, useUnifiedTopology: true, });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
@@ -100,7 +102,9 @@ app.get('/download', (req, res ) => {
 
 app.post('/uploadDoc',upload.single('file'), (req, res) => {
    
-});// Login for user
+});
+
+// Login for user
 LeoHelp.route('/login').post(function(req, res){
     const user_name = req.body.user_name;
     const password = req.body.password;
@@ -553,14 +557,9 @@ LeoHelp.route('/approveDoctor').put(async (req, res) => {
 });
 
 LeoHelp.route('/getDoctor').post(async (req, res) => {
-	console.log("********");
-	console.log(req.body);
 	let data = await doctor.findOne({user_name : req.body.user_name });
 	if(data == null)
 		res.status(400).json({'msg' : 'error'});
-	console.log("********");
-	console.log(data);
-	console.log("********");
 	res.status(200).json(data);
 });
 LeoHelp.route('/updateDoctor').put(async (req, res) => {
@@ -597,12 +596,11 @@ LeoHelp.route('/updateDoctor').put(async (req, res) => {
 	)
 	res.status(200).json({'msg' : neww});
 });
+
 // Check if user exists
 LeoHelp.route('/doctorloginIn').post( async (req, res) => {
 	try{
  		 let data = await doctor.findOne({user_name : req.body.user_name, password : req.body.password });
-		 // console.log("**");
-		 // console.log(data);
 		 if(data !== null){
 			res.status(200).json({'msg': " login successful"});    	 	
 		 }
@@ -635,8 +633,7 @@ LeoHelp.route('/deleteDoctor').delete( async (req, res) => {
 	let data = await doctor.findOne({user_name : req.body.user_name });
 	if(data == null)
 		res.status(400).json({Error: "No such username"});	
-    // console.log("**********\n" + data + "\n*************\n");
-	doctor.deleteOne({ _id: data._id }, function(err, results) {
+    doctor.deleteOne({ _id: data._id }, function(err, results) {
 	       if (err){
 			 res.status(400).json({"msg" : " InCorrect"});       
 	         throw err;
