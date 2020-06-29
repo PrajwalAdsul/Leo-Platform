@@ -1,6 +1,26 @@
-addUser
-addDRO
-allUsers
-allDRO
-markTrouble
-unmarkTrouble
+All routes required for web and android
+
+User:
+	add User
+	login
+	update user
+	delete User
+	markTrouble
+	markTrouble with no internet
+	markTrouble with no Leo App
+	unmarkTrouble
+	update user information
+
+DRO:
+	add DRO
+	login
+	delete DRO
+	update DRO
+	get marked users
+
+Doctor:
+	add Doctor
+	login
+	delete Doctor
+	update Doctor
+	get marked users
