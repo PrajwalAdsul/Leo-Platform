@@ -156,8 +156,13 @@ def main():
     
     df_ = get_locations(df, data, nlp, cities, spellings, 1)   
     print(df)
-    data_ = preprocessing(df_, data)
-    save_data(data_, "./database/updated.json")
+    df = preprocessing2(df, data)
+    df_with_date = get_date(df)
+    df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    if(df_final.shape[0] != 0) :
+        saving_articles(df_final, "./database/headlines.csv")
+        data_ = preprocessing(df_final, data)
+        save_data(data_, "./database/updated.json")
 
             
 main()

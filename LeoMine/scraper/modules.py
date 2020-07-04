@@ -233,7 +233,7 @@ def get_articles(mode, crime_list, articles_fname) :
                     except:
                         break
             articles_crimewise.append(articles_lst)
-            print("end topic")
+            #print("end topic")
         #print(articles_crimewise)
             #articles_crimewise conatins [[murder, url1, ...], ...]
         #crime_list = get_crime_list(crime_fname)
@@ -244,7 +244,7 @@ def get_articles(mode, crime_list, articles_fname) :
                 temporary = []
                 if(i == 0) :
                     crime = link
-                    print(crime)
+                    #print(crime)
                     if(crime == "murder-case"):
                         crime = "murder"
                     for crime_ in crime_list :
@@ -256,7 +256,7 @@ def get_articles(mode, crime_list, articles_fname) :
                             #print(crime_)
                             break
                     continue
-                print(link)
+                #print(link)
                 temporary.append(required_crime_temp[0])
                 found = 0
                 words = link.split('/')[-3].split("-")
@@ -378,7 +378,7 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) 
             #print([(ent.text, ent.label_) for ent in doc.ents])
             for ent in doc.ents :
                 if(ent.label_ == "GPE") :
-                    print(ent.text)
+                    #print(ent.text)
                     if ent.text.lower() in cities_lst and city == "":
                         city = str(ent.text).title()
                     elif ent.text.lower() not in cities_lst and ent.text.lower() not in extra_locs and check_in_dict(ent.text) == False:
@@ -389,7 +389,7 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) 
                 lstt.append(loc)
         found_loc = lstt
         success = 0
-        print(found_loc)
+        #print(found_loc)
         if(len(found_loc) != 0) :
             for loc in found_loc:
                 index = find_in_db(loc, data)
@@ -428,12 +428,12 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) 
                     #print (token, token.tag_, token.pos_, spacy.explain(token.tag_))
                     if(check_in_dict(token) == False and str(token).lower() not in extra_locs) :
                         words.append(token)
-            print(words)
+            #print(words)
             if(len(words) == 0) :
                 ultra_found.append("")
                 continue
             word = check_similarity(article[1].text, words, city)
-            print(word)
+            #print(word)
             index = find_in_spell(word, spellings, data) 
             if(index != -1):
                 #print(word)
@@ -450,10 +450,10 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) 
             ultra_found.append("")
             continue
     articles_df['location'] = ultra_found
-    print(articles_df)
+    #print(articles_df)
     return articles_df
 
-def saving_articles(df, data) :
+def preprocessing2(df, data) :
     df = df[df['location'] != ""].reset_index()
     for i, loc in enumerate(df['location']) :
         if(isinstance(loc, int) == True) :
@@ -470,13 +470,18 @@ def saving_articles(df, data) :
     except:
         #do nothing
         t = 1
-    df['Region'] = region_lst
-    df['City'] = city_lst
-    df.to_csv('headlines.csv', mode='a', header=True)
+    df['region'] = region_lst
+    df['city'] = city_lst
+    return df
+    #df.to_csv('./database/headlines.csv', mode='a', header=True)
 
+def saving_articles(df, filename) :
+    with open(filename, 'a') as f:
+        df.to_csv(f, header=False)
+        
 def preprocessing(articles_df, data) :
     df = articles_df
-    saving_articles(df, data)
+    #saving_articles(df, data)
     index = -1
     for loc in articles_df['location'] :
         index = index + 1
@@ -544,4 +549,30 @@ def save_data(data, data_fname):
      with open(data_fname, 'w') as json_file:
         json.dump(data, json_file)
         
+def get_date(df) :
+    date_lst = []
+    for _, row in df.iterrows() :
+        link = row['url']
+        article = Article(link)
+        article.download()
+        article.parse()
+        article.nlp()
+        date_lst.append(article.publish_date)
+    df["date"] = date_lst
+    return df
+
+def check_for_duplicates(df, filename) :
+    cols = ["level_0", "index", "text", "url", "crime", "location", "region", "city", "date"]
+    df_org = pd.read_csv(filename, names=cols)
+    print(df_org.columns)
+    print(df.columns)
+    for index, row in df.iterrows() :
+        df_copy = df_org[df_org['date'] == row["date"]]
+        df_copy = df_copy[df_copy["crime"] == row["crime"]]
+        df_copy = df_copy[df_copy["city"] == row["city"]]
+        df_copy = df_copy[df_copy["region"] == row["region"]]
+        if(df_copy.shape[0] != 0) :
+             df.drop(df.index[[index]], inplace=True)
+    return df
         
+

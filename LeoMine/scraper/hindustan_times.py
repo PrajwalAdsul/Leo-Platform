@@ -8,7 +8,7 @@ It provides:
 
 import json
 from utils import get_crime, get_location
-from modules import preprocessing, save_data, get_data
+from modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles
 import warnings 
 warnings.filterwarnings(action = 'ignore')
 import pandas as pd
@@ -123,7 +123,7 @@ def get_trending_headlines(url):
     return None
 
 
-if __name__ == "__main__":
+def HindustanTimesScrapper():
 
     SRC = KNOWN_NEWS_SOURCES["Hindustan Times"]
     
@@ -165,5 +165,10 @@ if __name__ == "__main__":
     data = get_data("./database/data.json")
     df = get_location(df_crime, data)
     df.to_csv("./database/test_df.csv")
-    data_ = preprocessing(df, data)
-    save_data(data_, "./database/updated.json")
+    df = preprocessing2(df, data)
+    df_with_date = get_date(df)
+    df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    if(df_final.shape[0] != 0) :
+        saving_articles(df_final, "./database/headlines.csv")
+        data_ = preprocessing(df_final, data)
+        save_data(data_, "./database/updated.json")

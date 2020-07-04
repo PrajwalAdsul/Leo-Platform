@@ -109,7 +109,7 @@ def get_username():
     return username
 
 
-def start(username = None):
+def TweetsScrapper():
     #username = get_username()
     username = "ani"
     url = "http://www.twitter.com/" + username
@@ -142,7 +142,11 @@ def start(username = None):
     data = get_data("./database/data.json")
     df = get_location(df_crime, data)
     df.to_csv("./database/test_df.csv")
-    data_ = preprocessing(df, data)
-    save_data(data_, "./database/updated.json")
+    df = preprocessing2(df, data)
+    df_with_date = get_date(df)
+    df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    if(df_final.shape[0] != 0) :
+        saving_articles(df_final, "./database/headlines.csv")
+        data_ = preprocessing(df_final, data)
+        save_data(data_, "./database/updated.json")
 
-start()
