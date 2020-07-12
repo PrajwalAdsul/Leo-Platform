@@ -164,6 +164,7 @@ def HindustanTimesScrapper():
     df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
     df_crime = get_crime(df_raw)
     data = get_data("./database/data.json")
+    print(df_crime.columns)
     df = get_location(df_crime, data)
     df.to_csv("./database/test_df.csv")
     df = preprocessing2(df, data)
@@ -173,3 +174,5 @@ def HindustanTimesScrapper():
         saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)
         save_data(data_, "./database/data.json")
+        
+HindustanTimesScrapper()

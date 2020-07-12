@@ -7,10 +7,10 @@ from deccan_chronicle import DeccanChronicleScrapper
 from toi import ToiScrapper
 
 #TweetsScrapper()
-TheHinduScrapper()
-NdtvScrapper()
-HindustanTimesScrapper()
+#TheHinduScrapper()
+#NdtvScrapper()
+#HindustanTimesScrapper()
 #DdNewsScrapper()
-DeccanChronicleScrapper()
-#TweetsScrapper()
+#DeccanChronicleScrapper()
+TweetsScrapper()
 #ToiScrapper()

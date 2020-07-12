@@ -597,4 +597,83 @@ def check_url_in_database(df, filename) :
     df.drop("Flag", axis=1, inplace=True)
     return df
    
+def get_locations_from_user_text(text, data, loc_model, cities_lst, spellings) :
+    '''data=origianl db'''
+    extra_locs = []
+    ultra_found = []
+    #[[loc,link]]
+    cities_lst = [city.lower() for city in cities_lst]
+    for city in cities_lst:
+        extra_locs.append(city)
+    cleaned_text = re.findall(r"[\w']+|[.,!?;]", text)
+    city_flag = 0
+    for word in cleaned_text :
+        if word in cities_lst :
+            city = word
+            city_flag = 1
+            break
+    if(city_flag == 0) :
+        city = ""
+    states = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Lakshadweep","National Capital Territory of Delhi","Puducherry"]
+    state = [s.lower() for s in states]
+    extra_locs.extend(state)
+    f = open("country.txt", "r")
+    for country in f.readline():
+        extra_locs.append(country.lower())
     
+    nlp = loc_model
+    post = []
+    post.append(text)
+    #print(post)
+    found_loc = []
+    for doc in nlp.pipe(post):
+        #print([(ent.text, ent.label_) for ent in doc.ents])
+        for ent in doc.ents :
+            if(ent.label_ == "GPE") :
+                #print(ent.text)
+                if ent.text.lower() in cities_lst and city == "":
+                    city = str(ent.text).title()
+                elif ent.text.lower() not in cities_lst and ent.text.lower() not in extra_locs and check_in_dict(ent.text) == False:
+                    found_loc.append(ent.text)
+    lstt = []
+    for loc in found_loc:
+        if(len(loc) > 3 and str(loc).lower() != str(city).lower()) :
+            lstt.append(loc)
+    found_loc = lstt
+    success = 0
+    #print(found_loc)
+    if(len(found_loc) != 0) :
+        for loc in found_loc:
+            index = find_in_db(loc, data)
+            if(index != -1):
+                #print(loc)
+                return loc
+        else :
+            for loc in found_loc:
+                index = find_in_spell(loc, spellings, data) 
+                if(index != -1):
+                    #print(loc)
+                    return loc
+                if(city != "") :
+                    string = "/" + str(loc) + ":" + str(city)
+                    return loc
+                else:
+                    return city
+    elif(len(found_loc) == 0 and city != "") :
+        nlp = spacy.load('en')
+        about_doc = nlp(text)
+        words = []
+        for token in about_doc:
+            if(token.tag_ == "NNP") :
+                #print (token, token.tag_, token.pos_, spacy.explain(token.tag_))
+                if(check_in_dict(token) == False and str(token).lower() not in extra_locs) :
+                    words.append(token)
+        #print(words)
+        if(len(words) == 0) :
+            return city
+        word = check_similarity(text, words, city)
+        return word
+          
+    else:
+        return city
+    return city
