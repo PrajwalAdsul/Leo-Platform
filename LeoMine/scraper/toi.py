@@ -141,7 +141,8 @@ def extracting_city_crime(articles) :
     #print(df)
     return df
 
-def main():
+
+def ToiScrapper():
     data = get_data("./database/data.json")
     spellings = get_spelling_list("./database/spell.csv")
     locs = get_locations_list(data)
@@ -165,4 +166,3 @@ def main():
         save_data(data_, "./database/updated.json")
 
             
-main()

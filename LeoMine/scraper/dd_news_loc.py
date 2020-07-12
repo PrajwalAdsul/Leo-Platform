@@ -8,7 +8,7 @@ It provides:
 
 import json
 from utils import get_crime, get_location
-from modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles
+from modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles, check_url_in_database
 import warnings 
 warnings.filterwarnings(action = 'ignore')
 import pandas as pd
@@ -162,6 +162,7 @@ def DdNewsScrapper():
             text_lst.append(data['content'])
         url_lst.append(data['link'])
     df_raw = pd.DataFrame(list(zip(text_lst, url_lst)), columns = ["text", "url"])
+    df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
     #print(df_raw)
     df_crime = get_crime(df_raw)
     data = get_data("./database/data.json")

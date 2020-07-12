@@ -337,7 +337,7 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) 
     cities_lst = [city.lower() for city in cities_lst]
     for city in cities_lst:
         extra_locs.append(city)
-    states = ["Andhra Pradesh","Arunachal Pradesh ","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Lakshadweep","National Capital Territory of Delhi","Puducherry"]
+    states = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Lakshadweep","National Capital Territory of Delhi","Puducherry"]
     state = [s.lower() for s in states]
     extra_locs.extend(state)
     f = open("country.txt", "r")
@@ -454,7 +454,7 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) 
     return articles_df
 
 def preprocessing2(df, data) :
-    df = df[df['location'] != ""].reset_index()
+    df = df[df['location'] != ""].reset_index(drop=True)
     for i, loc in enumerate(df['location']) :
         if(isinstance(loc, int) == True) :
             string = "/" + data[loc]['Regions'] + ":" + data[loc]['City']
@@ -562,8 +562,11 @@ def get_date(df) :
     return df
 
 def check_for_duplicates(df, filename) :
-    cols = ["level_0", "index", "text", "url", "crime", "location", "region", "city", "date"]
-    df_org = pd.read_csv(filename, names=cols)
+    #cols = ["level_0", "index", "text", "url", "crime", "location", "region", "city", "date"]
+    try :
+        df_org = pd.read_csv(filename)
+    except :
+        return df
     print(df_org.columns)
     print(df.columns)
     for index, row in df.iterrows() :
@@ -575,4 +578,23 @@ def check_for_duplicates(df, filename) :
              df.drop(df.index[[index]], inplace=True)
     return df
         
-
+def check_url_in_database(df, filename) :
+    #cols = ["level_0", "index", "text", "url", "crime", "location", "region", "city", "date"]
+    flag_lst = []
+    #try :
+    print("try")
+    df_org = pd.read_csv(filename)
+    url_lst = df_org["url"].tolist()
+    print(url_lst)
+    for index, row in df.iterrows() :
+        print(row["url"])
+        if(row["url"] in url_lst):
+             flag_lst.append("True")
+        else :
+            flag_lst.append("False")
+    df["Flag"] = flag_lst
+    df = df[df["Flag"] == "False"].reset_index(drop=True)
+    df.drop("Flag", axis=1, inplace=True)
+    return df
+   
+    

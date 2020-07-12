@@ -8,7 +8,7 @@ It provides:
 
 import json
 from utils import get_crime, get_location
-from modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles
+from modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles, check_url_in_database
 import warnings 
 warnings.filterwarnings(action = 'ignore')
 import pandas as pd
@@ -161,6 +161,7 @@ def HindustanTimesScrapper():
         url_lst.append(data['link'])
     df_raw = pd.DataFrame(list(zip(text_lst, url_lst)), columns = ["text", "url"])
     print(df_raw)
+    df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
     df_crime = get_crime(df_raw)
     data = get_data("./database/data.json")
     df = get_location(df_crime, data)
@@ -171,4 +172,4 @@ def HindustanTimesScrapper():
     if(df_final.shape[0] != 0) :
         saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)
-        save_data(data_, "./database/updated.json")
+        save_data(data_, "./database/data.json")
