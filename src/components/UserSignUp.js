@@ -19,7 +19,7 @@ export default class UserSignUp extends React.Component {
 			confirmpassword : "",
 			passwordError : "",
 			usernameAlreadyTaken : "",
-			phone : 0,
+			phone : '',
 			error : false,
 			errorText : "",
 			loginSuccess : false,
@@ -52,19 +52,19 @@ export default class UserSignUp extends React.Component {
 	        errors.email = 
 	          validEmailRegex.test(value)
 	            ? ''
-	            : 'Email is not valid!';
+	            : 'Please enter a valid email address';
 	        break;
 	      case 'password': 
 	        errors.password = 
 	          value.length < 8
-	            ? 'Password must be at least 8 characters long!'
+	            ? 'Password must be at least 8 characters'
 	            : '';
 	        break;
 	      case 'phone' :
 	      	errors.phone = 
 	      		validPhoneRegex.test(value) && value.length == 10
 	      		  ? ''
-	      		  : 'Phone number should follw standards and should be 10 in length';
+	      		  : 'Please put valid 10-digit Phone Number';
 
 	       break;
 	      default:
@@ -92,7 +92,7 @@ export default class UserSignUp extends React.Component {
 		}
 		else{
 			this.setState({
-				passwordError : "Passwords match"
+				passwordError : "Passwords match :)"
 			});
 		}
 	}
@@ -243,12 +243,12 @@ export default class UserSignUp extends React.Component {
 					<div className="form-row">
 					<div className="form-group col-md-6">
 						<label htmlFor="user_name" >Username:</label>
-						<input type="text" name="user_name" id="user_name" className="form-control" value={this.state.user_name} placeholder="username" onChange={this.handleChange} required/>
+						<input type="text" name="user_name" id="user_name" className="form-control" value={this.state.user_name} placeholder="Username" onChange={this.handleChange} required/>
 					</div>
 						
 					<div className="form-group col-md-6">
 						<label htmlFor="phone" >Mobile No:</label>
-						<input type="number" className="form-control" id="phone" name="phone" value={this.state.phone} placeholder="phone" onChange={this.handleChange} required/>
+						<input type="number" className="form-control" id="phone" name="phone" value={this.state.phone} placeholder="10-digit Mobile No." onChange={this.handleChange} required/>
 						<h4><span className="errorMessage">{errors.phone}</span></h4>
 						
 					</div>
@@ -258,13 +258,13 @@ export default class UserSignUp extends React.Component {
 					<div className="form-group col-md-6">
 						<label htmlFor="password" >Password:</label>
 						<input type="password" className="form-control" id="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} required/>
-						  <span className='errorMessage'>{errors.password}</span>
+							<span className='errorMessage'>{errors.password}</span>
 					</div>
 						
 					<div className="form-group col-md-6">
 						<label htmlFor="confirmpassword" >Confirm Password:</label>
 						<input type="password" className="form-control" name="confirmpassword" id="confirmpassword" value={this.state.confirmpassword} placeholder="Confirm Password" onChange={this.handleOnChangeConfirmPassword} />
-						<h4><span className="errorMessage">{this.state.passwordError}</span></h4>
+							<span className="errorMessage">{this.state.passwordError}</span>
 						</div>
 					</div>
 
@@ -273,7 +273,7 @@ export default class UserSignUp extends React.Component {
 					
 						<div className="form-group col-md-6">
 						<label htmlFor="otp" >OTP:</label>
-						<input type="number" className="form-control" id="otp" name="otp" value={this.state.otp} placeholder="otp" onChange={this.handleChange} required/>
+						<input type="number" className="form-control" id="otp" name="otp" value={this.state.otp} placeholder="OTP" onChange={this.handleChange} required/>
 						</div>
 
 						<div className="form-group col-md-3">

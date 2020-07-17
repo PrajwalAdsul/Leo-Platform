@@ -72,14 +72,14 @@ export default class ShowTroubles extends Component {
             <div>
                <div className = 'container list'>  
                         <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
-                        <table className = 'table table-striped' style={{marginTop: 20}}>
+                        <table className = 'table table-striped table-hover' style={{marginTop: 20}}>
                             <thead>
                                 <tr>
-                                    <th><h4><b>USERNAME</b></h4></th>
-                                    <th><h4><b>AREA</b></h4></th>
-                                    <th><h4><b>MAP</b></h4></th>
-                                    <th><h4><b>PROFILE</b></h4></th>
-                                    <th><h4><b>UNMARK</b></h4></th>
+                                    <th>USERNAME</th>
+                                    <th>AREA</th>
+                                    <th>MAP</th>
+                                    <th>PROFILE</th>
+                                    <th>UNMARK</th>
                                 </tr>
                             </thead>
                             <tbody>

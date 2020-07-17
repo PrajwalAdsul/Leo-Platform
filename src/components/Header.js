@@ -14,29 +14,23 @@ export default class Header extends Component {
 	render() {
 		return (
 			<div>
-			<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-			<a className="navbar-brand" href="#">
-            <img className="logo" src = {require('./Logo.png')} />
-            
-          	</a>
-          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>      
-          	<h4 className="navbar-text"><b>
-			<a href = {"https://github.com/"}>Download Leo App</a> </b></h4>               
-			</nav>
+			<nav className='navbar navbar-expand-lg navbar-light header'>
+				<a className="navbar-brand" href="#">
+	            	<img className="logo" src = {require('./Logo.png')} /> 
+	          	</a>
+	          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>  
+	          	<h4 className="navbar-text">
+	          		<b><a href = {"https://github.com/"}>Download Leo App</a></b>
+	          	</h4>
+	          	<div className="nav navbar-nav ml-auto">
+		          	<Link to="/UserSignIn" className='nav-item nav-link'>USER LOGIN</Link>
+		            <Link to="/UserSignUp" className='nav-item nav-link'> USER SIGNUP</Link>
+		            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link> 			
+	            </div>
+	        </nav>
 
 			
-			<nav className='navbar navbar-expand-lg navbar-light header'>
-			<a className="navbar-brand" href="#">
-            <h1><b>LEO HELP</b></h1>
-          	</a>
-
-			<div className="nav navbar-nav ml-auto">
-
-          	<Link to="/UserSignIn" className='nav-item nav-link'>USER LOGIN</Link>
-            <Link to="/UserSignUp" className='nav-item nav-link'> USER SIGNUP</Link>
-            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link> 			
-            </div>
-			</nav>			
+					
 			</div>
 		)
 	}

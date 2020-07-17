@@ -16,28 +16,18 @@ export default class Header extends Component {
 	render() {
 
 		return (
- 
-			<div>
-			<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-			<a className="navbar-brand" href="#">
-            <img className="logo" src = {require('./Logo.png')} />
-            
-          	</a>
-          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>      
-			</nav>
-
-			
+			<div>			
 			<nav className='navbar navbar-expand-lg navbar-light header'>
-			<a className="navbar-brand" href="#">
-            <h1><b>LEO HELP</b></h1>
-          	</a>
-			<div className="nav navbar-nav ml-auto">
-
-          	<Link to="/ShowTroubles" className='nav-item nav-link'>SHOW TROUBLES</Link>
-            <Link to="/ShowAuthorities" className='nav-item nav-link'> SHOW AUTHORITIES</Link>
-            <Logout />
-            </div>
-              
+				<a className="navbar-brand" href="#">
+	            <img className="logo" src = {require('./Logo.png')} />
+	          	</a>
+	          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
+				<div className="nav navbar-nav ml-auto">
+		          	<Link to="/ShowTroubles" className='nav-item nav-link'>SHOW TROUBLES</Link>
+		            <Link to="/ShowAuthorities" className='nav-item nav-link'> SHOW AUTHORITIES</Link>
+		            <Logout />
+	            </div>
+	              
 			</nav>
 			
 			</div>

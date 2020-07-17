@@ -108,14 +108,12 @@ export default class DROSignIn extends React.Component {
 			return <Redirect push to = "/DROPanel" />;
 		}
 		return (
-			<div className="user-panel">
+			<div>
 			<Header />
 			<center>
 				<div className="jumbotron">
-				
 					<h2>DRO <span className="change-color">LOGIN</span> </h2>
 					<hr />
-
 					<form onSubmit = {this.handleSubmit}>
 					<div className="form-group">
 						<div className="row">
@@ -123,7 +121,7 @@ export default class DROSignIn extends React.Component {
 								<label htmlFor="user_name">Username:</label>
 							</div>
 							<div className="col-md-10">
-								<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="username" id="username" onChange={this.handleChange}/>
+								<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="Username" id="username" onChange={this.handleChange}/>
 							</div>
 						</div>
 					</div>
@@ -138,19 +136,12 @@ export default class DROSignIn extends React.Component {
 							</div>
 						</div>
 					</div>
-
 					<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
-
-						
 						<br/><br/>
-						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary"><h4>LOGIN</h4></button><br /><br />
-						</center>
-								
+						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">LOGIN</button><br /><br />
+						</center>	
 					</form>
-				
 				</div>
-
-
 				</center>
 			</div>
 		)

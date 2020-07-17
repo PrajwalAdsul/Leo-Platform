@@ -13,10 +13,12 @@ class DROPanel extends Component {
 			return <Redirect push to = "/DROSignIn" />;
 		}
 		return (
-			<div>
+			<div className="user-panel">
 				<DROHeader />
 				<br/>
-				<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary"><h4>Refresh</h4></button><br /><br />
+				<center>
+					<button type="button" onClick={this.onSubmit} className="btn btn-primary">Refresh</button>
+					<br/><br/>
 				</center>	
 				<ShowTroubles />
 			</div>

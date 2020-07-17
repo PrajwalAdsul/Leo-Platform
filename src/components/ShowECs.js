@@ -16,7 +16,7 @@ export default class ShowECs extends Component {
             EClist : []
         };
     }
-    componentDidMount() {        
+    componentDidMount() {
         const data = {
             user_name : this.props.user_name
         }
@@ -24,7 +24,7 @@ export default class ShowECs extends Component {
         axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/getECs', data)
             .then(response => {
                 this.setState({
-                    EClist : response.data
+                    EClist : response.data.filter((val) => val != "")
                 });
             })
             .catch(function(error) {
@@ -39,20 +39,14 @@ export default class ShowECs extends Component {
     }
     render() {
         return (
-                <div className = 'user-jumbotron'>
-                    <div className="container">
-                    <center><h3><b>EMERGENCY <span className="change-color">CONTACTS</span></b></h3></center>
-                
-                    <div>
-                        <table className = 'table table-striped' style={{marginTop: 20}}>
-                           
-                            <tbody>
-                                {this.ECList()}
-                            </tbody>
-                        </table>
-                    </div>
-                    </div>
-                    
+                <div className = 'jumbotron transparent'>
+                    <center><h2><b>EMERGENCY <span className="change-color">CONTACTS</span></b></h2>
+                    <table className = 'table table-borderless table-hover' style={{marginTop: 20}}>                       
+                        <tbody>
+                            {this.ECList()}
+                        </tbody>
+                    </table>
+                    </center>               
                 </div>
         )
     }

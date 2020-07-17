@@ -128,7 +128,7 @@ export default class UserSignIn extends React.Component {
 								<label htmlFor="user_name">Username:</label>
 							</div>
 							<div className="col-md-10">
-								<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="username" id="username" onChange={this.handleChange} required/>
+								<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="Username" id="username" onChange={this.handleChange} required/>
 							</div>
 						</div>
 					</div>
@@ -147,8 +147,8 @@ export default class UserSignIn extends React.Component {
 					<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
 
 						<br/><br/>
-						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary"><h4>LOGIN</h4></button><br /><br />
-						<h4>Not a user ?<Link to = "/UserSignUp" className="link"> SignUp </Link></h4></center>
+						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary btn-lg">LOGIN</button><br/><br/>
+						<h4>Not a user ?<Link to = "/UserSignUp" className="change-color link"> SignUp </Link></h4></center>
 								
 					</form>
 				</div>

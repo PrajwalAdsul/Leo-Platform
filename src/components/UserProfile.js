@@ -60,17 +60,17 @@ export default class UserProfile extends Component {
 	}
 	render() {
 		if(localStorage.getItem('session') != "start"){
-			return <Redirect push to = "/DoctorSignIn" />;
+			return <Redirect push to = "/DROSignIn" />;
 		}
 		return (
-			<div>
+			<div className="user-panel">
             	<DROHeader/>
 				<Link  
 	             to={{
 	              pathname: '/DROPanel'
 	          	}}
 	             className='nav-item nav-link'>Back</Link>
-				<h3>
+				<div className="card-text">
 					User_name : {this.state.user_name} <br/><br/>
 					Phone No : {this.state.phone} <br/><br/>
 					Email ID : {this.state.email} <br/><br/>
@@ -79,10 +79,13 @@ export default class UserProfile extends Component {
 					<ol>
 				      {this.state.emergencyContacts.map(reptile => <li>{reptile}</li>)}
 				    </ol><br/><br/>
+
 					User Log : <br/>
+					<ul>
 					 {this.state.log.map(reptile => <li>{reptile}<br/><br/></li>)}
+					</ul>
 					<br/><br/>
-				</h3>
+				</div>
 			</div>
 		)
 	}

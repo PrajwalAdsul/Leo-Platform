@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -7,7 +10,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
@@ -33,38 +35,41 @@ code {
 }
 
 .logo {
-	height: 50px;
+	margin-top:-27px;
+	height: 100px;
 }
 
 .navbar-text {
-	color: white !important;
+	color: #142850 !important;
 }
 
 .navbar {
 	margin-bottom: 0px;
+	box-shadow:inset 0px 8px 50px 10px #dae1e7;
 }
 
-.header {
-	padding-top: 10px;
-	padding-bottom: 10px;
+.bg-dark {
 	background-color: orange;
+}
+.navbar-light {
+	padding-top: 0px;
+	padding-bottom: 10px;
+	background-color: #ffffff;
 }
 
 .nav-item.nav-link {
-	margin-right: 30px;
-	margin-left: 30px;
-	font-size: 15px;
-	font-weight: bold;
+	margin-right: 15px;
+	margin-left: 15px;
+	font-size: 17px;
+	font-weight: 550;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 .jumbotron {
-	margin-top: 100px;
-	background-color: white !important;
-	width: 50%;
-	border: black;
-	border-style: solid;
-	border-bottom-color: orange;
-	border-right-color: orange;
+	margin-top: 50px;
+	background-color: #ffffff !important;
+	width: 50%;	
 }
 
 label {
@@ -85,17 +90,20 @@ h2 {
 }
 
 .btn-primary {
-	background-color: orange !important;
+	background-color: #00909e !important;
+	height:35px;
 	width: 150px;
 	border-radius: 1000px !important;
-	color: black !important;
-	border-color: orange !important;
+	font-weight: bold !important;
+	font-size:15px !important;
+	color: #fffff !important;
+	border-color: #00909e !important;
 }
 
 .btn-primary:hover {
-	color: white !important;
-	background-color: black !important;
-	border-color: black !important;
+	color: #fffff !important;
+	background-color: #27496d !important;
+	border-color: #27496d !important;
 }
 
 hr {
@@ -104,35 +112,101 @@ hr {
 }
 
 .change-color {
-	color: orange;
+	color: #00909e !important;
 }
- .card {
+.card {
  	margin: 15px;
  	border-top-color: black !important;
  	border-left-color: black !important;
  	border-bottom-color: orange !important;
- 	border-right-color: orange !important;
- }
+	border-right-color: orange !important;
+}
 
- .show {
- 	margin-top: 30px;
- 	margin-bottom: 20px;
- }
-
- .card-text {
- 	font-size: 16px;
- }
-
- .media {
- 	border-style: solid;
- 	border-bottom-color: orange;
+.show {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.card-text {
+	font-size: 16px;
+	padding: 20px;
+}
+.media {
+	border-style: solid;
+	border-bottom-color: orange;
 	border-right-color: orange;
 	padding: 20px;
 	font-size: 16px;
 	margin-top: 20px;
 	margin-bottom: 20px;
- }
+}
 
- h3 {
- 	font-size: 25px !important;
- }
+h3 {
+	font-size: 25px !important;
+}
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+	font-size: 18px;
+	color:#000000;
+	border: 2px solid #ffffff;
+	border-radius: 8px;
+	padding: 12px 12px;
+	box-shadow:0px 8px 15px 0px #dae1e7;
+}
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover, input[type="number"]:hover {
+	font-size: 18px;
+	color:#000000;
+	border: 2px solid #ffffff;
+	border-radius: 8px;
+	padding: 12px 12px;
+	box-shadow:0px 8px 20px 5px #dae1e7;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus {
+	font-size: 18px;
+	color:#000000;
+	border: 1.5px solid #00909e;
+	border-radius: 8px;
+	box-shadow:0px 8px 20px 0px #dae1e7;
+}
+.errorMessage {
+	display:block;
+	padding-top:10px;
+	font-size:17px;
+}
+
+.user-panel {
+	background: white;
+
+}
+
+.user {
+	background: #00909e;
+}
+.danger {
+	background: #27496d;
+	color:white !important;
+}
+
+.not-in-danger {
+	background: #dae1e7;
+	color:black !important;
+}
+
+.bottom {
+	padding-top:1px;
+	background: #00909e;
+}
+
+
+.link, .link:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.table, .table-borderless {
+	text-align: center; 
+	vertical-align: middle;
+	font-size:15px;
+}
+
+.transparent {
+	background: none !important;
+}

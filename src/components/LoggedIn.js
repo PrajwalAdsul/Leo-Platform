@@ -62,7 +62,7 @@ export default class LoggedIn extends Component {
 		errors.phone1 = 
 	      		validPhoneRegex.test(value) && value.length == 10
 	      		  ? ''
-	      		  : 'Phone number should follow standards and should be 10 in length';
+	      		  : 'Please put valid 10-digit Phone Number';
 	}
 
 	handleOnChangeEC2 = async event=> {
@@ -76,7 +76,7 @@ export default class LoggedIn extends Component {
 		errors.phone2 = 
 	      		validPhoneRegex.test(value) && value.length == 10
 	      		  ? ''
-	      		  : 'Phone number should follow standards and should be 10 in length';
+	      		  : 'Please put valid 10-digit Phone Number';
 	}
 
 
@@ -91,7 +91,7 @@ export default class LoggedIn extends Component {
 		errors.phone3 = 
 	      		validPhoneRegex.test(value) && value.length == 10
 	      		  ? ''
-	      		  : 'Phone number should follow standards and should be 10 in length';
+	      		  : 'Please put valid 10-digit Phone Number';
 	}
 
 
@@ -106,7 +106,7 @@ export default class LoggedIn extends Component {
 		errors.phone4 = 
 	      		validPhoneRegex.test(value) && value.length == 10
 	      		  ? ''
-	      		  : 'Phone number should follow standards and should be 10 in length';
+	      		  : 'Please put valid 10-digit Phone Number';
 	}
 
 
@@ -121,7 +121,7 @@ export default class LoggedIn extends Component {
 		errors.phone5 = 
 	      		validPhoneRegex.test(value) && value.length == 10
 	      		  ? ''
-	      		  : 'Phone number should follow standards and should be 10 in length';
+	      		  : 'Please put valid 10-digit Phone Number';
 	}
 
 	async componentDidMount(){
@@ -223,160 +223,117 @@ export default class LoggedIn extends Component {
 			return <Redirect push to = "/UserSignIn" />;
 		}
 		return (
-			<div className="user-panel">
-			<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-			<a className="navbar-brand" href="#">
-            <img className="logo" src = {require('./Logo.png')} />
-            
-          	</a>
-          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>      
-			</nav>
+			<div className="user-panel">			
+				<nav className='navbar navbar-expand-lg navbar-light header'>
+					<a className="navbar-brand" href="#">
+		            	<img className="logo" src = {require('./Logo.png')} />
+		          	</a>
+		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1> 
+					<div className="nav navbar-nav ml-auto">
+						<Logout/>
+		            </div>         
+				</nav>
 
-			
-			<nav className='navbar navbar-expand-lg navbar-light header'>
-			<a className="navbar-brand" href="#">
-            <h1><b>LEO HELP</b></h1>
-          	</a>
-			<div className="nav navbar-nav ml-auto">
-
-			<Logout/>
-          	
-            </div>
-              
-			</nav>
-
-			<div className="user">
-			<div className="row">
-				<div className="col-md-12">
-
-				{this.state.inTrouble == "loading" && 
-					<h2>  </h2>
-				}
-				{this.state.inTrouble == true && 
-					<h2> You are currently marked in Trouble. Leo is taking appropriate actions. </h2>
-				}
-				{this.state.inTrouble == false && 
-					<h2> You are in no Trouble </h2>
-				}
-				
-				<br/>
-				<center>
-				<div className="container">
-				{this.state.heading}
-				<div className="btn btn-primary">
-				<Link to={{
-					  pathname: '/LeoDropBox',
-					  state: {
-					    user_name : this.state.user_name
-					  }
-					}}><h4>LeoDropBox</h4></Link>
-					</div>
-				 </div>
-				<br/>
-
-				<div className="container">
-					<MarkTrouble user_name = {this.state.user_name}/>
-				</div>
-				<br/>
-						
-				<div className="container">
-					<LoggedInUnMarkTrouble user_name = {this.state.user_name}/>
-				</div>
-				</center>
-				<br/><br/>
-				
-				<div className="container">
-					<ShowECs user_name = {this.state.user_name}/>
-				</div>
-				<div className = 'container'>
-
+				<div className="user">
 					<center>
-				<div className="user-jumbotron">
-				
-					<h2>UPDATE <span className="change-color">CONTACTS</span> </h2>
-					<hr />
-
-					<form onSubmit = {this.handleSubmit}>
-
-
-					<div className="form-group">
-						<div className="row">
-							<div className="col-md-4">
-								<label htmlFor="ec1">Contact1:</label>
-							</div>
-							<div className="col-md-8">
-								<input type="text" name = "ec1" className="form-control" value={this.state.ec1} placeholder="" id="ec1" onChange={this.handleOnChangeEC1} />
-							</div>
-							<h4><span className="errorMessage">{errors.phone1}</span></h4>
+						<div className={this.state.inTrouble ? "danger" : "not-in-danger"}>
+							{this.state.inTrouble == "loading" && 
+								<h2>  </h2>
+							}
+							{this.state.inTrouble == true && 
+								<h2> You are currently marked in Trouble. Leo is taking appropriate actions. </h2>
+							}
+							{this.state.inTrouble == false && 
+								<h2> You are not in Trouble </h2>
+							}
+							<br/>						
+							{this.state.heading}
+								<button className="btn btn-primary">
+								<Link className="link" to={{
+									  pathname: '/LeoDropBox',
+									  state: {
+									    user_name : this.state.user_name
+									  }
+									}}>Leo DropBox</Link>
+								</button>
+							<br/><br/>
+							<MarkTrouble user_name = {this.state.user_name}/>
+							<br/>
+							<LoggedInUnMarkTrouble user_name = {this.state.user_name}/>
+							<br/>
+							<ShowECs user_name = {this.state.user_name}/>
 						</div>
-					</div>
-					<div className="form-group">
-						<div className="row">
-							<div className="col-md-4">
-								<label htmlFor="ec2">Contact2:</label>
+						<div className="bottom">
+							<div className="jumbotron">
+								<h2>UPDATE <span className="change-color">CONTACTS</span></h2>
+								<hr/>
+								<form onSubmit = {this.handleSubmit}>
+									<div className="form-group">
+										<div className="row">
+											<div className="col-md-4">
+												<label htmlFor="ec1">Contact1:</label>
+											</div>
+											<div className="col-md-8">
+												<input type="number" name = "ec1" className="form-control" value={this.state.ec1} placeholder="10-digit Mobile No." id="ec1" onChange={this.handleOnChangeEC1} />
+											</div>
+											<h4><span className="errorMessage">{errors.phone1}</span></h4>
+										</div>
+									</div>
+									<div className="form-group">
+										<div className="row">
+											<div className="col-md-4">
+												<label htmlFor="ec2">Contact2:</label>
+											</div>
+											<div className="col-md-8">
+												<input type="number" name="ec2" className="form-control" id="ec2" value={this.state.ec2} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC2} />
+											</div>
+											<h4><span className="errorMessage">{errors.phone2}</span></h4>
+										</div>
+									</div>
+									<div className="form-group">
+										<div className="row">
+											<div className="col-md-4">
+												<label htmlFor="ec3">Contact3:</label>
+											</div>
+											<div className="col-md-8">
+												<input type="number" name="ec3" className="form-control" id="ec3" value={this.state.ec3} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC3} />
+											</div>
+											<h4><span className="errorMessage">{errors.phone3}</span></h4>
+										</div>
+									</div>
+									<div className="form-group">
+										<div className="row">
+											<div className="col-md-4">
+												<label htmlFor="ec4">Contact4:</label>
+											</div>
+											<div className="col-md-8">
+												<input type="number" name="ec4" className="form-control" id="ec4" value={this.state.ec4} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC4} />
+											</div>
+											<h4><span className="errorMessage">{errors.phone4}</span></h4>
+										</div>
+									</div>
+									<div className="form-group">
+										<div className="row">
+											<div className="col-md-4">
+												<label htmlFor="ec5">Contact5:</label>
+											</div>
+											<div className="col-md-8">
+												<input type="number" name="ec5" className="form-control" id="ec5" value={this.state.ec5} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC5} />
+											</div>
+											<h4><span className="errorMessage">{errors.phone5}</span></h4>
+										</div>
+									</div>
+									<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
+									<br/><br/>
+									<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">UPDATE</button><br/><br/>
+									</center>	
+								</form>
 							</div>
-							<div className="col-md-8">
-								<input type="text" name="ec2" className="form-control" id="ec2" value={this.state.ec2} placeholder="" onChange={this.handleOnChangeEC2} />
-							</div>
-							<h4><span className="errorMessage">{errors.phone2}</span></h4>
-						</div>
-					</div>
-					<div className="form-group">
-						<div className="row">
-							<div className="col-md-4">
-								<label htmlFor="ec3">Contact3:</label>
-							</div>
-							<div className="col-md-8">
-								<input type="text" name="ec3" className="form-control" id="ec3" value={this.state.ec3} placeholder="" onChange={this.handleOnChangeEC3} />
-							</div>
-							<h4><span className="errorMessage">{errors.phone3}</span></h4>
-						</div>
-					</div>
-					<div className="form-group">
-						<div className="row">
-							<div className="col-md-4">
-								<label htmlFor="ec4">Contact4:</label>
-							</div>
-							<div className="col-md-8">
-								<input type="text" name="ec4" className="form-control" id="ec4" value={this.state.ec4} placeholder="" onChange={this.handleOnChangeEC4} />
-							</div>
-							<h4><span className="errorMessage">{errors.phone4}</span></h4>
-						</div>
-					</div>
-					<div className="form-group">
-						<div className="row">
-							<div className="col-md-4">
-								<label htmlFor="ec5">Contact5:</label>
-							</div>
-							<div className="col-md-8">
-								<input type="text" name="ec5" className="form-control" id="ec5" value={this.state.ec5} placeholder="" onChange={this.handleOnChangeEC5} />
-							</div>
-							<h4><span className="errorMessage">{errors.phone5}</span></h4>
-						</div>
-					</div>
-
-
-					<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
-
-						
-						<br/><br/>
-						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary"><h4>UPDATE</h4></button><br /><br />
-						</center>
-								
-					</form>
-				
+							<a className='nav-item nav-link' href = {"https://www.google.com/maps?q=" + this.state.data.area} target="_blank">Location</a>
+	   					</div>
+	   				</center>
 				</div>
-
-				<a className='nav-item nav-link' href = {"https://www.google.com/maps?q=" + this.state.data.area} target="_blank">Location</a>
-      
-
-				</center>
-
-				</div>
-
-				</div>
-			</div>
-			</div>
+			
 			</div>
 		)
 	}

@@ -58,19 +58,13 @@ export default class LeoDropBox extends Component {
 		}
 		return (
 			<div className="user-panel">
-			<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+						
+			<nav className='navbar navbar-expand-lg navbar-light header'>
 			<a className="navbar-brand" href="#">
             <img className="logo" src = {require('./Logo.png')} />
             
           	</a>
-          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>      
-			</nav>
-
-			
-			<nav className='navbar navbar-expand-lg navbar-light header'>
-			<a className="navbar-brand" href="#">
-            <h1><b>LEO HELP</b></h1>
-          	</a>
+          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>   
 				<div className="nav navbar-nav ml-auto">
 
 	          	<Link to="/UserSignIn" className='nav-item nav-link'>LOGOUT</Link>

@@ -45,7 +45,7 @@ export default class LoggedInUnMarkTrouble extends Component {
 	render() {	
 		return (
 			<div>
-			<button disabled = {this.state.unMarkDisable} type = "button" onClick={this.onSubmit} className="btn btn-primary"><h4>Unmark Trouble</h4></button>
+			<button disabled = {this.state.unMarkDisable} type = "button" onClick={this.onSubmit} className="btn btn-primary">Unmark Trouble</button>
 			</div>
 			);
 		}
