@@ -6,11 +6,10 @@ from dd_news_loc import DdNewsScrapper
 from deccan_chronicle import DeccanChronicleScrapper
 from toi import ToiScrapper
 
-#TweetsScrapper()
-#TheHinduScrapper()
-#NdtvScrapper()
-#HindustanTimesScrapper()
-#DdNewsScrapper()
-#DeccanChronicleScrapper()
+
+TheHinduScrapper()
+NdtvScrapper()
+HindustanTimesScrapper()
+DeccanChronicleScrapper()
 TweetsScrapper()
-#ToiScrapper()
+ToiScrapper()
