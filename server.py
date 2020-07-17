@@ -33,11 +33,23 @@ def scrapNews():
 def addNews(data):
 	x = news.insert_one(data)	
 
+# check if news is getting inserting
+def getAllNews():
+  res = list()
+  for x in news.find():
+    del x["_id"]
+    res.append(x)
+  return res
+
 # write all such routes
 @app.route('/addNews', methods = ['POST'])
 def addNewsFun():
   print(request.json)
   return jsonify(addNews(request.json))
+
+@app.route('/allNews', methods = ['GET'])
+def allNewsFun():  
+  return jsonify(getAllNews())
 
 
 if __name__ == '__main__': 
