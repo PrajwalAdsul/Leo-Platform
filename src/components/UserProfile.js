@@ -38,14 +38,20 @@ export default class UserProfile extends Component {
 					emergencyContacts : response.data.emergencyContacts,
 				});
 				let log = response.data.log;
+				
+				/*
 				let logv  = [];
 				for(var i = 0; i < log.length; i++){
 					console.log(log[i]);
-					logv.push("datetime " + log[i]["datetime"] + " operation " + log[i]["operation"] + " text " + log[i]["text"] + "\n");
+					logv.push(log[i]["datetime"]);
+					logv.push(log[i]["ip"])
+					logv.push(log[i]["operation"])
+					logv.push(log[i]["text"])
 				}
-					
+				*/
+
 				this.setState({
-					log : logv
+					log : log
 				});
 			})
 			.catch(error => {
@@ -70,22 +76,30 @@ export default class UserProfile extends Component {
 	              pathname: '/DROPanel'
 	          	}}
 	             className='nav-item nav-link'>Back</Link>
-				<div className="card-text">
-					User_name : {this.state.user_name} <br/><br/>
-					Phone No : {this.state.phone} <br/><br/>
-					Email ID : {this.state.email} <br/><br/>
-					Area : {this.state.area} <br/><br/>
-					Emergency Contacts : <br/>
-					<ol>
-				      {this.state.emergencyContacts.map(reptile => <li>{reptile}</li>)}
-				    </ol><br/><br/>
-
-					User Log : <br/>
-					<ul>
-					 {this.state.log.map(reptile => <li>{reptile}<br/><br/></li>)}
-					</ul>
-					<br/><br/>
-				</div>
+				<table className="table table-condensed table-hover">
+					<tbody>
+					<tr><th>User_name</th> <td>{this.state.user_name}</td></tr>
+					<tr><th>Phone No</th> <td>{this.state.phone}</td></tr>
+					<tr><th>Email ID</th> <td>{this.state.email}</td></tr>
+					<tr><th>Area</th><td>{this.state.area}</td></tr>
+					<tr><th>Emergency Contacts</th> <td><ol>{this.state.emergencyContacts.map(reptile => <li>{reptile}</li>)}
+				    									</ol>
+				    </td></tr>
+					<tr><th>User Log :</th> <td>
+					<table>
+						<thead>
+							<th>DateTime</th>
+							<th>IP</th>
+							<th>Operation</th>
+							<th>Text</th>
+						</thead>
+						<tbody>
+						 {this.state.log.map(reptile => <tr><td>{reptile["datetime"]}</td><td>{reptile["ip"]}</td><td>{reptile["operation"]}</td><td>{reptile["text"]}</td></tr>)}
+						</tbody>
+					</table>
+					</td></tr>
+					</tbody>
+				</table>
 			</div>
 		)
 	}

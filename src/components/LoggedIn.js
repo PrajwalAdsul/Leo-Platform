@@ -236,7 +236,7 @@ export default class LoggedIn extends Component {
 
 				<div className="user">
 					<center>
-						<div className={this.state.inTrouble ? "danger" : "not-in-danger"}>
+						<div className={this.state.inTrouble ? "danger link" : "not-in-danger"}>
 							{this.state.inTrouble == "loading" && 
 								<h2>  </h2>
 							}
@@ -248,20 +248,23 @@ export default class LoggedIn extends Component {
 							}
 							<br/>						
 							{this.state.heading}
-								<button className="btn btn-primary">
-								<Link className="link" to={{
+							
+								<Link className="link btn btn-primary" to={{
 									  pathname: '/LeoDropBox',
 									  state: {
 									    user_name : this.state.user_name
 									  }
 									}}>Leo DropBox</Link>
-								</button>
+							
 							<br/><br/>
 							<MarkTrouble user_name = {this.state.user_name}/>
 							<br/>
 							<LoggedInUnMarkTrouble user_name = {this.state.user_name}/>
 							<br/>
+						
+							<div>
 							<ShowECs user_name = {this.state.user_name}/>
+							</div>
 						</div>
 						<div className="bottom">
 							<div className="jumbotron">

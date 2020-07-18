@@ -61,15 +61,25 @@ code {
 	margin-right: 15px;
 	margin-left: 15px;
 	font-size: 17px;
-	font-weight: 550;
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
+	font-weight: 200;
+	font-family: Sans-serif;
+	color:#142850 !important;
+}
+
+.nav-item.nav-link:hover {
+	margin-right: 15px;
+	margin-left: 15px;
+	font-size: 17px;
+	font-weight: 200;
+	font-family: Sans-serif;
+	color:#27496d !important;
 }
 
 .jumbotron {
 	margin-top: 50px;
 	background-color: #ffffff !important;
-	width: 50%;	
+	width: 50%;
+	color: #000000;
 }
 
 label {
@@ -179,15 +189,40 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .user {
 	background: #00909e;
+	padding:20px;
 }
+
 .danger {
-	background: #27496d;
-	color:white !important;
+	background: #00909e;
+	padding:20px;
+
+}
+
+.danger .btn {
+	background-color: #dae1e7 !important;
+	height:35px;
+	width: 150px;
+	border-radius: 1000px !important;
+	font-weight: bold !important;
+	font-size:15px !important;
+	color: #000000 !important;
+	border-color: #dae1e7 !important;
+}
+
+.danger .btn:hover {
+	background-color: #27496d !important;
+	height:35px;
+	width: 150px;
+	border-radius: 1000px !important;
+	font-weight: bold !important;
+	font-size:15px !important;
+	color: #ffffff !important;
+	border-color: #27496d !important;
 }
 
 .not-in-danger {
 	background: #dae1e7;
-	color:black !important;
+	padding:20px;
 }
 
 .bottom {
@@ -198,15 +233,12 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .link, .link:hover {
 	color: #ffffff;
+	background: transparent;
 	text-decoration: none;
 }
 
-.table, .table-borderless {
+.table, .table-borderless, td {
 	text-align: center; 
 	vertical-align: middle;
 	font-size:15px;
-}
-
-.transparent {
-	background: none !important;
 }

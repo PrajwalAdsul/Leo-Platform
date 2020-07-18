@@ -39,7 +39,7 @@ export default class ShowECs extends Component {
     }
     render() {
         return (
-                <div className = 'jumbotron transparent'>
+                <div className = 'jumbotron'>
                     <center><h2><b>EMERGENCY <span className="change-color">CONTACTS</span></b></h2>
                     <table className = 'table table-borderless table-hover' style={{marginTop: 20}}>                       
                         <tbody>

@@ -23,8 +23,8 @@ export default class Header extends Component {
 	          	</a>
 	          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
 				<div className="nav navbar-nav ml-auto">
-		          	<Link to="/ShowTroubles" className='nav-item nav-link'>SHOW TROUBLES</Link>
-		            <Link to="/ShowAuthorities" className='nav-item nav-link'> SHOW AUTHORITIES</Link>
+		          	<Link to="/ShowTroubles" className='nav-item nav-link'>Show Troubles</Link>
+		            <Link to="/ShowAuthorities" className='nav-item nav-link'>Show Authorities</Link>
 		            <Logout />
 	            </div>
 	              
