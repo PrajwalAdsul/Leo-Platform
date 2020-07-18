@@ -12,12 +12,16 @@ def get_location(text) :
 
 def get_news_headlines(loc) :
     df = pd.read_csv("./database/headlines.csv")
+    #print(df)
     news = []
     region_lst = df["region"].tolist()
     city_lst = df["city"].tolist()
     headlines_lst = df["text"].tolist()
+    #print(city_lst)
     for index, city in enumerate(city_lst) :
+        
         if(city.lower() == loc.lower()) :
+            print("ok")
             news.append(headlines_lst[index])
             
     for index, region in enumerate(region_lst) :
@@ -28,6 +32,6 @@ def get_news_headlines(loc) :
 
 
 def extract_news_from_text(text) :
-    news = get_news_headlines(get_location("news from mumbai"))
+    news = get_news_headlines(get_location(text))
     return news
     

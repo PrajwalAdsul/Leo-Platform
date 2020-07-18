@@ -462,9 +462,14 @@ def preprocessing2(df, data) :
     region_lst = []
     city_lst = []
     for loc in df['location'] :
-        s = loc.split('/')[1].split(":")
-        region_lst.append(s[0])
-        city_lst.append(s[1])
+        try :
+            s = loc.split('/')[1].split(":")
+            city_lst.append(s[1])
+            region_lst.append(s[0])
+        except :
+            s = loc.split('/')[2].split(":")
+            city_lst.append(s[1])
+            region_lst.append(s[0])
     try :
         df.drop(['city'], axis = 1, inplace = True) 
     except:
