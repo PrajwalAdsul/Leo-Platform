@@ -317,7 +317,7 @@ def get_articles(mode, crime_list, articles_fname) :
                             if(flag) :
                                 break
                     except:
-                        continue
+                        break
                 #if(found == 1) :
                     #break
         df = pd.DataFrame(final_data, columns = ["crime", "url", "text"])
@@ -538,7 +538,7 @@ def preprocessing(articles_df, data) :
                 #print(row)
         else:
             entry = int(loc)
-            crime = articles_df['crime'][index].title()
+            crime = articles_df['crime'][index].capitalize()
             row = data[entry]
             row[crime] = row[crime] + 1
             data[entry] = row
