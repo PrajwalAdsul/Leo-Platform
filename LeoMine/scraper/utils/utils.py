@@ -5,7 +5,7 @@ porterStemmer = PorterStemmer()
 
 import pandas as pd
 
-from modules import *
+from utils.modules import *
 
 import warnings 
 warnings.filterwarnings(action = 'ignore') 

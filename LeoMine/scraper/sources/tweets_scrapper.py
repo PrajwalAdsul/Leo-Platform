@@ -3,8 +3,8 @@
 # dependencies - BeautifulSoup, requests
 
 import json
-from utils import get_crime, get_location
-from modules import preprocessing, save_data, get_data, preprocessing2, get_date, check_for_duplicates, saving_articles
+from utils.utils import get_crime, get_location
+from utils.modules import preprocessing, save_data, get_data, preprocessing2, get_date, check_for_duplicates, saving_articles
 import warnings 
 warnings.filterwarnings(action = 'ignore')
 import pandas as pd
@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 import requests
 import sys
 import json
-from main_tweet_scraper import MainTweetScrapper
+from sources.main_tweet_scraper import MainTweetScrapper
 
 
 

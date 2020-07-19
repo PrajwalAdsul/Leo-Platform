@@ -43,7 +43,7 @@ from nltk.tokenize import RegexpTokenizer
 
 import enchant
 
-from modules import *
+from utils.modules import *
 
 url_lst_citywise = ["https://timesofindia.indiatimes.com/city"]
 
@@ -143,8 +143,8 @@ def extracting_city_crime(articles) :
 
 
 def ToiScrapper():
-    data = get_data("./database/data.json")
-    spellings = get_spelling_list("./database/spell.csv")
+    data = get_data("../database/data.json")
+    spellings = get_spelling_list("../database/spell.csv")
     locs = get_locations_list(data)
     nlp = load_locations(locs, spellings)    
     cities = get_cities(data)

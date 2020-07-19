@@ -340,7 +340,7 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) 
     states = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Lakshadweep","National Capital Territory of Delhi","Puducherry"]
     state = [s.lower() for s in states]
     extra_locs.extend(state)
-    f = open("country.txt", "r")
+    f = open("./database/country.txt", "r")
     for country in f.readline():
         extra_locs.append(country.lower())
     
@@ -481,8 +481,8 @@ def preprocessing2(df, data) :
     #df.to_csv('./database/headlines.csv', mode='a', header=True)
 
 def saving_articles(df, filename) :
-    with open(filename, 'a') as f:
-        df.to_csv(f, header=False)
+    with open(filename, 'w') as f:
+        df.to_csv(f)
         
 def preprocessing(articles_df, data) :
     df = articles_df

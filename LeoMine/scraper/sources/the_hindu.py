@@ -7,8 +7,8 @@ It provides:
 """
 
 import json
-from utils import get_crime, get_location
-from modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles, check_url_in_database
+from utils.utils import get_crime, get_location
+from utils.modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles, check_url_in_database
 import warnings 
 warnings.filterwarnings(action = 'ignore')
 import pandas as pd
@@ -24,9 +24,9 @@ from bs4 import BeautifulSoup
 
 path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 
-from newscrape_common import (is_string, ist_to_utc, remove_duplicate_entries,
+from sources.newscrape_common import (is_string, ist_to_utc, remove_duplicate_entries,
                               str_is_set)
-from sources import KNOWN_NEWS_SOURCES
+from sources.sources import KNOWN_NEWS_SOURCES
 
 
 def get_all_content(objects):

@@ -1,4 +1,4 @@
-from modules import *
+from utils.modules import *
 
 data = get_data("./database/data.json")
 locs = get_locations_list(data)

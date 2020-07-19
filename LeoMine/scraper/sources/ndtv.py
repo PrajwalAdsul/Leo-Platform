@@ -1,5 +1,5 @@
 """
-This module scrapes content from Hindustan Times News.
+This module scrapes content from NDTV News.
 
 It provides:
 - get_chronological_headlines(url)
@@ -7,8 +7,8 @@ It provides:
 """
 
 import json
-from utils import get_crime, get_location
-from modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles, check_url_in_database
+from utils.utils import get_crime, get_location
+from utils.modules import preprocessing, save_data, get_data, get_date, check_for_duplicates, preprocessing2, saving_articles, check_url_in_database
 import warnings 
 warnings.filterwarnings(action = 'ignore')
 import pandas as pd
@@ -22,9 +22,9 @@ from bs4 import BeautifulSoup
 
 path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 
-from newscrape_common import (is_string, ist_to_utc, remove_duplicate_entries,
+from sources.newscrape_common import (is_string, ist_to_utc, remove_duplicate_entries,
                               str_is_set)
-from sources import KNOWN_NEWS_SOURCES
+from sources.sources import KNOWN_NEWS_SOURCES
 
 
 def get_all_content(objects):
@@ -33,20 +33,6 @@ def get_all_content(objects):
     copies of an object else downloading might take long time.
     """
     def get_content(url):
-        response = requests.get(url)
-        if response.status_code == 200:
-            html_content = BeautifulSoup(response.text, "html.parser")            
-            contents = html_content.find(
-                        'div', {'class': 'story-details'}
-                        )
-            if not contents:
-                return "NA"
-            contents = contents.find_all('p')
-            text = ''
-            for cont in contents[:-1]:
-                if cont.string:
-                    text += cont.string + '\n'
-            return text
         return "NA"
 
     for obj in objects:
@@ -57,15 +43,24 @@ def get_headline_details(obj):
     try:
         from datetime import datetime
         timestamp_tag = obj.parent.parent.find(
-            "span", {"class": "time-dt"}
+            "div", {"class": "nstory_dateline"}
         )
         if timestamp_tag is None:
             timestamp = datetime.now()
         else:
-            content = timestamp_tag.contents[0].strip()
+            content = timestamp_tag.contents[-1].strip()
+            date = content.split("| ")[-1].split(", ")
+            if date[-1].isdigit():
+                date = " ".join(date)
+            else:
+                for i in range(1, 10):
+                    if date[-i].isdigit():
+                        break
+                i -= 1
+                date = " ".join(date[:-i])
             timestamp = datetime.strptime(
-                content,
-                "%b %d, %Y %H:%M"
+                date + " 05:30",
+                "%A %B %d %Y %H:%M"
             )
         return {
             "content": "NA",
@@ -92,7 +87,7 @@ def get_chronological_headlines(url):
         a_tags = list(map(
             lambda x: x.find("a"),
             soup.find_all("div", {
-                "class": "media-body"
+                "class": "new_storylising_contentwrap"
             })
         ))
         headlines = list(map(get_headline_details, a_tags))
@@ -105,28 +100,24 @@ def get_trending_headlines(url):
     response = requests.get(url)
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, "html.parser")
-        soup.find("div", { "class": "latestnews-left" }).decompose()
-        soup.find("div", { "class": "advertisement-250" }).decompose()
-        # to remove sponsered content
-        # not sure if tag works every time
-        if soup.find("div", { "class": "top-thumb mt-20"}) is not None :
-            soup.find("div", { "class": "top-thumb mt-20"}).decompose()  
-        a_tags = soup.find("div", { 
-            "class": "news-area newtop-block mb-5 mt-10" }).find_all(
-            "a")
+        soup.find("div", { "class": "opinion_opt" }).decompose()
+        # Some anchor tags in div[class="lhs_col_two"] are not parsed by the following
+        a_tags = soup.find("div", { "class": "hmpage_lhs" }).find_all(
+            "a", { "class": "item-title" }
+        )
         headlines = remove_duplicate_entries(
             map(get_headline_details, a_tags),
-            "link",
-            "title"
+            "link"
         )
         return headlines
     return None
 
 
-def HindustanTimesScrapper():
+def NdtvScrapper():
+    import json
 
-    SRC = KNOWN_NEWS_SOURCES["Hindustan Times"]
-    
+    SRC = KNOWN_NEWS_SOURCES["NDTV"]
+
     data1 = get_chronological_headlines(SRC["pages"].format(1))
     data2 = get_trending_headlines(SRC["home"])
     text_lst = []
@@ -160,11 +151,9 @@ def HindustanTimesScrapper():
             text_lst.append(data['content'])
         url_lst.append(data['link'])
     df_raw = pd.DataFrame(list(zip(text_lst, url_lst)), columns = ["text", "url"])
-    print(df_raw)
     df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
     df_crime = get_crime(df_raw)
     data = get_data("./database/data.json")
-    print(df_crime.columns)
     df = get_location(df_crime, data)
     df.to_csv("./database/test_df.csv")
     df = preprocessing2(df, data)
@@ -174,5 +163,3 @@ def HindustanTimesScrapper():
         saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)
         save_data(data_, "./database/data.json")
-        
-HindustanTimesScrapper()

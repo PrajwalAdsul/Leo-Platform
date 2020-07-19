@@ -1,4 +1,4 @@
-from modules import *
+from sources.modules import *
 
 def get_location(text) :
     data = get_data("./database/data.json")
