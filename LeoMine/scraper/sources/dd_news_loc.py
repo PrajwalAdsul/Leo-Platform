@@ -174,5 +174,5 @@ def DdNewsScrapper():
     if(df_final.shape[0] != 0) :
         saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)
-        save_data(data_, "./database/updated.json")
+        save_data(data_, "./database/data.json")
                                    

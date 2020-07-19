@@ -18,4 +18,4 @@ saving_articles(df_final, "./database/headlines.csv")
 data_ = preprocessing(df_, data)
 
 
-save_data(data_, "./database/updated.json")
+save_data(data_, "./database/data.json")
