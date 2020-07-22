@@ -17,7 +17,8 @@ export default class DROSignIn extends React.Component {
 			password:"",
 			error: false,
 			loginSuccess: false,
-			errorMessage: ""
+			errorMessage: "",
+			token : ""
 		}
 		this.handleChange = this.handleChange.bind(this)
 	}
@@ -54,9 +55,14 @@ export default class DROSignIn extends React.Component {
 			password : hash
 		};
 		var res;
+		// await axios.post('http://localhost:5000/LeoHelp/DROloginIn', data)
 		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/DROloginIn', data)
 		.then(response => {
 			res = response.status;
+			this.setState({
+				token : response.data.token
+			});
+			console.log(response.data);
 		})
 		.catch(error => {
 			this.setState({
@@ -105,6 +111,8 @@ export default class DROSignIn extends React.Component {
 		const { loginSuccess, error } = this.state;
 		if (this.state.loginSuccess == true) {
 			localStorage.setItem('session', "start");
+			localStorage.setItem('DRO_start', "start");
+			localStorage.setItem('token', this.state.token);
 			return <Redirect push to = "/DROPanel" />;
 		}
 		return (

@@ -80,6 +80,8 @@ code {
 	background-color: #ffffff !important;
 	width: 50%;
 	color: #000000;
+	height:auto;
+	overflow: auto;
 }
 
 label {
@@ -184,7 +186,9 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .user-panel {
 	background: white;
-
+	width:auto;
+	height:auto;
+	overflow: auto;
 }
 
 .user {
@@ -218,6 +222,34 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	font-size:15px !important;
 	color: #ffffff !important;
 	border-color: #27496d !important;
+}
+
+.whitebutton {
+	background-color: #dae1e7 !important;
+	border-radius: 1000px !important;
+	font-weight: bold !important;
+	font-size:15px !important;
+	color: #000000 !important;
+	border-color: #dae1e7 !important;
+	padding: 10px 50px;
+}
+
+.whitebutton:hover {
+	background-color: #27496d !important;
+	color: #ffffff !important;
+	border-color: #27496d !important;
+}
+
+.whitebutton a {
+	color: #000000;
+	background: transparent;
+	text-decoration: none;
+}
+
+.whitebutton a:hover{
+	color: #ffffff;
+	background: transparent;
+	text-decoration: none;
 }
 
 .not-in-danger {

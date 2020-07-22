@@ -17,7 +17,7 @@ import UploadDoc from './UploadDoc';
 export default class LoggedIn extends Component {
 	constructor(props) {
 		super(props)
-		this.state= {
+		this.state = {
 			user_name : this.props.location.state.user_name,
 			ec1 : this.props.location.state.data.emergencyContacts[0],
 			ec2 : this.props.location.state.data.emergencyContacts[1],
@@ -40,7 +40,8 @@ export default class LoggedIn extends Component {
 		    heading : "",
 		    inTrouble : "loading",
 		    area : "",
-		    data : ""
+		    data : "",
+		    token : this.props.location.state.token
 		}	
 	}
 
@@ -127,11 +128,16 @@ export default class LoggedIn extends Component {
 	async componentDidMount(){
 		try{
 			this.setState({
-				user_name : this.props.location.state.user_name
+				user_name : this.props.location.state.user_name,
+				token : this.props.location.state.token
 			});
 			const data = {
-				"user_name" : this.state.user_name
+				"user_name" : this.state.user_name,
+				"token" : this.state.token
 			};
+			console.log("data");
+			console.log(data);
+			console.log("data");
 			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/getUser', data)
 			.then(response => {
 				this.setState({
@@ -163,6 +169,7 @@ export default class LoggedIn extends Component {
 			ec3 : this.state.ec3,
 			ec4 : this.state.ec4,
 			ec5 : this.state.ec5,
+			token : this.state.token
 		};
 		let c = 0, p = 0;
 		for(var i = 1; i <= 5; i++)
@@ -219,7 +226,11 @@ export default class LoggedIn extends Component {
 	}
 	render() {
 		const {errors} = this.state;
-		if(localStorage.getItem('session') != "start"){
+		if(
+			localStorage.getItem('session') != "start" 
+			&&
+			localStorage.getItem('token') != null
+		  ){
 			return <Redirect push to = "/UserSignIn" />;
 		}
 		return (
@@ -236,7 +247,7 @@ export default class LoggedIn extends Component {
 
 				<div className="user">
 					<center>
-						<div className={this.state.inTrouble ? "danger link" : "not-in-danger"}>
+						<div className={this.state.inTrouble ? "danger" : "not-in-danger"}>
 							{this.state.inTrouble == "loading" && 
 								<h2>  </h2>
 							}
@@ -248,23 +259,20 @@ export default class LoggedIn extends Component {
 							}
 							<br/>						
 							{this.state.heading}
-							
-								<Link className="link btn btn-primary" to={{
+								<button className="btn btn-primary">
+								<Link className="link" to={{
 									  pathname: '/LeoDropBox',
 									  state: {
 									    user_name : this.state.user_name
 									  }
 									}}>Leo DropBox</Link>
-							
+								</button>
 							<br/><br/>
-							<MarkTrouble user_name = {this.state.user_name}/>
+							<MarkTrouble user_name = {this.state.user_name} token = {this.state.token}/>
 							<br/>
-							<LoggedInUnMarkTrouble user_name = {this.state.user_name}/>
+							<LoggedInUnMarkTrouble user_name = {this.state.user_name} token = {this.state.token}/>
 							<br/>
-						
-							<div>
-							<ShowECs user_name = {this.state.user_name}/>
-							</div>
+							<ShowECs user_name = {this.state.user_name} token = {this.state.token} />
 						</div>
 						<div className="bottom">
 							<div className="jumbotron">

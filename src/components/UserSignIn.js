@@ -19,7 +19,8 @@ export default class UserSignIn extends React.Component {
 			loginSuccess : false,
 			errorMessage : "",
 			inTrouble : null,
-			data : null
+			data : null,
+			token : null
 		}
 		this.handleChange = this.handleChange.bind(this)
 	}
@@ -71,7 +72,8 @@ export default class UserSignIn extends React.Component {
 			res = response.status;
 			this.setState({
 				inTrouble : response.data.inTrouble,
-				data : response.data
+				data : response.data,
+				token : response.data.token
 			});
 		})
 		.catch(error => {
@@ -106,10 +108,11 @@ export default class UserSignIn extends React.Component {
 		if (this.state.loginSuccess == true) {
 			localStorage.setItem('session', "start");
 			localStorage.setItem('user_name', this.state.user_name);
-			
+			localStorage.setItem('token', this.state.token);
 			return <Redirect push to  = {{ 
 					pathname : '/LoggedIn',
-            		state : { data : this.state.data, user_name : this.state.user_name, inTrouble : this.state.inTrouble}
+            		state : { data : this.state.data, user_name : this.state.user_name, 
+            			inTrouble : this.state.inTrouble, token : this.state.token}
             }}
 			/>;
 		}
