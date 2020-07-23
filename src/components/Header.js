@@ -17,14 +17,12 @@ export default class Header extends Component {
 	render() {
 		return (
 			<div>
-				<nav className='navbar navbar-expand-lg navbar-light header'>
+				<nav className='navbar navbar-expand-lg navbar-light header' id="scrolled-yes">
 					<a className="navbar-brand" href="#">
-		            	<img className="logo" src = {require('./Logo.png')} /> 
+		            	<img className="logo" src = {require('./Logo1.png')} /> 
 		          	</a>
-		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>  
-		          	<h4 className="navbar-text">
-		          		<b><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank">Download Leo App</a></b>
-		          	</h4>
+		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
+		          	
 		          	<div className="nav navbar-nav ml-auto">
 		          		<Link to="/HomePage#home-section" className='nav-item nav-link'>HOME</Link>
 		          		<Link to="/HomePage#features-section" className='nav-item nav-link'>FEATURES</Link> 

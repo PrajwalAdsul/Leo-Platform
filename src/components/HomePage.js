@@ -19,7 +19,7 @@ export default class HomePage extends React.Component {
 				<HomeHeader />
 	 			<center>
 	 				<section id="home-section">
-	 					<h4>Home section</h4><br /><br/>
+	 					
 	 				</section>
 	 				<section id="features-section">
 	 					<Features />

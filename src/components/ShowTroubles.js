@@ -89,7 +89,7 @@ export default class ShowTroubles extends Component {
             return <Redirect push to = "/DROSignIn" />;
         }
         return (
-            <div>
+            <div className="container">
               <Tabs onSelect={(index, label) => console.log(label + ' selected')}>
                     <Tab label="Platform">           
                        <div className = 'container list'>  

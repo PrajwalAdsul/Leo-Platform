@@ -39,22 +39,32 @@ code {
 	height: 100px;
 }
 
+.navbar-brand {
+	margin-right: 0px !important;
+	padding-right: 0px !important;
+}
+
 .navbar-text {
 	color: #27496d !important;
+	margin-left: 0px !important;
+	padding-left: 0px !important;
 }
 
 .navbar {
 	margin-bottom: 0px;
 	height: 70px;
-}
-
-.bg-dark {
-	background-color: orange;
-}
-.navbar-light {
 	padding-top: 0px;
 	padding-bottom: 10px;
+}
+
+#scrolled-yes.navbar-light {
 	background-color: #ffffff;
+	border-bottom: 2px solid rgb(218, 225, 231, 0.6) !important;
+}
+
+#scrolled-no.navbar-light {
+	background-color: transparent;
+	border-bottom: 2px solid rgb(218, 225, 231, 0.1) !important;
 }
 
 .nav-item.nav-link {
@@ -64,6 +74,7 @@ code {
 	font-weight: 400;
 	font-family: Sans-serif;
 	color:rgb(0,0,0,0.8) !important;
+	border-bottom: 3px solid transparent;
 }
 
 .nav-item.nav-link:hover {
@@ -72,6 +83,19 @@ code {
 	font-size: 17px;
 	font-family: Sans-serif;
 	color:#27496d !important;
+	border-bottom: 3px solid #142850;
+}
+
+#scrolled-yes {
+	padding-right: 3rem !important;
+	padding-left: 3rem !important;
+	transition: all 0.3s ease;
+}
+
+#scrolled-no {
+	padding-right: 1rem !important;
+	padding-left: 1rem !important;
+	transition: all 0.3s ease;
 }
 
 .jumbotron.login-jumbotron{
@@ -288,8 +312,13 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	font-size:15px;
 }
 
-#home-section, #features-section {
+#home-section {
+	background-color: transparent !important;
+	height: 100vh;
+}
+#features-section {
 	background-color: #ffffff !important;
+	height: 100vh;
 }
 
 .section-jumbotron {
@@ -386,4 +415,8 @@ ul li {
 
 small {
 	font-size: 13px !important;
+}
+
+.list {
+	padding-top: 40px;
 }
