@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import classNames from 'classnames';
@@ -121,29 +123,29 @@ export default class UserSignIn extends React.Component {
 			<div>
 			<Header />
  			<center>
-				<div className="jumbotron">
+				<div className="jumbotron shadow-lg login-jumbotron">
 					<h2>USER <span className="change-color">LOGIN</span> </h2>
 					<hr />
-					<form onSubmit = {this.handleSubmit}>
+					<form onSubmit = {this.handleSubmit} className="login-form">
 					<div className="form-group">
-						<div className="row">
-							<div className="col-md-2">
-								<label htmlFor="user_name">Username:</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<FontAwesomeIcon icon={faUser} size="2x" />
+								</div>
 							</div>
-							<div className="col-md-10">
-								<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="Username" id="username" onChange={this.handleChange} required/>
-							</div>
+							<input type="text" className="form-control" value={this.state.user_name} name="user_name" placeholder="Username" id="username" onChange={this.handleChange} required/>
 						</div>
 					</div>
 
 					<div className="form-group">
-						<div className="row">
-							<div className="col-md-2">
-								<label htmlFor="password">Password:</label>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<FontAwesomeIcon icon={faLock} size="2x" />
+								</div>
 							</div>
-							<div className="col-md-10">
-								<input type="password" className="form-control" name="password" id="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} required/>
-							</div>
+							<input type="password" className="form-control" name="password" id="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} required/>
 						</div>
 					</div>
 

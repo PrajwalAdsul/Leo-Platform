@@ -25,6 +25,7 @@ import Searchh from './Search';
 import LeoDropBox from './LeoDropBox';
 import Download from './Download';
 import UserProfile from './UserProfile';
+import HomePage from './HomePage';
 
 class App extends Component {
 	render() {
@@ -61,7 +62,8 @@ class App extends Component {
 						<Route exact path="/LeoDropBox" component={LeoDropBox} />
 						<Route exact path="/Download" component={Download} />
 						<Route exact path="/UserProfile" component={UserProfile} />
-						<Redirect from="/" to="/UserSignIn" />
+						<Route exact path="/HomePage" component={HomePage} />
+						<Redirect from="/" to="/HomePage" />
 					</Switch>
 					</div>
 				</Router>

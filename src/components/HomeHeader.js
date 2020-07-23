@@ -7,7 +7,7 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import axios from 'axios';
 
 
-export default class Header extends Component {
+export default class HomeHeader extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -17,18 +17,18 @@ export default class Header extends Component {
 	render() {
 		return (
 			<div>
-				<nav className='navbar navbar-expand-lg navbar-light header'>
+				<nav className='navbar navbar-expand-lg navbar-light header fixed-top'>
 					<a className="navbar-brand" href="#">
-		            	<img className="logo" src = {require('./Logo.png')} /> 
+		            	<img className="logo" src = {require('./Logo1.png')} /> 
 		          	</a>
 		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>  
 		          	<h4 className="navbar-text">
 		          		<b><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank">Download Leo App</a></b>
 		          	</h4>
 		          	<div className="nav navbar-nav ml-auto">
-		          		<Link to="/HomePage#home-section" className='nav-item nav-link'>HOME</Link>
-		          		<Link to="/HomePage#features-section" className='nav-item nav-link'>FEATURES</Link> 
-		          		<Link to="/HomePage#contact-section" className='nav-item nav-link'>CONTACT</Link>	
+		          		<Link to="#home-section" className='nav-item nav-link'>HOME</Link>
+		          		<Link to="#features-section" className='nav-item nav-link'>FEATURES</Link> 
+		          		<Link to="#contact-section" className='nav-item nav-link'>CONTACT</Link>	
 			          	<Link to="/UserSignIn" className='nav-item nav-link'>USER LOGIN</Link>
 			            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link> 			
 		            </div>
@@ -41,11 +41,3 @@ export default class Header extends Component {
 	}
 }
 
-/*
-
-<Link to="/DoctorSignIn" className='nav-item nav-link'>DOCTOR LOGIN</Link>
-            <Link to="/DoctorSignUp" className='nav-item nav-link'> DOCTOR SIGNUP</Link>
-			<Link to="/DoctorSignInAdmin" className='nav-item nav-link'> ADMIN DOCTOR</Link>
- 			
-
-*/

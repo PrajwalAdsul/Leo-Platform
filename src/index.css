@@ -40,12 +40,12 @@ code {
 }
 
 .navbar-text {
-	color: #142850 !important;
+	color: #27496d !important;
 }
 
 .navbar {
 	margin-bottom: 0px;
-	box-shadow:inset 0px 8px 50px 10px #dae1e7;
+	height: 70px;
 }
 
 .bg-dark {
@@ -61,27 +61,41 @@ code {
 	margin-right: 15px;
 	margin-left: 15px;
 	font-size: 17px;
-	font-weight: 200;
+	font-weight: 400;
 	font-family: Sans-serif;
-	color:#142850 !important;
+	color:rgb(0,0,0,0.8) !important;
 }
 
 .nav-item.nav-link:hover {
 	margin-right: 15px;
 	margin-left: 15px;
 	font-size: 17px;
-	font-weight: 200;
 	font-family: Sans-serif;
 	color:#27496d !important;
 }
 
-.jumbotron {
-	margin-top: 50px;
+.jumbotron.login-jumbotron{
+	margin-top: 100px;
+	background-color: #ffffff !important;
+	width: 33%;
+	color: #000000;
+	height:auto;
+	overflow: auto;
+}
+
+.jumbotron.new-jumbotron{
+	margin-top: 120px;
 	background-color: #ffffff !important;
 	width: 50%;
 	color: #000000;
 	height:auto;
 	overflow: auto;
+}
+
+.login-form {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
 }
 
 label {
@@ -102,20 +116,21 @@ h2 {
 }
 
 .btn-primary {
-	background-color: #00909e !important;
-	height:35px;
+	background-color: #ffffff !important;
+	height:45px;
 	width: 150px;
 	border-radius: 1000px !important;
 	font-weight: bold !important;
-	font-size:15px !important;
-	color: #fffff !important;
+	font-size:20px !important;
+	color: #00909e !important;
 	border-color: #00909e !important;
+	border-width: 2px !important;
 }
 
 .btn-primary:hover {
-	color: #fffff !important;
-	background-color: #27496d !important;
-	border-color: #27496d !important;
+	color: #ffffff !important;
+	background-color: #00909e !important;
+	border-color: #00909e !important;
 }
 
 hr {
@@ -192,7 +207,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 .user {
-	background: #00909e;
 	padding:20px;
 }
 
@@ -259,7 +273,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .bottom {
 	padding-top:1px;
-	background: #00909e;
 }
 
 
@@ -273,4 +286,104 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	text-align: center; 
 	vertical-align: middle;
 	font-size:15px;
+}
+
+#home-section, #features-section {
+	background-color: #ffffff !important;
+}
+
+.section-jumbotron {
+	max-width: 1200px;
+	overflow-x: hidden;
+}
+
+.jumbotron {
+	background-color: transparent !important;
+}
+
+.contact-column {
+	text-align: left;
+}
+
+.contact-column.col1 {
+	padding-right: 40px!important;
+}
+
+.contact-column.col2 {
+	padding-left: 40px!important;
+}
+
+.list-text {
+	padding-left: 20px;
+	color: #142850;
+}
+
+.line {
+	width:150px;
+	height: 5px;
+	background:linear-gradient(to right, #142850,#00909e);
+	margin-bottom: 10px !important;
+}
+
+p.section-heading {
+	color: #27496d !important;
+	font-weight: bold !important;
+}
+
+.tagline {
+	color: #00909e;
+}
+
+#contact-btn {
+	background-color: transparent !important;
+	color: #27496d !important;
+	border-color: #27496d !important;
+}
+
+#contact-btn:hover {
+	background-color: #27496d !important;
+	color: #ffffff !important;
+}
+
+.site-footer {
+	background-color: #142850;
+	padding-left: 60px;
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	color: white;
+}
+
+.site-footer p {
+	padding-left: 40px;
+	font-size: 18px;
+}
+
+ul li {
+	list-style: none;
+	font-size: 17px;
+}
+
+#contact-section ul {
+	padding-left: 0px !important;
+}
+
+.footer-link {
+	color: rgb(218, 225, 231, 0.6);
+}
+
+.footer-link:hover {
+	color: white !important;
+	text-decoration-line: none !important;
+}
+
+.section-p {
+	margin-top: 40px;
+	font-size: 18px !important;
+	color: rgb(0, 0, 0, 0.6);
+	margin-bottom: 30px !important;
+}
+
+small {
+	font-size: 13px !important;
 }

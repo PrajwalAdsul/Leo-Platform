@@ -275,7 +275,7 @@ export default class LoggedIn extends Component {
 							<ShowECs user_name = {this.state.user_name} token = {this.state.token} />
 						</div>
 						<div className="bottom">
-							<div className="jumbotron">
+							<div className="jumbotron new-jumbotron">
 								<h2>UPDATE <span className="change-color">CONTACTS</span></h2>
 								<hr/>
 								<form onSubmit = {this.handleSubmit}>
