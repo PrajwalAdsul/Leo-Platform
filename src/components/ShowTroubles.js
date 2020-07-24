@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch, Link} from "react-rou
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import UnMarkTrouble from './UnMarkTrouble';
+import {Tabs, Tab} from 'react-bootstrap-tabs';
 
 const SList = props => (
     <tr>
@@ -16,12 +17,14 @@ const SList = props => (
              to={{
               pathname: '/UserProfile',
               state: {
-                user_name : props.data.user_name
+                user_name : props.data.user_name,
+                token : props.token
               }}}
              className='nav-item nav-link'>View Profile</Link>
         </td>
         <td>
-            <UnMarkTrouble user_name = {props.data.user_name} latitude = {props.data.latitude} longitude = {props.data.longitude}/>
+            <UnMarkTrouble user_name = {props.data.user_name} latitude = {props.data.latitude} longitude = {props.data.longitude}
+            token = {props.data.token}/>
         </td>
     </tr>
 )
@@ -30,14 +33,18 @@ export default class ShowTroubles extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            troubleslist : []
+            troubleslist : [],
+            token : null
         };
     }
     componentDidMount() {
-        axios.get('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/allUsers')
+        this.setState({
+            token : localStorage.getItem('token')    
+        });
+        axios.get('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/allUsers?token=' + this.state.token)
             .then(response => {
                 this.setState({
-                    troubleslist : response.data
+                    troubleslist : response.data,
                 });
             console.log(this.state.troubleslist);
             let a = this.state.troubleslist.sort(function(a, b) {
@@ -57,36 +64,72 @@ export default class ShowTroubles extends Component {
             })
     }
 
-    troublesListf() {
-        return this.state.troubleslist.filter(troubleslist => troubleslist.inTrouble === true).map(
+    troublesListPlatform() {
+        let token = this.state.token;
+        return this.state.troubleslist.filter(troubleslist => troubleslist.inTrouble === true && 
+            (troubleslist.type == "app" || troubleslist.type == "web")).map(
             function(data, i) {
-                return <SList data = {data} key={i} />;
+                return <SList data = {data} token = {token} key={i} />;
             }
         )
     }
+
+    troublesListBot() {
+        let token = this.state.token;
+        return this.state.troubleslist.filter(troubleslist => troubleslist.inTrouble === true && 
+            (troubleslist.type == "bot")).map(
+            function(data, i) {
+                return <SList data = {data} token = {token} key={i} />;
+            }
+        )
+    }
+
     render() {
-        if(localStorage.getItem('DRO_start') !== "start" && localStorage.getItem('session') !== "start"){
+        if(localStorage.getItem('DRO_start') !== "start" || localStorage.getItem('session') !== "start" || localStorage.getItem('token') == null){
             return <Redirect push to = "/DROSignIn" />;
         }
         return (
-            <div>
-               <div className = 'container list'>  
-                        <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
-                        <table className = 'table table-striped table-hover' style={{marginTop: 20}}>
-                            <thead>
-                                <tr>
-                                    <th>USERNAME</th>
-                                    <th>AREA</th>
-                                    <th>MAP</th>
-                                    <th>PROFILE</th>
-                                    <th>UNMARK</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.troublesListf()}
-                            </tbody>
-                        </table>
-                </div>
+            <div className="container">
+              <Tabs onSelect={(index, label) => console.log(label + ' selected')}>
+                    <Tab label="Platform">           
+                       <div className = 'container list'>  
+                                <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
+                                <table className = 'table table-striped table-hover' style={{marginTop: 20}}>
+                                    <thead>
+                                        <tr>
+                                            <th>USERNAME</th>
+                                            <th>AREA</th>
+                                            <th>MAP</th>
+                                            <th>PROFILE</th>
+                                            <th>UNMARK</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.troublesListPlatform()}
+                                    </tbody>
+                                </table>
+                        </div>
+                    </Tab>
+                    <Tab label="Bot">
+                        <div className = 'container list'>  
+                                <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
+                                <table className = 'table table-striped table-hover' style={{marginTop: 20}}>
+                                    <thead>
+                                        <tr>
+                                            <th>USERNAME</th>
+                                            <th>AREA</th>
+                                            <th>MAP</th>
+                                            <th>PROFILE</th>
+                                            <th>UNMARK</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.troublesListBot()}
+                                    </tbody>
+                                </table>
+                        </div>
+                    </Tab>
+                </Tabs>
             </div>
         )
     }

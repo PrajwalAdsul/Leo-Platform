@@ -14,7 +14,7 @@ export default class MarkTrouble extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 
 		this.state = {
-			user_name : '',
+			user_name : this.props.user_name,
 			latitude : 18.5293,
 			longitude : 73.8565,
 			status : 0
@@ -28,6 +28,7 @@ export default class MarkTrouble extends Component {
 			user_name: this.props.user_name,
 			latitude : this.state.latitude,
 			longitude : this.state.longitude,
+			token : this.state.token,
 			inTrouble : true
 		};
 		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/markTrouble', data)

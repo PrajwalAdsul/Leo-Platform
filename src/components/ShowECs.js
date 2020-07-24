@@ -18,7 +18,8 @@ export default class ShowECs extends Component {
     }
     componentDidMount() {
         const data = {
-            user_name : this.props.user_name
+            user_name : this.props.user_name,
+            token : this.props.token
         }
         console.log(data);
         axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/getECs', data)
@@ -39,7 +40,7 @@ export default class ShowECs extends Component {
     }
     render() {
         return (
-                <div className = 'jumbotron'>
+                <div className = 'jumbotron transparent'>
                     <center><h2><b>EMERGENCY <span className="change-color">CONTACTS</span></b></h2>
                     <table className = 'table table-borderless table-hover' style={{marginTop: 20}}>                       
                         <tbody>

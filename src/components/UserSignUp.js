@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAt, faLock } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import classNames from 'classnames';
 import Error from '../elements/Error';
@@ -209,7 +211,7 @@ export default class UserSignUp extends React.Component {
 			<div>
 			<Header />
 				<center>
-					<div className="jumbotron">
+					<div className="jumbotron shadow-lg new-jumbotron">
 				
 					<h2>USER <span className="change-color">SIGN</span>UP </h2>
 					<hr />

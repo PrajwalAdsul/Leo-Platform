@@ -27,6 +27,7 @@ import Download from './Download';
 import UserProfile from './UserProfile';
 import UserNews from './UserNews';
 import DRONews from './DRONews';
+import HomePage from './HomePage';
 class App extends Component {
 	render() {
 
@@ -34,8 +35,6 @@ class App extends Component {
 			<div>
 				<Router>
 					<div className="App">
-
-
 						<Switch>
 							<Route exact path="/UploadDoc" component={UploadDoc} />
 							<Route exact path="/DROPanel" component={DROPanel} />
@@ -64,7 +63,8 @@ class App extends Component {
 							<Route exact path="/UserProfile" component={UserProfile} />
 							<Route exact path="/UserNews" component={UserNews} />
 							<Route exact path="/DRONews" component={DRONews} />
-							<Redirect from="/" to="/UserSignIn" />
+							<Route exact path="/HomePage" component={HomePage} />
+							<Redirect from="/" to="/HomePage" />
 						</Switch>
 					</div>
 				</Router>
