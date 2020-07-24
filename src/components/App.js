@@ -25,50 +25,53 @@ import Searchh from './Search';
 import LeoDropBox from './LeoDropBox';
 import Download from './Download';
 import UserProfile from './UserProfile';
-
+import UserNews from './UserNews';
+import DRONews from './DRONews';
 class App extends Component {
 	render() {
-	
+
 		return (
 			<div>
 				<Router>
 					<div className="App">
-					
 
-					<Switch>
-						<Route exact path="/UploadDoc" component = {UploadDoc} />
-						<Route exact path="/DROPanel" component={DROPanel} />
-						<Route exact path="/LoggedIn" component={LoggedIn} />
-						<Route exact path="/ShowECs" component={ShowECs} />
-						<Route exact path="/SimpleMap" component={SimpleMap} />	
-						<Route exact path = "/ShowTroubles" component={DROPanel} />
-						<Route exact path = "/InTrouble" component = {InTrouble} />
-						<Route exact path = "/ShowAuthorities" component = {ShowAuthorities} />
-						<Route exact path="/UserSignIn" component={UserSignIn} />
-						<Route exact path="/UserSignUp" component={UserSignUp} />
-						<Route exact path="/DROSignIn" component={DROSignIn} />
-						<Route exact path="/DROSignUp" component={DROSignUp} />	
-						<Route exact path="/DoctorSignIn" component={DoctorSignIn} />
-						<Route exact path="/DoctorSignUp" component={DoctorSignUp} />
-						<Route exact path="/DoctorStatus" component={DoctorStatus} />
-						<Route exact path="/DoctorMainPage" component={DoctorMainPage} />
-						<Route exact path="/AdminDoctor" component={AdminDoctor} />
-						<Route exact path="/AllDoctors" component={AllDoctors} />
-						<Route exact path="/DoctorProfile" component={DoctorProfile} />
-						<Route exact path="/DoctorSignInAdmin" component={DoctorSignInAdmin} />
-						<Route exact path="/NameDoc" component={NameDoc} />
-						<Route exact path="/Search" component={Searchh} />
-						<Route exact path="/LeoDropBox" component={LeoDropBox} />
-						<Route exact path="/Download" component={Download} />
-						<Route exact path="/UserProfile" component={UserProfile} />
-						<Redirect from="/" to="/UserSignIn" />
-					</Switch>
+
+						<Switch>
+							<Route exact path="/UploadDoc" component={UploadDoc} />
+							<Route exact path="/DROPanel" component={DROPanel} />
+							<Route exact path="/LoggedIn" component={LoggedIn} />
+							<Route exact path="/ShowECs" component={ShowECs} />
+							<Route exact path="/SimpleMap" component={SimpleMap} />
+							<Route exact path="/ShowTroubles" component={DROPanel} />
+							<Route exact path="/InTrouble" component={InTrouble} />
+							<Route exact path="/ShowAuthorities" component={ShowAuthorities} />
+							<Route exact path="/UserSignIn" component={UserSignIn} />
+							<Route exact path="/UserSignUp" component={UserSignUp} />
+							<Route exact path="/DROSignIn" component={DROSignIn} />
+							<Route exact path="/DROSignUp" component={DROSignUp} />
+							<Route exact path="/DoctorSignIn" component={DoctorSignIn} />
+							<Route exact path="/DoctorSignUp" component={DoctorSignUp} />
+							<Route exact path="/DoctorStatus" component={DoctorStatus} />
+							<Route exact path="/DoctorMainPage" component={DoctorMainPage} />
+							<Route exact path="/AdminDoctor" component={AdminDoctor} />
+							<Route exact path="/AllDoctors" component={AllDoctors} />
+							<Route exact path="/DoctorProfile" component={DoctorProfile} />
+							<Route exact path="/DoctorSignInAdmin" component={DoctorSignInAdmin} />
+							<Route exact path="/NameDoc" component={NameDoc} />
+							<Route exact path="/Search" component={Searchh} />
+							<Route exact path="/LeoDropBox" component={LeoDropBox} />
+							<Route exact path="/Download" component={Download} />
+							<Route exact path="/UserProfile" component={UserProfile} />
+							<Route exact path="/UserNews" component={UserNews} />
+							<Route exact path="/DRONews" component={DRONews} />
+							<Redirect from="/" to="/UserSignIn" />
+						</Switch>
 					</div>
 				</Router>
 				<link
-				  rel="stylesheet"
-				  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-				  crossOrigin="anonymous"
+					rel="stylesheet"
+					href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+					crossOrigin="anonymous"
 				/>
 			</div>
 		);
