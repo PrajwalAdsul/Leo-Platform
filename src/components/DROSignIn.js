@@ -124,7 +124,7 @@ export default class DROSignIn extends React.Component {
 				<div className="jumbotron shadow-lg login-jumbotron">
 					<h2>DRO <span className="change-color">LOGIN</span> </h2>
 					<hr />
-					<form onSubmit = {this.handleSubmit}>
+					<form onSubmit = {this.handleSubmit} className="login-form">
 					<div className="form-group">
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">

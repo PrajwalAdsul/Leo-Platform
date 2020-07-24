@@ -1,0 +1,25 @@
+import React, { Component } from 'react';
+import DownloadLink from "react-download-link";
+import { Link } from "react-router-dom";
+import classNames from 'classnames';
+import Error from '../elements/Error';
+import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
+import axios from 'axios';
+
+
+export default class Screenshots extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+		};
+	}
+
+	render() {
+		return (
+			<div className="jumbotron section-jumbotron">
+				<div className="line"></div>
+				<p className="section-main-heading">APP SCREENSHOTS</p>
+			</div>
+		)
+	}
+}

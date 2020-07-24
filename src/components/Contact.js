@@ -23,7 +23,7 @@ export default class Contact extends Component {
 					<div className="col-md-6 contact-column col1">
 						<div className="line"></div>
 						<p className="section-heading">CONTACT US</p>
-						<h2 className="tagline">We'd like to hear from you</h2>
+						<h2 className="contact-tagline">We'd like to hear from you</h2>
 						<p className="section-p">Don't hesitate to get in contact with us no matter your request. We are here to help you.</p>
 						<ul>
 							<li><FontAwesomeIcon icon={faMapMarker} color="#00909e"/><span className="list-text">COE, Pune, India</span></li>

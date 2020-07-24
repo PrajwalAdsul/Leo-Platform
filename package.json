@@ -25,6 +25,7 @@
     "react-dom": "16.7.0",
     "react-download-link": "^2.3.0",
     "react-map-gl": "^5.2.0",
+    "react-responsive-carousel": "^3.2.9",
     "react-router-dom": "4.3.1",
     "react-scripts": "^3.4.0",
     "react-search": "^2.1.1",

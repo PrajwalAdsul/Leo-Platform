@@ -10,6 +10,7 @@ import LoggedIn from './LoggedIn';
 import HomeHeader from './HomeHeader';
 import Contact from './Contact';
 import Features from './Features';
+import Screenshots from './Screenshots';
 import Footer from './Footer';
 
 export default class HomePage extends React.Component {
@@ -23,6 +24,7 @@ export default class HomePage extends React.Component {
 	 				</section>
 	 				<section id="features-section">
 	 					<Features />
+	 					<Screenshots />
 	 				</section>
 	 				<section id="contact-section">
 	 					<Contact />

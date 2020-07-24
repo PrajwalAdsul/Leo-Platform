@@ -216,7 +216,7 @@ export default class UserSignUp extends React.Component {
 					<h2>USER <span className="change-color">SIGN</span>UP </h2>
 					<hr />
 
-					<form onSubmit = {this.onSubmit}>
+					<form onSubmit = {this.onSubmit}  className="login-form">
 					<div className="form-group">
 					<div className="row">
 					<div className="col-md-2">
