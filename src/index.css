@@ -324,6 +324,12 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 #features-section {
 	background-color: #ffffff !important;
+	padding-top: 80px;
+}
+
+#contact-section {
+	padding-top: 80px;
+	padding-bottom: 10px;
 }
 
 .section-jumbotron {
@@ -460,13 +466,14 @@ small {
 }
 
 .main-tagline {
-	font-size: 50px;
+	font-size: 40px;
 	font-weight: bold;
 	color: #142850;
 }
 
-.color-lightblue {
+.main-tagline .color-lightblue {
 	color: #00909e !important;
+	font-size: 60px;
 }
 
 .nav-item.is-active {

@@ -28,13 +28,12 @@ export default class HomePage extends React.Component {
 	 							<img src = {require('./Logo1.png')} /> 
 	 						</div>
 	 						<div className="col-sm-6 my-auto">
-	 							<span className="main-tagline">Your <span className="color-lightblue">SAFETY</span> <br/> is our <span className="color-lightblue">PRIORITY</span></span>
+	 							<span className="main-tagline">YOUR <span className="color-lightblue">SAFETY</span> <br/> IS OUR <span className="color-lightblue">PRIORITY</span></span>
 	 						</div>
 	 					</div>
 	 					
 	 				</div>
 	 				<div id="features-section">
-	 					<Features />
 	 					<Screenshots />
 	 				</div>
 	 				<div id="contact-section">
