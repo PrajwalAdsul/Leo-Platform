@@ -84,6 +84,7 @@ code {
 	font-family: Sans-serif;
 	color:#27496d !important;
 	border-bottom: 3px solid #142850;
+	background-color: transparent;
 }
 
 #scrolled-yes {
@@ -456,4 +457,18 @@ small {
 	border-width: 10px;
 	background-color: black;
 	margin-bottom: 50px;
+}
+
+.main-tagline {
+	font-size: 50px;
+	font-weight: bold;
+	color: #142850;
+}
+
+.color-lightblue {
+	color: #00909e !important;
+}
+
+.nav-item.is-active {
+	color: #00909e !important;
 }

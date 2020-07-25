@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import classNames from 'classnames';
 import Error from '../elements/Error';
+import ScrollspyNav from "react-scrollspy-nav";
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
 import LoggedIn from './LoggedIn';
 import HomeHeader from './HomeHeader';
@@ -19,16 +20,27 @@ export default class HomePage extends React.Component {
 			<div className="home-page">
 				<HomeHeader />
 	 			<center>
-	 				<section id="home-section">
+
+                <div>
+	 				<div id="home-section">
+	 					<div className="row h-100">
+	 						<div className="col-sm-6 my-auto">
+	 							<img src = {require('./Logo1.png')} /> 
+	 						</div>
+	 						<div className="col-sm-6 my-auto">
+	 							<span className="main-tagline">Your <span className="color-lightblue">SAFETY</span> <br/> is our <span className="color-lightblue">PRIORITY</span></span>
+	 						</div>
+	 					</div>
 	 					
-	 				</section>
-	 				<section id="features-section">
+	 				</div>
+	 				<div id="features-section">
 	 					<Features />
 	 					<Screenshots />
-	 				</section>
-	 				<section id="contact-section">
+	 				</div>
+	 				<div id="contact-section">
 	 					<Contact />
-	 				</section>
+	 				</div>
+	 			</div>
 				</center>
 				<Footer />
 			</div>

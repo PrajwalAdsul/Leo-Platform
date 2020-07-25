@@ -30,6 +30,7 @@
     "react-responsive-carousel": "^3.2.9",
     "react-router-dom": "4.3.1",
     "react-scripts": "^3.4.0",
+    "react-scrollspy-nav": "^1.2.4",
     "react-search": "^2.1.1",
     "react-toastify": "^5.5.0",
     "reactstrap": "^8.4.1",

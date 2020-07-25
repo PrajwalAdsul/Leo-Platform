@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Error from '../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../MessageBundle';
 import axios from 'axios';
+import ScrollspyNav from "react-scrollspy-nav";
 
 
 export default class HomeHeader extends Component {
@@ -46,16 +47,33 @@ export default class HomeHeader extends Component {
 					<a className="navbar-brand" href="#">
 		            	<img className="logo" src = {require('./Logo1.png')} /> 
 		          	</a>
-		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>  
-		          	
-		          	<div className="nav navbar-nav ml-auto">
-		          		<Link to="#home-section" className='nav-item nav-link'>HOME</Link>
-		          		<Link to="#features-section" className='nav-item nav-link'>FEATURES</Link> 
-		          		<Link to="#contact-section" className='nav-item nav-link'>CONTACT</Link>	
+		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>  	
+
+               		<div className="nav navbar-nav ml-auto">
+			        
+			        </div>
+
+			        <ScrollspyNav
+	                    scrollTargetIds={["home-section", "features-section", "contact-section"]}
+	                    offset={100}
+	                    activeNavClass="is-active"
+	                    scrollDuration="1000"
+	                    headerBackground="true"
+	                	>
+	                    <ul className="nav navbar-nav ml-auto">
+	                        <li><a href="#home-section" className="nav-item nav-link">HOME</a></li>
+	                        <li><a href="#features-section" className="nav-item nav-link">FEATURES</a></li>
+	                        <li><a href="#contact-section" className="nav-item nav-link">CONTACT</a></li>
+	                    </ul>
+               		</ScrollspyNav>
+
+               		<div className="nav navbar-nav">
 			          	<Link to="/UserSignIn" className='nav-item nav-link'>USER LOGIN</Link>
-			            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link> 			
-		            </div>
+			            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link>
+			        </div>
 		        </nav>
+
+		        
 
 			
 					
