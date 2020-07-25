@@ -10,9 +10,17 @@ from utils.modules import saving_articles
 
 def LeoMineScraper():
     df = DeccanChronicleScrapper()
-    df.append(NdtvScrapper(), ignore_index=True)
-    df.append(HindustanTimesScrapper(), ignore_index=True)
-    df.append(TheHinduScrapper(), ignore_index=True)
-    df.append(TweetsScrapper(), ignore_index=True)
-    df.append(ToiScrapper(), ignore_index=True)
+    df = df.append(NdtvScrapper(), ignore_index=True)
+    df = df.append(HindustanTimesScrapper(), ignore_index=True)
+    df = df.append(TheHinduScrapper(), ignore_index=True)
+    df = df.append(TweetsScrapper(), ignore_index=True)
+    #df = df.append(ToiScrapper(), ignore_index=True)
+    headlines_lst = []
+    for index, row in df.iterrows() :
+        row["text"] = row["text"].replace("\n\n", " ")
+        row["text"] = row["text"].replace("\n", " ")
+        headlines_lst.append(row["text"].split(".")[0])
+    df["headline"] = headlines_lst
     saving_articles(df, "./database/headlines.csv")
+        
+LeoMineScraper()

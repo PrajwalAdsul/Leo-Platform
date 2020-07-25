@@ -209,13 +209,13 @@ def get_articles(mode, crime_list, articles_fname) :
         articles_crimewise = []
         for topic in topics :
             articles_lst = []
-            print(topic)
+            #print(topic)
             articles_lst.append(topic)
             for page in range(pages) :
                 url = index + topic
                 if(page) :
                     url = url + "/" + str(page+1)
-                print(url)
+                #print(url)
                 response = requests.get(url, allow_redirects = True)
                 soup = BeautifulSoup(response.text)
                 text = soup.findAll('a')
@@ -572,8 +572,8 @@ def check_for_duplicates(df, filename) :
         df_org = pd.read_csv(filename)
     except :
         return df
-    print(df_org.columns)
-    print(df.columns)
+    #print(df_org.columns)
+    #print(df.columns)
     for index, row in df.iterrows() :
         df_copy = df_org[df_org['date'] == row["date"]]
         df_copy = df_copy[df_copy["crime"] == row["crime"]]
@@ -587,12 +587,12 @@ def check_url_in_database(df, filename) :
     #cols = ["level_0", "index", "text", "url", "crime", "location", "region", "city", "date"]
     flag_lst = []
     #try :
-    print("try")
+    #print("try")
     df_org = pd.read_csv(filename)
     url_lst = df_org["url"].tolist()
-    print(url_lst)
+    #print(url_lst)
     for index, row in df.iterrows() :
-        print(row["url"])
+        #print(row["url"])
         if(row["url"] in url_lst):
              flag_lst.append("True")
         else :

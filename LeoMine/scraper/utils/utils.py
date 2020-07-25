@@ -42,9 +42,9 @@ def get_location(df, data):
     spellings = get_spelling_list("./database/spell.csv")
     nlp = load_locations(locs, spellings)
     cities = get_cities(data)
-    print(df)
+    #print(df)
     df_ = get_locations(df, data, nlp, cities, spellings, 0)
-    print(df_)
+    #print(df_)
     return df_
     
     

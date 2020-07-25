@@ -14,6 +14,12 @@ print(df_)
 df = preprocessing2(df, data)
 df_with_date = get_date(df)
 df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+headlines_lst = []
+for index, row in df_final.iterrows() :
+    row["text"] = row["text"].replace("\n\n", " ")
+    row["text"] = row["text"].replace("\n", " ")
+    headlines_lst.append(row["text"].split(".")[0])
+df_final["headline"] = headlines_lst
 saving_articles(df_final, "./database/headlines.csv")
 data_ = preprocessing(df_, data)
 

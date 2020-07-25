@@ -166,3 +166,4 @@ def TheHinduScrapper():
         saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)
         save_data(data_, "./database/data.json")
+    return df_final

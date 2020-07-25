@@ -36,3 +36,4 @@ def TweetsScrapper():
         data_ = preprocessing(df_final, data)
         save_data(data_, "./database/data.json")
 
+    return df_final
