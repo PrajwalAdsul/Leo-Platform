@@ -323,7 +323,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 #features-section {
 	background-color: #ffffff !important;
-	height: 100vh;
 }
 
 .section-jumbotron {
@@ -436,4 +435,25 @@ small {
 .carousel-inner .next        { left:  25%; }
 .carousel-inner .prev		 { left: -25%; }
 .carousel-control 			 { width:  4%; }
-.carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+.carousel-control.left,.carousel-control.right {
+	margin-left:15px;
+	background-color: blue;
+}
+
+.screenshots-container img{
+	margin-bottom: 50px;
+	margin-top: 40px;
+}
+
+.screenshots-container {
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+
+.react-multi-carousel-item--active {
+	border: black !important;
+	border-radius: 10% !important;
+	border-width: 10px;
+	background-color: black;
+	margin-bottom: 50px;
+}
