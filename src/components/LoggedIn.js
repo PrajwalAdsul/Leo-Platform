@@ -235,12 +235,18 @@ export default class LoggedIn extends Component {
 		}
 		return (
 			<div className="user-panel">			
-				<nav className='navbar navbar-expand-lg navbar-light header'>
+				<nav className='navbar navbar-expand-lg navbar-light header navbar-border'>
 					<a className="navbar-brand" href="#">
-		            	<img className="logo" src = {require('./Logo.png')} />
+		            	<img className="logo" src = {require('./Logo1.png')} />
 		          	</a>
 		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1> 
 					<div className="nav navbar-nav ml-auto">
+						<Link className="link nav-item nav-link" to={{
+									  pathname: '/LeoDropBox',
+									  state: {
+									    user_name : this.state.user_name
+									  }
+									}}>LEO DropBox</Link>
 						<Logout/>
 		            </div>         
 				</nav>
@@ -259,88 +265,95 @@ export default class LoggedIn extends Component {
 							}
 							<br/>						
 							{this.state.heading}
-								<button className="btn btn-primary">
-								<Link className="link" to={{
-									  pathname: '/LeoDropBox',
-									  state: {
-									    user_name : this.state.user_name
-									  }
-									}}>Leo DropBox</Link>
-								</button>
-							<br/><br/>
+								
 							<MarkTrouble user_name = {this.state.user_name} token = {this.state.token}/>
-							<br/>
 							<LoggedInUnMarkTrouble user_name = {this.state.user_name} token = {this.state.token}/>
-							<br/>
-							<ShowECs user_name = {this.state.user_name} token = {this.state.token} />
+							
 						</div>
 						<div className="bottom">
 							<div className="jumbotron new-jumbotron">
-								<h2>UPDATE <span className="change-color">CONTACTS</span></h2>
-								<hr/>
-								<form onSubmit = {this.handleSubmit}>
-									<div className="form-group">
-										<div className="row">
-											<div className="col-md-4">
-												<label htmlFor="ec1">Contact1:</label>
+							<center>
+								<div className='location-link'>
+									<a href = {"https://www.google.com/maps?q=" + this.state.data.area} target="_blank">Current location</a>
+								</div>
+							</center>
+
+							<div className="row">
+								<div className="col-md-6">
+									<ShowECs user_name = {this.state.user_name} token = {this.state.token} />
+								</div>
+								<div className="col-md-6">
+									<div className="container">
+										<center>
+										<h2>UPDATE <span className="change-color">CONTACTS</span></h2>
+										<hr/>
+										<form onSubmit = {this.handleSubmit}>
+											<div className="form-group">
+												<div className="row">
+													<div className="col-md-4">
+														<label htmlFor="ec1">Contact1:</label>
+													</div>
+													<div className="col-md-8">
+														<input type="number" name = "ec1" className="form-control" value={this.state.ec1} placeholder="10-digit Mobile No." id="ec1" onChange={this.handleOnChangeEC1} />
+													</div>
+													<h4><span className="errorMessage">{errors.phone1}</span></h4>
+												</div>
 											</div>
-											<div className="col-md-8">
-												<input type="number" name = "ec1" className="form-control" value={this.state.ec1} placeholder="10-digit Mobile No." id="ec1" onChange={this.handleOnChangeEC1} />
+											<div className="form-group">
+												<div className="row">
+													<div className="col-md-4">
+														<label htmlFor="ec2">Contact2:</label>
+													</div>
+													<div className="col-md-8">
+														<input type="number" name="ec2" className="form-control" id="ec2" value={this.state.ec2} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC2} />
+													</div>
+													<h4><span className="errorMessage">{errors.phone2}</span></h4>
+												</div>
 											</div>
-											<h4><span className="errorMessage">{errors.phone1}</span></h4>
-										</div>
+											<div className="form-group">
+												<div className="row">
+													<div className="col-md-4">
+														<label htmlFor="ec3">Contact3:</label>
+													</div>
+													<div className="col-md-8">
+														<input type="number" name="ec3" className="form-control" id="ec3" value={this.state.ec3} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC3} />
+													</div>
+													<h4><span className="errorMessage">{errors.phone3}</span></h4>
+												</div>
+											</div>
+											<div className="form-group">
+												<div className="row">
+													<div className="col-md-4">
+														<label htmlFor="ec4">Contact4:</label>
+													</div>
+													<div className="col-md-8">
+														<input type="number" name="ec4" className="form-control" id="ec4" value={this.state.ec4} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC4} />
+													</div>
+													<h4><span className="errorMessage">{errors.phone4}</span></h4>
+												</div>
+											</div>
+											<div className="form-group">
+												<div className="row">
+													<div className="col-md-4">
+														<label htmlFor="ec5">Contact5:</label>
+													</div>
+													<div className="col-md-8">
+														<input type="number" name="ec5" className="form-control" id="ec5" value={this.state.ec5} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC5} />
+													</div>
+													<h4><span className="errorMessage">{errors.phone5}</span></h4>
+												</div>
+											</div>
+											<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
+											<br/><br/>
+											<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">UPDATE</button>
+											</center>	
+										</form>
+									</center>
 									</div>
-									<div className="form-group">
-										<div className="row">
-											<div className="col-md-4">
-												<label htmlFor="ec2">Contact2:</label>
-											</div>
-											<div className="col-md-8">
-												<input type="number" name="ec2" className="form-control" id="ec2" value={this.state.ec2} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC2} />
-											</div>
-											<h4><span className="errorMessage">{errors.phone2}</span></h4>
-										</div>
-									</div>
-									<div className="form-group">
-										<div className="row">
-											<div className="col-md-4">
-												<label htmlFor="ec3">Contact3:</label>
-											</div>
-											<div className="col-md-8">
-												<input type="number" name="ec3" className="form-control" id="ec3" value={this.state.ec3} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC3} />
-											</div>
-											<h4><span className="errorMessage">{errors.phone3}</span></h4>
-										</div>
-									</div>
-									<div className="form-group">
-										<div className="row">
-											<div className="col-md-4">
-												<label htmlFor="ec4">Contact4:</label>
-											</div>
-											<div className="col-md-8">
-												<input type="number" name="ec4" className="form-control" id="ec4" value={this.state.ec4} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC4} />
-											</div>
-											<h4><span className="errorMessage">{errors.phone4}</span></h4>
-										</div>
-									</div>
-									<div className="form-group">
-										<div className="row">
-											<div className="col-md-4">
-												<label htmlFor="ec5">Contact5:</label>
-											</div>
-											<div className="col-md-8">
-												<input type="number" name="ec5" className="form-control" id="ec5" value={this.state.ec5} placeholder="10-digit Mobile No." onChange={this.handleOnChangeEC5} />
-											</div>
-											<h4><span className="errorMessage">{errors.phone5}</span></h4>
-										</div>
-									</div>
-									<h4><span className="errorMessage">{this.state.errorMessage}</span></h4>
-									<br/><br/>
-									<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">UPDATE</button><br/><br/>
-									</center>	
-								</form>
+								</div>
 							</div>
-							<a className='nav-item nav-link' href = {"https://www.google.com/maps?q=" + this.state.data.area} target="_blank">Location</a>
+							</div>
+							
 	   					</div>
 	   				</center>
 				</div>

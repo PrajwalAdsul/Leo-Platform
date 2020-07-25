@@ -67,6 +67,11 @@ code {
 	border-bottom: 2px solid rgb(218, 225, 231, 0.1) !important;
 }
 
+.navbar-border {
+	border-bottom: 2px solid rgb(218, 225, 231, 0.6) !important;
+	background-color: #ffffff;
+}
+
 .nav-item.nav-link {
 	margin-right: 15px;
 	margin-left: 15px;
@@ -109,9 +114,9 @@ code {
 }
 
 .jumbotron.new-jumbotron{
-	margin-top: 120px;
+	margin-top: 60px;
 	background-color: #ffffff !important;
-	width: 50%;
+	width: 70%;
 	color: #000000;
 	height:auto;
 	overflow: auto;
@@ -241,8 +246,9 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 .danger {
-	background: #00909e;
+	background: rgb(0, 144, 158, 0.3);
 	padding:20px;
+	width: 60%;
 
 }
 
@@ -297,8 +303,9 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 
 .not-in-danger {
-	background: #dae1e7;
-	padding:20px;
+	background-color: rgb(218, 225, 231, 0.6);
+	padding:50px;
+	width: 60%;
 }
 
 .bottom {
@@ -478,4 +485,63 @@ small {
 
 .nav-item.is-active {
 	color: #00909e !important;
+}
+
+.markTrouble-btn {
+	background-color: transparent !important;
+	height:200px;
+	width: 200px;
+	border-radius: 50% !important;
+	font-weight: 200 !important;
+	font-size:30px !important;
+	color: #142850 !important;
+	border-color: #142850 !important;
+	border-width: 3px !important;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.markTrouble-btn:hover {
+	color: #ffffff !important;
+	background-color: #142850 !important;
+	border-color: #142850 !important;
+}
+
+.user-btn {
+	background-color: transparent !important;
+	height:50px;
+	width: 200px;
+	font-weight: bold !important;
+	font-size:22px !important;
+	color: #00909e !important;
+	border-color: #00909e !important;
+	border-width: 2px !important;
+}
+
+.user-btn:hover {
+	color: #ffffff !important;
+	background-color: #00909e !important;
+	border-color: #00909e !important;
+}
+
+.location-link {
+	padding:20px !important;
+	margin-bottom: 50px !important;
+}
+
+.location-link a {
+	color: #00909e !important;
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	border: 3px solid #00909e;
+	box-shadow:0px 8px 20px 0px #dae1e7;
+	padding: 10px;
+}
+
+.location-link a:hover {
+	color: #ffffff !important;
+	font-size: 20px;
+	text-decoration: none;
+	background-color: #00909e;
 }

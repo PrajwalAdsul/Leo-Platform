@@ -44,7 +44,7 @@ export default class MarkTrouble extends Component {
 	render() {	
 		return (
 			<div>
-			<button onClick={this.onSubmit} className="btn btn-primary">I'm in trouble</button>
+			<button onClick={this.onSubmit} className="btn markTrouble-btn">I'm in trouble</button>
 			</div>
 			);
 		}

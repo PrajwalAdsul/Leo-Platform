@@ -17,7 +17,7 @@ export default class Header extends Component {
 
 		return (
 			<div>			
-			<nav className='navbar navbar-expand-lg navbar-light header'>
+			<nav className='navbar navbar-expand-lg navbar-light header navbar-border'>
 				<a className="navbar-brand" href="#">
 	            <img className="logo" src = {require('./Logo.png')} />
 	          	</a>
