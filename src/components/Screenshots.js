@@ -55,7 +55,7 @@ export default class Screenshots extends Component {
 						autoPlay={this.props.deviceType !== "mobile" ? true : false}
 						autoPlaySpeed={2000}
 						keyBoardControl={true}
-						customTransition="img .5s ease"
+						customTransition="all .5s ease"
 						transitionDuration={2000}
 						containerClass="carousel-container"
 						removeArrowOnDeviceType={["tablet", "mobile"]}
@@ -65,25 +65,25 @@ export default class Screenshots extends Component {
 						centerMode={true}
 					>
 						<div className="container">
-							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot1.jpeg')} /></div>
+							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot1.jpeg')} className="d-block w-100" /></div>
 						</div>
 						<div className="container">
-							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot2.jpeg')} /></div>
+							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot2.jpeg')} className="d-block w-100" /></div>
 						</div>
 						<div className="container">
-							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot3.jpeg')} /></div>
+							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot3.jpeg')} className="d-block w-100" /></div>
 						</div>
 						<div className="container">
-							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot4.jpeg')} /></div>
+							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot4.jpeg')} className="d-block w-100" /></div>
 						</div>
 						<div className="container">
-							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot5.jpeg')} /></div>
+							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot5.jpeg')} className="d-block w-100" /></div>
 						</div>
 						<div className="container">
-							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot6.jpeg')} /></div>
+							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot6.jpeg')} className="d-block w-100" /></div>
 						</div>
 						<div className="container">
-							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot7.jpeg')} /></div>
+							<div className="container img-container"><img src = {require('./App-Screenshots/Screenshot7.jpeg')} className="d-block w-100" /></div>
 						</div>
 					</Carousel>;
 				</div>
