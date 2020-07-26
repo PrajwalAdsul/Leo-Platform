@@ -1,4 +1,6 @@
-from sources.modules import *
+from utils.modules import *
+import pymongo
+import re
 
 def get_location(text) :
     data = get_data("./database/data.json")
@@ -11,21 +13,31 @@ def get_location(text) :
     return get_locations_from_user_text(text, data, nlp, cities, spellings)
 
 def get_news_headlines(loc) :
-    df = pd.read_csv("./database/headlines.csv")
+    client = pymongo.MongoClient(
+        "mongodb+srv://praj:pra@cluster0-jpt7l.mongodb.net/test?retryWrites=true&w=majority"
+    )
+    db = client.get_database("Leo")
+    df = pd.read_csv("./database/headlines.csv", index_col=[0])
     #print(df)
     news = []
     region_lst = df["region"].tolist()
     city_lst = df["city"].tolist()
-    headlines_lst = df["text"].tolist()
+    headlines_lst = df["headline"].tolist()
     #print(city_lst)
-    for index, city in enumerate(city_lst) :
-        
-        if(city.lower() == loc.lower()) :
-            print("ok")
-            news.append(headlines_lst[index])
+    
             
     for index, region in enumerate(region_lst) :
-        if(region.lower() == loc.lower()) :
+        query = { "region": re.compile(region, re.IGNORECASE) }
+        cursor = db.news.find(query)
+        lst = list(cursor)
+        for l in lst :
+            news.append(headlines_lst[index])
+            
+    for index, city in enumerate(city_lst) :
+        query = { "city": re.compile(city, re.IGNORECASE) }
+        cursor = db.news.find(query)
+        lst = list(cursor)
+        for l in lst :
             news.append(headlines_lst[index])
             
     return news
@@ -35,3 +47,4 @@ def extract_news_from_text(text) :
     news = get_news_headlines(get_location(text))
     return news
     
+extract_news_from_text("news of mumbai")

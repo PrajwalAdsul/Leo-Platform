@@ -625,7 +625,7 @@ def get_locations_from_user_text(text, data, loc_model, cities_lst, spellings) :
     states = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Lakshadweep","National Capital Territory of Delhi","Puducherry"]
     state = [s.lower() for s in states]
     extra_locs.extend(state)
-    f = open("country.txt", "r")
+    f = open("./database/country.txt", "r")
     for country in f.readline():
         extra_locs.append(country.lower())
     
