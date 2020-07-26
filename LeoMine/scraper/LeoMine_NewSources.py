@@ -16,23 +16,23 @@ def LeoMineScraper():
     df = df.append(HindustanTimesScrapper(), ignore_index=True)
     df = df.append(TheHinduScrapper(), ignore_index=True)
     df = df.append(TweetsScrapper(), ignore_index=True)
-    #df = df.append(ToiScrapper(), ignore_index=True)
+    # df = df.append(ToiScrapper(), ignore_index=True)
     headlines_lst = []
-    for index, row in df.iterrows() :
+    for index, row in df.iterrows():
         try:
             article = Article(row["url"])
             article.download()
             article.parse()
             article.nlp()
-            #print(article.publish_date)
+            # print(article.publish_date)
             headline = article.title
-            #print(headline)
-            if(headline == "") :
-                #print("nothing")
+            # print(headline)
+            if headline == "":
+                # print("nothing")
                 row["text"] = row["text"].replace("\n\n", " ")
                 row["text"] = row["text"].replace("\n", " ")
                 headline = row["text"].split(".")[0]
-                
+
         except:
             row["text"] = row["text"].replace("\n\n", " ")
             row["text"] = row["text"].replace("\n", " ")
@@ -43,18 +43,21 @@ def LeoMineScraper():
         "mongodb+srv://praj:pra@cluster0-jpt7l.mongodb.net/test?retryWrites=true&w=majority"
     )
     db = client.get_database("Leo")
-    final_df = pd.DataFrame(columns = df.columns)
-    
-    for index, row in df.iterrows() :
-        query = { "url": row["url"] }
+    final_df = pd.DataFrame(columns=df.columns)
+
+    for index, row in df.iterrows():
+        query = {"url": row["url"]}
         cursor = db.news.find(query)
         lst = list(cursor)
-        if(len(lst) == 0) :
-            query = { "date": row["date"],"crime": row["crime"], "region": row["region"], "city": row["city"]  }
+        if len(lst) == 0:
+            query = {
+                "date": row["date"],
+                "crime": row["crime"],
+                "region": row["region"],
+                "city": row["city"],
+            }
             cursor = db.news.find(query)
             lst = list(cursor)
-            if(len(lst) == 0) :
+            if len(lst) == 0:
                 final_df = final_df.append(row, ignore_index=True)
     saving_articles(final_df, "./database/headlines.csv")
-        
-LeoMineScraper()

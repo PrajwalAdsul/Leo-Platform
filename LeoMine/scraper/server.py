@@ -9,12 +9,14 @@ import time
 import csv
 import json
 from bson import json_util
+from bson.son import SON
 import pandas as pd
 from flask import Flask, request, make_response, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 from flask_ngrok import run_with_ngrok
 from LeoMine_NewSources import LeoMineScraper
-
+from datetime import datetime
+import requests
 
 app = Flask(__name__)
 CORS(app)
@@ -23,15 +25,27 @@ CORS(app)
 @app.before_first_request
 def activate_job():
     def scrape_news():
-        print("Scraping news and calculating crime stats...")
         while True:
             # Scrape for news and calculate crime stats
+            print("Scraping news and calculating crime stats...")
             LeoMineScraper()
+            print("Scraping news and calculating crime stats done!")
+
             # Read news stored in default file
+            print("Storing news into the database...")
             news = pd.read_csv(
                 "./database/headlines.csv",
-                usecols=["text", "url", "crime", "location", "region", "city", "date"],
+                usecols=[
+                    "headline",
+                    "url",
+                    "crime",
+                    "location",
+                    "region",
+                    "city",
+                    "date",
+                ],
             )
+            news["date"] = news["date"].fillna(datetime.now())
             # Convert news to json to allow to store in mongodb
             json_news = news.to_dict(orient="records")
             # Finally insert the data into mongo
@@ -39,22 +53,48 @@ def activate_job():
             print("Number of news saved into database:", len(result.inserted_ids))
 
             # Read crime stats stored in default file
+            print("Storing crimes into the database...")
             with open("./database/data.json") as handle:
                 # Load data from JSON to dict
                 file_data = json.load(handle)
                 # Iterate over list of crime objects
                 results = []
                 for data in file_data:
+                    # Fetch approximate coordinates of region
+                    location_details = requests.get(
+                        "https://api.opencagedata.com/geocode/v1/json?q="
+                        + data["Regions"].strip()
+                        + "&key=4a4590286e2c474ca287e179cd718be9"
+                    ).json()
+
+                    # Try removing white spaces and retry
+                    if len(location_details["results"]) == 0:
+                        location_details = requests.get(
+                            "https://api.opencagedata.com/geocode/v1/json?q="
+                            + data["Regions"].replace(" ", "")
+                            + "&key=4a4590286e2c474ca287e179cd718be9"
+                        ).json()
+                        if len(location_details["results"]) == 0:
+                            latitude, longitude = 0.0, 0.0
+                        else:
+                            latitude, longitude = location_details["results"][0][
+                                "geometry"
+                            ].values()
+                    else:
+                        latitude, longitude = location_details["results"][0][
+                            "geometry"
+                        ].values()
+
                     # Make an UPSERT query
                     result = db.crimes.update_one(
-                        {"regions": data["Regions"]},
+                        {"region": data["Regions"]},
                         {
                             "$set": {
-                                "regions": data["Regions"],
+                                "region": data["Regions"],
                                 "city": data["City"],
                                 "loc": {
-                                    "lon": data["Longitude"],
-                                    "lat": data["Latitude"],
+                                    "type": "Point",
+                                    "coordinates": [longitude, latitude],
                                 },
                                 "murder": data["Murder"],
                                 "rape": data["Rape"],
@@ -70,7 +110,7 @@ def activate_job():
                         upsert=True,
                     )
                     results.append(result.upserted_id)
-                print("Number of news saved into database:", len(results))
+                print("Number of crimes upserted into database:", len(results))
 
     thread = threading.Thread(target=scrape_news)
     thread.setDaemon(True)
@@ -104,7 +144,7 @@ def hello():
 
 
 @app.route("/news", methods=["POST", "PUT"])
-def get_news(city):
+def news(city):
     if request.method == "POST":
         result = db.news.insert_one(request.json)
         print("Inserted succesfully ", result.inserted_id)
@@ -129,24 +169,54 @@ def get_news(city):
 
 
 @app.route("/news/<city>", methods=["GET"])
-def post_put_news(city):
+def news_by_city(city):
     if request.method == "GET":
-        cursor = db.news.find({"$text": {"$search": city}})
+        cursor = db.news.find(
+            {"$text": {"$search": city}},
+            {"headline": 1, "url": 1, "crime": 1, "city": 1, "date": 1},
+        )
         docs_list = list(cursor)
         return json.dumps(docs_list, default=json_util.default)
 
 
 @app.route(
-    "/crimes/<float:longitude>/<float:latitude>", methods=["GET", "POST"],
+    "/crimes", methods=["GET", "POST"],
 )
-def crimes(longitude, latitude):
+def crimes():
     if request.method == "GET":
+        try:
+            longitude = float(request.args.get("longitude"))
+        except ValueError:
+            longitude = 0.0
+
+        try:
+            latitude = float(request.args.get("latitude"))
+        except ValueError:
+            latitude = 0.0
+
         if longitude == 0.0 and latitude == 0.0:
-            # Location is unknown
+            # Location is unknown so return recent most 20 crimes
             cursor = db.crimes.find().sort([("date", -1)]).limit(20)
         else:
             cursor = db.crimes.find(
-                {"loc": {"$near": [longitude, latitude], "$maxDistance": 0.10}}
+                {
+                    "loc": {
+                        "$near": SON(
+                            [
+                                (
+                                    "$geometry",
+                                    SON(
+                                        [
+                                            ("type", "Point"),
+                                            ("coordinates", [longitude, latitude]),
+                                        ]
+                                    ),
+                                ),
+                                ("$maxDistance", 100000),
+                            ]
+                        )
+                    }
+                }
             )
 
         docs_list = list(cursor)
@@ -170,13 +240,17 @@ if __name__ == "__main__":
     )
     db = client.get_database("Leo")
 
+    # Drop existing collections
+    """ db.news.drop()
+    db.crimes.drop() """
+
     # Create index on city in news collection
     db.news.create_index(
         [("city", pymongo.TEXT)], name="search_index", default_language="english"
     )
 
     # Create index on loc in crimes collection
-    db.crimes.create_index([("loc", pymongo.GEO2D)], name="geosearch_index")
+    db.crimes.create_index([("loc", pymongo.GEOSPHERE)], name="geosearch_index")
 
     # Start another thread for job
     start_runner()
