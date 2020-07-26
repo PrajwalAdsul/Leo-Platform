@@ -2,10 +2,11 @@ from sources.tweets_scrapper import TweetsScrapper
 from sources.the_hindu import TheHinduScrapper
 from sources.ndtv import NdtvScrapper
 from sources.hindustan_times import HindustanTimesScrapper
-from sources.dd_news_loc import DdNewsScrapper
 from sources.deccan_chronicle import DeccanChronicleScrapper
 from sources.toi import ToiScrapper
 from utils.modules import saving_articles
+import pymongo
+import pandas as pd
 
 
 def LeoMineScraper():
@@ -21,6 +22,22 @@ def LeoMineScraper():
         row["text"] = row["text"].replace("\n", " ")
         headlines_lst.append(row["text"].split(".")[0])
     df["headline"] = headlines_lst
-    saving_articles(df, "./database/headlines.csv")
+    client = pymongo.MongoClient(
+        "mongodb+srv://praj:pra@cluster0-jpt7l.mongodb.net/test?retryWrites=true&w=majority"
+    )
+    db = client.get_database("Leo")
+    final_df = pd.DataFrame(columns = df.columns)
+    
+    for index, row in df.iterrows() :
+        query = { "url": row["url"] }
+        cursor = db.news.find(query)
+        lst = list(cursor)
+        if(len(lst) == 0) :
+            query = { "date": row["date"],"crime": row["crime"], "region": row["region"], "city": row["city"]  }
+            cursor = db.news.find(query)
+            lst = list(cursor)
+            if(len(lst) == 0) :
+                final_df = final_df.append(row, ignore_index=True)
+    saving_articles(final_df, "./database/headlines.csv")
         
 LeoMineScraper()

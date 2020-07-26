@@ -151,14 +151,15 @@ def NdtvScrapper():
             text_lst.append(data['content'])
         url_lst.append(data['link'])
     df_raw = pd.DataFrame(list(zip(text_lst, url_lst)), columns = ["text", "url"])
-    df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
+    #df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
     df_crime = get_crime(df_raw)
     data = get_data("./database/data.json")
     df = get_location(df_crime, data)
     df.to_csv("./database/test_df.csv")
     df = preprocessing2(df, data)
     df_with_date = get_date(df)
-    df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    #df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    df_final = df_with_date
     if(df_final.shape[0] != 0) :
         #saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)

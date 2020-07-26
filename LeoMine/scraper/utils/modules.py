@@ -203,6 +203,7 @@ def find_in_spell(loc, spellings, data):
                
 def get_articles(mode, crime_list, articles_fname) :
     '''mode = 0 read from file, mode = 1 scrap'''
+    print(mode)
     if(mode) :
         #saves in list [[cime, url, text],..]
         final_data = []
@@ -325,8 +326,10 @@ def get_articles(mode, crime_list, articles_fname) :
         #use only crime, url, text
         return df
     elif(mode == 0) :
-        data = pd.read_csv(articles_fname) 
+        print("Reading")
+        data = pd.read_csv(articles_fname, index_col=[0]) 
         #use only crime, url, text
+        print("done")
         return data
     
 def get_locations(articles_df, data, loc_model, cities_lst, spellings, present) :

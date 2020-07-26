@@ -140,7 +140,7 @@ def DeccanChronicleScrapper():
         url_lst.append(data['link'])
     df_raw = pd.DataFrame(list(zip(text_lst, url_lst)), columns = ["text", "url"])
     #print(df_raw.shape)
-    df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
+    #df_raw = check_url_in_database(df_raw, "./database/headlines.csv")
     #print(df_raw.shape)
     df_crime = get_crime(df_raw)
     data = get_data("./database/data.json")
@@ -149,14 +149,15 @@ def DeccanChronicleScrapper():
     df = preprocessing2(df, data)
     df_with_date = get_date(df)
     #print(df_with_date.shape)
-    df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    #df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
     #print(df_final.shape)
+    df_final = df_with_date
     if(df_final.shape[0] != 0) :
         #print("saving articles..")
         #saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)
         save_data(data_, "./database/data.json")
-    return df_final
+    return df_final.reset_index(drop=True)
     
         
 #DeccanChronicleScrapper()

@@ -159,9 +159,10 @@ def ToiScrapper():
     print(df)
     df = preprocessing2(df, data)
     df_with_date = get_date(df)
-    df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    #df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
+    df_final = df_with_date
     if(df_final.shape[0] != 0) :
-        saving_articles(df_final, "./database/headlines.csv")
+        #saving_articles(df_final, "./database/headlines.csv")
         data_ = preprocessing(df_final, data)
         save_data(data_, "./database/data.json")
         
