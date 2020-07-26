@@ -7,6 +7,7 @@ from sources.toi import ToiScrapper
 from utils.modules import saving_articles
 import pymongo
 import pandas as pd
+from newspaper import Article
 
 
 def LeoMineScraper():
@@ -18,9 +19,25 @@ def LeoMineScraper():
     #df = df.append(ToiScrapper(), ignore_index=True)
     headlines_lst = []
     for index, row in df.iterrows() :
-        row["text"] = row["text"].replace("\n\n", " ")
-        row["text"] = row["text"].replace("\n", " ")
-        headlines_lst.append(row["text"].split(".")[0])
+        try:
+            article = Article(row["url"])
+            article.download()
+            article.parse()
+            article.nlp()
+            #print(article.publish_date)
+            headline = article.title
+            #print(headline)
+            if(headline == "") :
+                #print("nothing")
+                row["text"] = row["text"].replace("\n\n", " ")
+                row["text"] = row["text"].replace("\n", " ")
+                headline = row["text"].split(".")[0]
+                
+        except:
+            row["text"] = row["text"].replace("\n\n", " ")
+            row["text"] = row["text"].replace("\n", " ")
+            headline = row["text"].split(".")[0]
+        headlines_lst.append(headline)
     df["headline"] = headlines_lst
     client = pymongo.MongoClient(
         "mongodb+srv://praj:pra@cluster0-jpt7l.mongodb.net/test?retryWrites=true&w=majority"

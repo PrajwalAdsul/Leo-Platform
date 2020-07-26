@@ -18,9 +18,25 @@ df_with_date = get_date(df)
 df_final = df_with_date
 headlines_lst = []
 for index, row in df_final.iterrows() :
-    row["text"] = row["text"].replace("\n\n", " ")
-    row["text"] = row["text"].replace("\n", " ")
-    headlines_lst.append(row["text"].split(".")[0])
+    try:
+        article = Article(row["url"])
+        article.download()
+        article.parse()
+        article.nlp()
+        #print(article.publish_date)
+        headline = article.title
+        #print(headline)
+        if(headline == "") :
+            #print("nothing")
+            row["text"] = row["text"].replace("\n\n", " ")
+            row["text"] = row["text"].replace("\n", " ")
+            headline = row["text"].split(".")[0]
+
+    except:
+        row["text"] = row["text"].replace("\n\n", " ")
+        row["text"] = row["text"].replace("\n", " ")
+        headline = row["text"].split(".")[0]
+    headlines_lst.append(headline)
 df_final["headline"] = headlines_lst
 saving_articles(df_final, "./database/headlines.csv")
 data_ = preprocessing(df_, data)
