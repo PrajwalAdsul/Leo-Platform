@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 from os import getenv
-from pymongo import MongoClient
+
 from dotenv import load_dotenv
+from pymongo import MongoClient
 
 
 def new_connection(collection):
@@ -16,6 +17,6 @@ def new_connection(collection):
     database = getenv("DATABASE")
     client = MongoClient(host, serverSelectionTimeoutMS=6000)
     data_base = client[database]
-    if data_base.authenticate(username, password, mechanism='SCRAM-SHA-1'):
+    if data_base.authenticate(username, password, mechanism="SCRAM-SHA-1"):
         return data_base[collection]
     return None

@@ -1,22 +1,24 @@
-import pymongo
+import csv
+import datetime
+import json
 import random
 import string
-import datetime
-import pytz
-import requests
 import threading
 import time
-import csv
-import json
+from datetime import datetime
+
+import pandas as pd
+import pymongo
+import pytz
+import requests
 from bson import json_util
 from bson.son import SON
-import pandas as pd
-from flask import Flask, request, make_response, jsonify, send_file, send_from_directory
+from flask import (Flask, jsonify, make_response, request, send_file,
+                   send_from_directory)
 from flask_cors import CORS
 from flask_ngrok import run_with_ngrok
+
 from LeoMine_NewSources import LeoMineScraper
-from datetime import datetime
-import requests
 
 app = Flask(__name__)
 CORS(app)
