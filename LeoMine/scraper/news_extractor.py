@@ -20,9 +20,11 @@ def get_news_headlines(loc) :
     df = pd.read_csv("./database/headlines.csv", index_col=[0])
     #print(df)
     news = []
+    urls = []
     region_lst = df["region"].tolist()
     city_lst = df["city"].tolist()
     headlines_lst = df["headline"].tolist()
+    url_lst = df["url"].tolist()
     #print(city_lst)
     
             
@@ -32,6 +34,7 @@ def get_news_headlines(loc) :
         lst = list(cursor)
         for l in lst :
             news.append(headlines_lst[index])
+            urls.append(url_lst[index])
             
     for index, city in enumerate(city_lst) :
         query = { "city": re.compile(city, re.IGNORECASE) }
@@ -39,10 +42,11 @@ def get_news_headlines(loc) :
         lst = list(cursor)
         for l in lst :
             news.append(headlines_lst[index])
+            urls.append(url_lst[index])
 
-    return news
+    return news, urls
 
 
 def extract_news_from_text(text):
-    news = get_news_headlines(get_location(text))
-    return news
+    news, urls = get_news_headlines(get_location(text))
+    return news, urls
