@@ -9,8 +9,8 @@ cities = get_cities(data)
 print("setup done")
 df = get_articles(0, crime_list, "./database/articles_crimewise.csv")
 print(df.shape)
-#df = get_articles(0, crime_list, "./database/articles_crimewise.csv")
-'''df_ = get_locations(df, data, nlp, cities, spellings, 0)
+# df = get_articles(0, crime_list, "./database/articles_crimewise.csv")
+"""df_ = get_locations(df, data, nlp, cities, spellings, 0)
 print(df_)
 df = preprocessing2(df, data)
 df_with_date = get_date(df)
@@ -26,4 +26,4 @@ saving_articles(df_final, "./database/headlines.csv")
 data_ = preprocessing(df_, data)
 
 
-save_data(data_, "./database/data.json")'''
+save_data(data_, "./database/data.json")"""

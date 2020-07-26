@@ -1,4 +1,3 @@
-from . import models
-from . import manager
+from . import manager, models
 
-__version__ = '0.0.10'
+__version__ = "0.0.10"

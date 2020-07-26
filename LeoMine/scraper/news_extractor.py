@@ -2,13 +2,13 @@ from utils.modules import *
 import pymongo
 import re
 
-def get_location(text) :
+
+def get_location(text):
     data = get_data("./database/data.json")
     locs = get_locations_list(data)
     spellings = get_spelling_list("./database/spell.csv")
     nlp = load_locations(locs, spellings)
     cities = get_cities(data)
-    
 
     return get_locations_from_user_text(text, data, nlp, cities, spellings)
 
@@ -39,12 +39,10 @@ def get_news_headlines(loc) :
         lst = list(cursor)
         for l in lst :
             news.append(headlines_lst[index])
-            
+
     return news
 
 
-def extract_news_from_text(text) :
+def extract_news_from_text(text):
     news = get_news_headlines(get_location(text))
     return news
-    
-extract_news_from_text("news of mumbai")

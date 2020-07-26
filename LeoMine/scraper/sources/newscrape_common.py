@@ -2,8 +2,9 @@
 A set of functions commonly used in the Newscrape project.
 """
 
-from datetime import datetime, timezone, timedelta
-from bs4 import NavigableString, Comment
+from datetime import datetime, timedelta, timezone
+
+from bs4 import Comment, NavigableString
 
 
 def str_is_set(string):
@@ -25,9 +26,7 @@ def to_utc(timestamp):
 
 
 def set_ist_zone(timestamp):
-    timestamp.replace(
-        tzinfo=timezone(timedelta(hours=5, minutes=30))
-    )
+    timestamp.replace(tzinfo=timezone(timedelta(hours=5, minutes=30)))
 
 
 def ist_to_utc(timestamp):
@@ -42,6 +41,7 @@ def remove_duplicate_entries(objects, key, prefer=None):
     obj[prefer] giving False value is discarded
     """
     unique_set = set()
+
     def is_unique(obj):
         "Return False x[key] is present in set, True otherwise."
         if obj[key] not in unique_set:
@@ -51,7 +51,7 @@ def remove_duplicate_entries(objects, key, prefer=None):
 
     if prefer is None:
         return list(filter(is_unique, objects))
-    
+
     preferred = {}
     for obj in objects:
         # obj[key] assumed always hashable
