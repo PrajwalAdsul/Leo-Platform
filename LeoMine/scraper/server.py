@@ -11,14 +11,24 @@ import pandas as pd
 import pymongo
 import pytz
 import requests
-from bson import json_util
+from bson import ObjectId, json_util
 from bson.son import SON
-from flask import (Flask, jsonify, make_response, request, send_file,
-                   send_from_directory)
+from flask import Flask, jsonify, make_response, request, send_file, send_from_directory
 from flask_cors import CORS
 from flask_ngrok import run_with_ngrok
 
 from LeoMine_NewSources import LeoMineScraper
+
+
+class MongoDbEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            print("check")
+            return obj.strftime("%d %B %Y, %I:%M %p")
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        return json.JSONEncoder.default(self, obj)
+
 
 app = Flask(__name__)
 CORS(app)
@@ -178,7 +188,7 @@ def news_by_city(city):
             {"headline": 1, "url": 1, "crime": 1, "city": 1, "date": 1},
         )
         docs_list = list(cursor)
-        return json.dumps(docs_list, default=json_util.default)
+        return json.dumps(docs_list, cls=MongoDbEncoder)
 
 
 @app.route(
