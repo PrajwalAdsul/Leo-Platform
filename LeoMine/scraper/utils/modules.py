@@ -720,7 +720,7 @@ def get_locations_from_user_text(text, data, loc_model, cities_lst, spellings):
     ]
     state = [s.lower() for s in states]
     extra_locs.extend(state)
-    f = open("country.txt", "r")
+    f = open("./database/country.txt", "r")
     for country in f.readline():
         extra_locs.append(country.lower())
 

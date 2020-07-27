@@ -9,6 +9,10 @@ from sources.the_hindu import TheHinduScrapper
 from sources.toi import ToiScrapper
 from sources.tweets_scrapper import TweetsScrapper
 from utils.modules import saving_articles
+import pymongo
+import pandas as pd
+from newspaper import Article
+import re
 
 
 def LeoMineScraper():
@@ -50,13 +54,8 @@ def LeoMineScraper():
         query = {"url": row["url"]}
         cursor = db.news.find(query)
         lst = list(cursor)
-        if len(lst) == 0:
-            query = {
-                "date": row["date"],
-                "crime": row["crime"],
-                "region": row["region"],
-                "city": row["city"],
-            }
+        if(len(lst) == 0) :
+            query = { "date": row["date"],"crime": row["crime"], "region": re.compile(row["region"], re.IGNORECASE), "city": re.compile(row["city"], re.IGNORECASE)  }
             cursor = db.news.find(query)
             lst = list(cursor)
             if len(lst) == 0:
