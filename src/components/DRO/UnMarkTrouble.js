@@ -32,7 +32,7 @@ export default class UnMarkTrouble extends Component {
 			inTrouble : false,
 			token : this.props.token
 		};
-		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/unmarkTrouble', data)
+		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/unmark_trouble', data)
 		.then(response => {
 			//console.log(response);
 			this.setState({

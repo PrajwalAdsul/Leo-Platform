@@ -24,7 +24,7 @@ export default class ShowECs extends Component {
             token : this.props.token
         }
         console.log(data);
-        axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/getECs', data)
+        axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/emergency_contacts', data)
             .then(response => {
                 this.setState({
                     EClist : response.data.filter((val) => val != "")

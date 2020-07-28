@@ -152,7 +152,7 @@ export default class UserSignUp extends React.Component {
 			data.password = await this.sha256(data.user_name + data.password);
 			
 			// await axios.post('http://localhost:5000/LeoHelp/addUser', data)
-			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/addUser', data)
+			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/add', data)
 			.then(response => {
 				this.setState({
 					user_name : "",

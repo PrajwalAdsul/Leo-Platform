@@ -16,7 +16,7 @@ export default class Logout extends Component {
 		const data ={
 			user_name : localStorage.getItem('user_name'),
 		};
-		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/logOut', data)
+		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/logout', data)
 			.then(response => {
 				this.setState({
 				});

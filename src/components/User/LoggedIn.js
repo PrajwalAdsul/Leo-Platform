@@ -133,7 +133,7 @@ export default class LoggedIn extends Component {
 				"user_name" : this.state.user_name,
 				"token" : this.state.token
 			};
-			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/getUser', data)
+			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/get', data)
 			.then(response => {
 				this.setState({
 					inTrouble : response.data.inTrouble,
@@ -194,7 +194,7 @@ export default class LoggedIn extends Component {
 			}
 		}
 		let res;
-		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/updateEC', data)
+		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/update/emergency_contacts', data)
 		.then(response => {
 			res = response.status;
 			this.setState({

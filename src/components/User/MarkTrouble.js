@@ -33,7 +33,7 @@ export default class MarkTrouble extends Component {
 			token : this.state.token,
 			inTrouble : true
 		};
-		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/markTrouble', data)
+		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/mark_trouble', data)
 		.then(response => {
 			//console.log(response);
 		})

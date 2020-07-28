@@ -29,7 +29,7 @@ export default class UserProfile extends Component {
 			const data = {user_name : this.props.location.state.user_name, token : this.props.location.state.token};
 			let res;
 			//console.log(data);
-			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/getUser', data)
+			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/get', data)
 			.then(response => {
 				this.setState({
 					user_name : response.data.user_name,

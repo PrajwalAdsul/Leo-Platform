@@ -31,7 +31,7 @@ export default class LoggedInUnMarkTrouble extends Component {
 			inTrouble : false,
 			token : this.props.token
 		};
-		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/unmarkTrouble', data)
+		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/unmark_trouble', data)
 		.then(response => {
 			this.setState({
 				unMarkDisable : false

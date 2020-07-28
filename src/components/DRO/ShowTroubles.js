@@ -41,7 +41,7 @@ export default class ShowTroubles extends Component {
         this.setState({
             token : localStorage.getItem('token')    
         });
-        axios.get('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/allUsers?token=' + this.state.token)
+        axios.get('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/dro/all_users?token=' + this.state.token)
             .then(response => {
                 this.setState({
                     troubleslist : response.data,
