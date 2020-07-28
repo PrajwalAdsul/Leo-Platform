@@ -19,9 +19,9 @@ export default class ShowECs extends Component {
     componentDidMount() {
         const data = {
             // user_name : localStorage.getItem('user_name'),
-            // token : localStorage.getItem('token')
             user_name: this.props.user_name,
-            token : this.props.token
+            token : localStorage.getItem('token')
+            // token : this.props.token
         }
         console.log(data);
         axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/emergency_contacts', data)

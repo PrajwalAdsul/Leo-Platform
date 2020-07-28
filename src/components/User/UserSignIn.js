@@ -89,7 +89,7 @@ export default class UserSignIn extends React.Component {
 			});
 		}
 	
-	}
+	} 
 
 	componentWillMount() {
 		localStorage.setItem('session_start', null);	

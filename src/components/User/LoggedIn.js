@@ -127,7 +127,9 @@ export default class LoggedIn extends Component {
 		try{
 			this.setState({
 				user_name : this.props.location.state.user_name,
-				token : this.props.location.state.token
+				// token : this.props.location.state.token
+				token : localStorage.getItem('token')
+			
 			});
 			const data = {
 				"user_name" : this.state.user_name,
@@ -184,7 +186,7 @@ export default class LoggedIn extends Component {
 			return;
 		}
 		for(var i = 1; i <= 5; i++){
-			if(data["ec" + String(i)].length == 10){
+			if(data["ec" + String(i)] != null && data["ec" + String(i)].length == 10){
 				for(var j = i + 1; j <= 5; j++){
 					if(data["ec" + String(i)] == data["ec" + String(j)]){
 						alert("All entered numbers should be unique");
@@ -236,7 +238,7 @@ export default class LoggedIn extends Component {
 		          	</a>
 		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
 		          	<div className="nav navbar-nav ml-auto">
-						<Link to="/UserNews" className='nav-item nav-link'>NEWS</Link>
+						<Link to="/UserNews" className='nav-item nav-link' target="_blank">NEWS</Link>
 						<Logout/>
 		            </div>
 	

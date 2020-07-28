@@ -46,7 +46,7 @@ export default class ShowTroubles extends Component {
                 this.setState({
                     troubleslist : response.data,
                 });
-            //console.log(this.state.troubleslist);
+            console.log(this.state.troubleslist);
             let a = this.state.troubleslist.sort(function(a, b) {
               var keyA = new Date(a.datetime),
                 keyB = new Date(b.datetime);
@@ -60,7 +60,7 @@ export default class ShowTroubles extends Component {
             });
             })
             .catch(function(error) {
-                //console.log(error);
+                console.log(error);
             })
     }
 

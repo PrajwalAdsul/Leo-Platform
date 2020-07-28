@@ -26,11 +26,12 @@ export default class MarkTrouble extends Component {
 		e.preventDefault();
 		const data = {
 			// user_name: localStorage.getItem('user_name'),
-			// token : localStorage.getItem('token'),
+			token : localStorage.getItem('token'),
 			latitude : this.state.latitude,
 			longitude : this.state.longitude,
 			user_name: this.props.user_name,
-			token : this.state.token,
+			type : "app",
+			// token : this.state.token,
 			inTrouble : true
 		};
 		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/mark_trouble', data)
