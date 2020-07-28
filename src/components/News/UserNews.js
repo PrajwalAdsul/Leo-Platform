@@ -1,4 +1,6 @@
 import React from "react"
+import Logout from '../User/Logout';
+import { Link } from "react-router-dom";
 import "./News.scss"
 
 export default class UserNews extends React.Component {
@@ -55,7 +57,19 @@ export default class UserNews extends React.Component {
     render() {
         console.log(this.state);
         return (
-            <div className="app">
+            <div>
+                <nav className='navbar navbar-expand-lg navbar-light header navbar-border'>
+                    <a className="navbar-brand" href="#">
+                        <img className="logo" src = {require('../Logo1.png')} />
+                    </a>
+                    <h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
+                    <div className="nav navbar-nav ml-auto">
+                        <Link to="/LoggedIn" className='nav-item nav-link'>BACK</Link>
+                        <Link to="/UserNews" className='nav-item nav-link is-active'>NEWS</Link>
+                        <Logout/>
+                    </div>
+    
+                </nav>
                 <div className="container">
                     {Object.keys(this.state.articles).map(this.renderArticle)}
                 </div>

@@ -234,10 +234,11 @@ export default class LoggedIn extends Component {
 					<a className="navbar-brand" href="#">
 		            	<img className="logo" src = {require('../Logo1.png')} />
 		          	</a>
-		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1> 
+		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
 		          	<div className="nav navbar-nav ml-auto">
-											<Logout/>
-		            </div>         
+						<Link to="/UserNews" className='nav-item nav-link'>NEWS</Link>
+						<Logout/>
+		            </div>
 	
 				</nav>
 

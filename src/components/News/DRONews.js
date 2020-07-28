@@ -1,5 +1,6 @@
 import React from "react"
 import "./News.scss"
+import DROHeader from '../DRO/DROHeader';
 
 export default class DRONews extends React.Component {
     constructor(props) {
@@ -56,6 +57,7 @@ export default class DRONews extends React.Component {
         console.log(this.state);
         return (
             <div className="app">
+                <DROHeader />
                 <div className="container">
                     {Object.keys(this.state.articles).map(this.renderArticle)}
                 </div>
