@@ -166,7 +166,7 @@ export default class LoggedIn extends Component {
 			ec3 : this.state.ec3,
 			ec4 : this.state.ec4,
 			ec5 : this.state.ec5,
-			token : this.state.token
+			token : await localStorage.getItem('token')
 		};
 		let c = 0, p = 0;
 		for(var i = 1; i <= 5; i++)
@@ -196,6 +196,9 @@ export default class LoggedIn extends Component {
 			}
 		}
 		let res;
+		console.log("*****great");
+		console.log(data);
+		console.log("*****great");
 		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/update/emergency_contacts', data)
 		.then(response => {
 			res = response.status;
@@ -205,7 +208,7 @@ export default class LoggedIn extends Component {
 			})
 		})
 		.catch(error => {
-			//console.log(error.response);
+			console.log(error.response);
 		});
 
 		if(res === 200) {

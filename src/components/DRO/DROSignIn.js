@@ -61,9 +61,14 @@ export default class DROSignIn extends React.Component {
 		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/dro/login', data)
 		.then(response => {
 			res = response.status;
+			localStorage.setItem('password', hash);
 			this.setState({
 				token : response.data.token
 			});
+			// console.log("************");
+			// console.log(localStorage.getItem('password'));
+			// console.log("************");
+			
 			//console.log(response.data);
 		})
 		.catch(error => {
@@ -105,8 +110,8 @@ export default class DROSignIn extends React.Component {
 	}
 
 	componentWillUpdate(nextProps, nextState) {
-		localStorage.setItem('user_name', JSON.stringify(nextState.user_name));
-		localStorage.setItem('password', JSON.stringify(nextState.password));
+		// localStorage.setItem('user_name', JSON.stringify(nextState.user_name));
+		// localStorage.setItem('password', JSON.stringify(nextState.password));
 	}
 
 	render() {
@@ -114,7 +119,11 @@ export default class DROSignIn extends React.Component {
 		if (this.state.loginSuccess == true) {
 			localStorage.setItem('session', "start");
 			localStorage.setItem('DRO_start', "start");
+			localStorage.setItem('user_name', this.state.user_name);
 			localStorage.setItem('token', this.state.token);
+			console.log("************");
+			console.log(this.state.user_name + " " + this.state.token + " " + this.sha256(this.state.password));
+			console.log("************");
 			return <Redirect push to = "/DROPanel" />;
 		}
 		return (

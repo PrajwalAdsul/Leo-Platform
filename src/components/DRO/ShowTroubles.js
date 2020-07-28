@@ -34,14 +34,41 @@ export default class ShowTroubles extends Component {
         super(props);
         this.state = {
             troubleslist : [],
+            user_name : null,
+            password : null,
             token : null
         };
     }
+    sha256 = async message => {
+        // encode as UTF-8
+        const msgBuffer = new TextEncoder('utf-8').encode(message);                    
+
+        // hash the message
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+        // convert ArrayBuffer to Array
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+        // convert bytes to hex string                  
+        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+        return hashHex; 
+    }
+
     componentDidMount() {
         this.setState({
+            user_name : localStorage.getItem('user_name'),
+            password : localStorage.getItem('password'),
             token : localStorage.getItem('token')    
         });
-        axios.get('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/dro/all_users?token=' + this.state.token)
+        let data = {
+            user_name : localStorage.getItem('user_name'),
+            password : localStorage.getItem('password'),
+            token : localStorage.getItem('token')
+        };
+        console.log("*****");
+        console.log(data);
+        console.log("*****");
+        axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/dro/all_users', data)
             .then(response => {
                 this.setState({
                     troubleslist : response.data,

@@ -12,7 +12,6 @@ export default class MarkTrouble extends Component {
 	constructor(props) {
 		super(props);
 		this.onSubmit = this.onSubmit.bind(this);
-
 		this.state = {
 			user_name : this.props.user_name,
 			latitude : 18.5293,

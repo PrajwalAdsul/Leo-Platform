@@ -13,24 +13,25 @@ export default class Logout extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 	}
 	async onSubmit(e) {
-		const data ={
-			user_name : localStorage.getItem('user_name'),
-		};
-		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/logOut', data)
-			.then(response => {
-				this.setState({
-				});
-			})
-			.catch(error => {
-				//console.log(error.response);
-				this.setState({
+		// const data ={
+		// 	user_name : localStorage.getItem('user_name'),
+		// };
+		// await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/logOut', data)
+		// 	.then(response => {
+		// 		this.setState({
+		// 		});
+		// 	})
+		// 	.catch(error => {
+		// 		//console.log(error.response);
+		// 		this.setState({
 					
-					});
-				return;
-			});
+		// 			});
+		// 		return;
+		// 	});
 		await localStorage.setItem('user_name', "");
 		await localStorage.setItem('password', "");
 		await localStorage.setItem('session', "end");
+		await localStorage.setItem('token', "");
 		await localStorage.clear();
 	}
 	render() {	
