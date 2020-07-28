@@ -183,10 +183,11 @@ hr {
 }
 .card {
  	margin: 15px;
- 	border-top-color: black !important;
- 	border-left-color: black !important;
- 	border-bottom-color: orange !important;
-	border-right-color: orange !important;
+ 	border-top-color: #00909e !important;
+ 	border-left-color: #00909e !important;
+ 	border-bottom-color: black !important;
+	border-right-color: black !important;
+	box-shadow:10px 10px 15px 0px #dae1e7;
 }
 
 .show {
@@ -331,7 +332,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 }
 #features-section {
 	background-color: #ffffff !important;
-	padding-top: 80px;
+	padding-top: 140px;
 }
 
 #contact-section {
@@ -455,13 +456,18 @@ small {
 }
 
 .screenshots-container img{
-	margin-bottom: 50px;
+	margin-bottom: 60px;
 	margin-top: 40px;
 }
 
 .screenshots-container {
 	margin-bottom: 30px;
 	margin-top: 20px;
+}
+
+.img-container {
+	padding-left: 0px !important;
+	padding-right: 0px !important
 }
 
 .react-multi-carousel-item--active {
@@ -544,4 +550,44 @@ small {
 	font-size: 20px;
 	text-decoration: none;
 	background-color: #00909e;
+}
+
+.col1-img {
+  	margin-top: 0px;
+  	margin-bottom: 80px;
+}
+
+.col2-img {
+  	margin-top: 40px;
+  	margin-bottom: 40px;
+}
+
+.col3-img {
+  	margin-top: 80px;
+  	margin-bottom: 0px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .col1-img, .col2-img, .col3-img {
+  	margin-top: 0px;
+  	margin-bottom: 0px;
+  }
+
+  .card-text {
+  	font-weight: 400 !important;
+  }
+
+  .jumbotron.login-jumbotron, .jumbotron.new-jumbotron {
+  	width: auto;
+  	margin: 20px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  /* For mobile phones: */
+  .card{
+  	height: 400px;
+  }
 }

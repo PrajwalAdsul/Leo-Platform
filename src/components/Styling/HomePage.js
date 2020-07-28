@@ -9,7 +9,9 @@ import ScrollspyNav from "react-scrollspy-nav";
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import HomeHeader from './HomeHeader';
 import Contact from './Contact';
-import Features from './Features';
+import AppFeatures from './AppFeatures';
+import BotFeatures from './BotFeatures';
+import WebFeatures from './WebFeatures';
 import Screenshots from './Screenshots';
 import Footer from './Footer';
 
@@ -33,7 +35,12 @@ export default class HomePage extends React.Component {
 	 					
 	 				</div>
 	 				<div id="features-section">
+	 					<div className="line"></div>
+						<p className="section-main-heading">FEATURES</p>
+	 					<AppFeatures />
 	 					<Screenshots />
+	 					<BotFeatures />
+	 					<WebFeatures />
 	 				</div>
 	 				<div id="contact-section">
 	 					<Contact />

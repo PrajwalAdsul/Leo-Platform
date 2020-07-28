@@ -64,7 +64,6 @@ export default class UserNews extends React.Component {
                     </a>
                     <h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
                     <div className="nav navbar-nav ml-auto">
-                        <Link to="/LoggedIn" className='nav-item nav-link'>BACK</Link>
                         <Link to="/UserNews" className='nav-item nav-link is-active'>NEWS</Link>
                         <Logout/>
                     </div>
