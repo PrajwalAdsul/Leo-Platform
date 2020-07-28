@@ -26,7 +26,7 @@ export default class UserProfile extends Component {
 
 	componentDidMount = async e => {
 		try{
-			const data = {user_name : this.props.location.state.user_name, token : this.props.location.state.token};
+			const data = {user_name : this.props.location.state.user_name, token : localStorage.getItem("token")};
 			let res;
 			//console.log(data);
 			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/get', data)
