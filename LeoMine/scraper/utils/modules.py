@@ -621,6 +621,7 @@ def get_date(df):
         article.parse()
         article.nlp()
         date_lst.append(article.publish_date)
+        print(type(article.publish_date))
     df["date"] = date_lst
     return df
 
