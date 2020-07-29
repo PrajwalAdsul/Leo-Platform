@@ -4,7 +4,8 @@ from newspaper import Article
 import json
 from datetime import datetime
 import re
-
+import requests
+from crimewise import CrimewiseScrapper
 
 from sources.deccan_chronicle import DeccanChronicleScrapper
 from sources.hindustan_times import HindustanTimesScrapper
@@ -13,7 +14,6 @@ from sources.the_hindu import TheHinduScrapper
 from sources.toi import ToiScrapper
 from sources.tweets_scrapper import TweetsScrapper
 from utils.modules import saving_articles
-from crimewise import CrimewiseScrapper
 
 def MakeConnections()  :
     client = pymongo.MongoClient(
@@ -95,6 +95,7 @@ def DumpIntoDb(db, json_news) :
                 upsert=True,
             )
             results.append(result.upserted_id)
+            print("bhnm")
         print("Number of crimes upserted into database:", len(results))
             
         print("done")
