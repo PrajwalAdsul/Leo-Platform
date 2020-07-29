@@ -78,9 +78,9 @@ export default class Contact extends Component {
 						<h2 className="contact-tagline">We'd like to hear from you</h2>
 						<p className="section-p">Don't hesitate to get in contact with us no matter your request. We are here to help you.</p>
 						<ul>
-							<li><FontAwesomeIcon icon={faMapMarker} color="#00909e"/><span className="list-text">COE, Pune, India</span></li>
-							<li><span className="list-text">9999999999</span></li>
-							<li><FontAwesomeIcon icon={faEnvelope} color="#00909e"/><span className="list-text">leo@gmail.com</span></li>
+							<li><FontAwesomeIcon icon={faMapMarker} color="#00909e"/><span className="list-text">College of Engineering, Pune, India</span></li>
+							<li><span className="list-text">+91 8379987625</span></li>
+							<li><FontAwesomeIcon icon={faEnvelope} color="#00909e"/><span className="list-text">priyankakankal17@gmail.com</span></li>
 						</ul>
 					</div>
 					<div className="col-md-6 contact-column col2">

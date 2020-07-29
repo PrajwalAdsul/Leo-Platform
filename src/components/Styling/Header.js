@@ -25,7 +25,8 @@ export default class Header extends Component {
 		          	
 		          	<div className="nav navbar-nav ml-auto">
 		          		<Link to="/HomePage#home-section" className='nav-item nav-link'>HOME</Link>
-		          		<Link to="/HomePage#features-section" className='nav-item nav-link'>FEATURES</Link> 
+		          		<Link to="/HomePage#features-section" className='nav-item nav-link'>FEATURES</Link>
+		          		<Link to="/HomePage#about-section" className='nav-item nav-link'>ABOUT</Link> 
 		          		<Link to="/HomePage#contact-section" className='nav-item nav-link'>CONTACT</Link>	
 			          	<Link to="/UserSignIn" className='nav-item nav-link'>USER LOGIN</Link>
 			            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link> 			

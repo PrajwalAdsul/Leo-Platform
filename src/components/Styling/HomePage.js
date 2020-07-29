@@ -31,14 +31,17 @@ export default class HomePage extends React.Component {
 	 							<img className="d-block w-100" src = {require('../triangle4.jpg')} /> 
 	 						</div>
 	 						<div className="col-md-4 my-auto">
-	 							<div className="row">
-	 								<span className="main-tagline"><span className="color-lightblue">PROTECTING</span> YOU<br/> LIKE <span className="color-lightblue">FAMILY</span></span>
-	 							</div>
-	 							<div className="row">
+	 							
+	 								<div className="container">
+	 									<span className="main-tagline"><span className="color-lightblue">PROTECTING</span> YOU<br/> LIKE <span className="color-lightblue">FAMILY</span></span>
+	 								</div>
+	 							
+	 								<div className="container">
 	 								<a className="download-app-btn" href={"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank">
 	 									<img className="d-block w-50 download-app-btn" src = {require('./download-img.png')} />
 	 								</a>
-	 							</div>
+	 								</div>
+	 							
 	 						</div>
 	 						<div className="col-md-1"></div>
 	 					</div>

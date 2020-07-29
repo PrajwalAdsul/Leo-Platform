@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import DownloadLink from "react-download-link";
 import { Link } from "react-router-dom";
 import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
@@ -18,7 +20,7 @@ export default class Footer extends Component {
 		return (
 			<div>
 				<footer className="site-footer">
-					<div className="row">
+					<div className="row upper-footer">
 						<div className="col-md-8">
 							<p>Quick Links:</p>
 							<div className="row">
@@ -40,6 +42,12 @@ export default class Footer extends Component {
 							<p><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank" className="footer-link">Download Leo App</a></p>
 						</div>
 					</div>
+					<hr className="footer-hr" />
+					<center>
+					<div className="copyright-footer">
+						<p>Made with love <FontAwesomeIcon icon={faHeart} color="#fb4f59"/> by LeoCode</p>
+					</div>
+					</center>
 				</footer>
 			</div>
 		)

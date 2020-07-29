@@ -401,16 +401,35 @@ p.section-heading {
 
 .site-footer {
 	background-color: #142850;
-	padding-left: 60px;
 	padding-top: 50px;
-	padding-right: 50px;
-	padding-bottom: 50px;
+	padding-bottom: 40px;
+	margin-bottom: 0px !important;
 	color: white;
 }
 
 .site-footer p {
 	padding-left: 40px;
 	font-size: 18px;
+}
+
+.upper-footer {
+	margin-top:20px;
+	margin-bottom: 40px;
+}
+
+.copyright-footer {
+	margin-top:40px;
+	color: rgb(218, 225, 231, 0.6);
+
+}
+
+.copyright-footer p {
+	font-size: 22px !important;
+}
+
+.footer-hr {
+	background-color: rgb(218, 225, 231, 0.3);
+	height: 1px;
 }
 
 ul li {
@@ -662,24 +681,45 @@ small {
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
-  .col1-img, .col2-img, .col3-img {
-  	margin-top: 0px;
-  	margin-bottom: 0px;
-  }
+ 	.col1-img, .col2-img, .col3-img {
+  		margin-top: 0px;
+  		margin-bottom: 0px;
+	}
 
-  .card-text {
-  	font-weight: 400 !important;
-  }
+	.card-text {
+		font-weight: 400 !important;
+	}
 
-  .jumbotron.login-jumbotron, .jumbotron.new-jumbotron {
-  	width: auto;
-  	margin: 20px;
-  }
+	#about-section p, #contact-section p {
+  		font-weight: 400;
+	}
+
+	.jumbotron.login-jumbotron, .jumbotron.new-jumbotron {
+  		width: auto;
+  		margin: 20px;
+  	}
 
   	.contact-column.col1, .contact-column.col2 {
 		padding-right: 20px!important;
 		padding-left: 20px!important;
 	}
+
+	.main-tagline {
+		font-size: 25px;
+	}
+
+	.main-tagline .color-lightblue {
+		font-size: 35px;
+	}
+
+	.aboutsection-heading {
+		font-size: 40px;
+	}
+
+	.section-jumbotron h2 {
+		font-size: 30px !important;
+	}
+
 }
 
 @media only screen and (min-width: 992px) {
@@ -702,6 +742,11 @@ small {
 
 	.team-members .row {
 		width: 80%;
+	}
+
+	.site-footer {
+		padding-left: 120px;
+		padding-right: 50px;
 	}
 
 }
