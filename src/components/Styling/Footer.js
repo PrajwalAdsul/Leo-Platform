@@ -24,14 +24,14 @@ export default class Footer extends Component {
 							<div className="row">
 								<div className="col-6">
 									<ul>
-										<li><Link to="/HomePage#features-section" className="footer-link">Features</Link></li>
-										<li>Screenshots</li>
+										<li><Link to="/UserSignIn" className="footer-link">User Login</Link></li>
+										<li><Link to="/DROSignIn" className="footer-link">DRO Login</Link></li>
 									</ul>
 								</div>
 								<div className="col-6">
 									<ul>
-										<li><Link to="/UserSignIn" className="footer-link">User Login</Link></li>
-										<li><Link to="/DROSignIn" className="footer-link">DRO Login</Link></li>
+										<li><a href = {"https://drive.google.com/file/d/1auANTHv5d-9phggss4s0SRCl5_wmepu_/view?usp=sharing"} target="_blank" className="footer-link">Privacy Policy</a></li>
+										<li><a href = {"https://drive.google.com/file/d/1W5GDYjWCFIj_dfbctg0iA_9Unp8gkoKU/view?usp=sharing"} target="_blank" className="footer-link">Terms and Condition</a></li>
 									</ul>
 								</div>
 							</div>

@@ -39,7 +39,7 @@ export default class Screenshots extends Component {
 		return (
 			<div className="jumbotron section-jumbotron">
 				<div className="line"></div>
-				<p className="section-main-heading">APP SCREENSHOTS</p>
+				<p className="section-main-heading">SCREENSHOTS</p>
 
 				<div className="row">
 					<div className="col-md-2"></div>

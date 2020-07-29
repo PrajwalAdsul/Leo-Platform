@@ -35,7 +35,7 @@ export default class HomePage extends React.Component {
 	 								<span className="main-tagline"><span className="color-lightblue">PROTECTING</span> YOU<br/> LIKE <span className="color-lightblue">FAMILY</span></span>
 	 							</div>
 	 							<div className="row">
-	 								<a className="download-app-btn" href="https://docs.google.com/document/d/1TE_2-gR_4oQjAEJ1RD-e2kieuFcEusxUBD5kKTKT8eI/edit?usp=sharing" target="_blank">
+	 								<a className="download-app-btn" href={"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank">
 	 									<img className="d-block w-50 download-app-btn" src = {require('./download-img.png')} />
 	 								</a>
 	 							</div>
@@ -45,12 +45,13 @@ export default class HomePage extends React.Component {
 	 					
 	 				</div>
 	 				<div id="features-section">
-	 					<span className="section-heading">Features</span>
+	 					<span className="aboutsection-heading">Features</span>
 	 					<AppFeatures />
 	 					<Screenshots />
 	 					<BotFeatures />
-	 					<WebFeatures />
+	 					
 	 				</div>
+	 				<WebFeatures />
 	 				<div id="about-section">
 	 					<About />
 	 				</div>
