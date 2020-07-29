@@ -1,4 +1,5 @@
 import React from "react"
+import axios from 'axios';
 import "./News.scss"
 import DROHeader from '../DRO/DROHeader';
 
@@ -7,51 +8,46 @@ export default class DRONews extends React.Component {
         super(props);
 
         this.state = {
-            articles: {
-                'article': {
-                    "color": "FEC006",
-                    "title": "Snow in Turkey Brings Travel Woes",
-                    "thumbnail": "",
-                    "category": "Arson",
-                    "excerpt": "Heavy snowstorm in Turkey creates havoc as hundreds of villages left without power",
-                    "date": new Date()
-                },
-                'article-1': {
-                    "color": "2196F3",
-                    "title": "Landslide Leaving Thousands Homeless",
-                    "thumbnail": "",
-                    "category": "Riot",
-                    "excerpt": "An aburt landslide in the Silcon Valley has left thousands homeless and on the streets.",
-                    "date": new Date()
-                },
-                'article-2': {
-                    "color": "FE5621",
-                    "title": "Hail the size of baseballs in New York",
-                    "thumbnail": "",
-                    "category": "Holding hostage",
-                    "excerpt": "A rare and unexpected event occurred today as hail the size of snowball hits New York citizens.",
-                    "date": new Date()
-                },
-                'article-3': {
-                    "color": "673AB7",
-                    "title": "Earthquake destorying San Fransisco",
-                    "thumbnail": "",
-                    "category": "Rape",
-                    "excerpt": "",
-                    "date": new Date()
-                }
-            }
+            articles: [],
+            alist : null
         }
-        this.renderArticle = this.renderArticle.bind(this);
     };
-
-    renderArticle(key) {
-        return (
-            <div className="column">
-                <Article key={key} index={key} details={this.state.articles[key]} />
-            </div>
+    componentDidMount() {
+       
+        axios.get('https://leomine-backend.herokuapp.com/all_news')
+            .then(response => {
+                this.setState({
+                    alist : response.data,
+                });
+                let ll = []   
+                for(var i = 0; i < this.state.alist.length; i++){
+                    // console.log(this.state.alist[i]);
+                    let y = this.state.alist[i];
+                    let a = {
+                            "headline" : y.headline,
+                            "city" : y.city,
+                            "crime" : y.crime,
+                            "url" : y.url,
+                            "date" : y.date
+                        }
+                    
+                    ll.push(a);
+                }
+                this.setState({
+                    articles : ll
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
+     troublesListPlatform() {
+        return this.state.articles.map(
+            function(data, i) {
+                return <Article details = {data} key={i} />;
+            }
         )
-    };
+    }
 
     render() {
         console.log(this.state);
@@ -59,7 +55,7 @@ export default class DRONews extends React.Component {
             <div className="app">
                 <DROHeader />
                 <div className="container">
-                    {Object.keys(this.state.articles).map(this.renderArticle)}
+                      {this.troublesListPlatform()}
                 </div>
             </div>
         )
@@ -70,17 +66,16 @@ class Article extends React.Component {
     render() {
         var details = this.props.details,
             styles = {
-                backgroundColor: '#' + details.color
+                backgroundColor: '#000000'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
             };
 
         return (
             <article className="article">
-                <h4 className="article__category" style={styles}>{details.category}</h4>
-                <h3 className="article__title">{details.title}</h3>
-                <h4 className="article__excerpt">{details.excerpt}</h4>
+                <h4 className="article__category" style={styles}>{details.crime}</h4>
+                <h4 className="article__category" style={styles}>{details.city}</h4>
+                <h3 className="article__title">{details.headline}</h3>
+                <a href={details.url} target = "_blank"><h4 className="article_url">{details.url}</h4></a>
                 <h4 className="article__date">{details.date.toString()}</h4>
-                <button type="button" onClick={this.onSubmit} className="btn btn-dark article__button">Edit</button>
-                <button type="button" onClick={this.onSubmit} className="article__button btn btn-dark ">Delete</button>
             </article>
         )
     }
