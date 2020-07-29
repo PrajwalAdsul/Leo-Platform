@@ -63,6 +63,7 @@ export default class HomeHeader extends Component {
 	                    <ul className="nav navbar-nav ml-auto">
 	                        <li><a href="#home-section" className="nav-item nav-link">HOME</a></li>
 	                        <li><a href="#features-section" className="nav-item nav-link">FEATURES</a></li>
+	                        <li><a href="#about-section" className="nav-item nav-link">ABOUT</a></li>
 	                        <li><a href="#contact-section" className="nav-item nav-link">CONTACT</a></li>
 	                    </ul>
                		</ScrollspyNav>

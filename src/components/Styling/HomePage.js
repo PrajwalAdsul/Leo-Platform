@@ -8,6 +8,7 @@ import Error from '../../elements/Error';
 import ScrollspyNav from "react-scrollspy-nav";
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import HomeHeader from './HomeHeader';
+import About from './About';
 import Contact from './Contact';
 import AppFeatures from './AppFeatures';
 import BotFeatures from './BotFeatures';
@@ -44,11 +45,14 @@ export default class HomePage extends React.Component {
 	 					
 	 				</div>
 	 				<div id="features-section">
-	 					<div className="line"></div>
+	 					<span className="section-heading">Features</span>
 	 					<AppFeatures />
 	 					<Screenshots />
 	 					<BotFeatures />
 	 					<WebFeatures />
+	 				</div>
+	 				<div id="about-section">
+	 					<About />
 	 				</div>
 	 				<div id="contact-section">
 	 					<Contact />
