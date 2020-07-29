@@ -353,14 +353,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	text-align: left;
 }
 
-.contact-column.col1 {
-	padding-right: 40px!important;
-}
-
-.contact-column.col2 {
-	padding-left: 40px!important;
-}
-
 .list-text {
 	padding-left: 20px;
 	color: #142850;
@@ -567,6 +559,10 @@ small {
   	margin-bottom: 0px;
 }
 
+.download-app-btn {
+	margin-top: 30px;
+}
+
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -583,11 +579,25 @@ small {
   	width: auto;
   	margin: 20px;
   }
+
+  	.contact-column.col1, .contact-column.col2 {
+		padding-right: 20px!important;
+		padding-left: 20px!important;
+	}
 }
 
 @media only screen and (min-width: 992px) {
-  /* For mobile phones: */
+  /* For desktop: */
   .card{
   	height: 400px;
   }
+
+ 	.contact-column.col1 {
+		padding-right: 40px!important;
+	}
+
+	.contact-column.col2 {
+		padding-left: 40px!important;
+	}
+
 }

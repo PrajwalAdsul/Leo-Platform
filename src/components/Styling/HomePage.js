@@ -25,18 +25,26 @@ export default class HomePage extends React.Component {
                 <div>
 	 				<div id="home-section">
 	 					<div className="row h-100">
-	 						<div className="col-sm-6 my-auto">
-	 							<img src = {require('../Logo1.png')} /> 
+	 						<div className="col-md-1"></div>
+	 						<div className="col-md-6 my-auto">
+	 							<img className="d-block w-100" src = {require('../triangle4.jpg')} /> 
 	 						</div>
-	 						<div className="col-sm-6 my-auto">
-	 							<span className="main-tagline">YOUR <span className="color-lightblue">SAFETY</span> <br/> IS OUR <span className="color-lightblue">PRIORITY</span></span>
+	 						<div className="col-md-4 my-auto">
+	 							<div className="row">
+	 								<span className="main-tagline"><span className="color-lightblue">PROTECTING</span> YOU<br/> LIKE <span className="color-lightblue">FAMILY</span></span>
+	 							</div>
+	 							<div className="row">
+	 								<a className="download-app-btn" href="https://docs.google.com/document/d/1TE_2-gR_4oQjAEJ1RD-e2kieuFcEusxUBD5kKTKT8eI/edit?usp=sharing" target="_blank">
+	 									<img className="d-block w-50 download-app-btn" src = {require('./download-img.png')} />
+	 								</a>
+	 							</div>
 	 						</div>
+	 						<div className="col-md-1"></div>
 	 					</div>
 	 					
 	 				</div>
 	 				<div id="features-section">
 	 					<div className="line"></div>
-						<p className="section-main-heading">FEATURES</p>
 	 					<AppFeatures />
 	 					<Screenshots />
 	 					<BotFeatures />

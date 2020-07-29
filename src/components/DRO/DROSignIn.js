@@ -50,7 +50,7 @@ export default class DROSignIn extends React.Component {
 
 
 	onSubmit = async e => {
-		let hash = await this.sha256(this.state.password);
+		let hash = await this.sha256(this.state.user_name + this.state.password);
 		// 256 hash of password "drodrodro" 3e23d25887299c5b47a11e68aa600b6e9bb78d775ce09babfbfae14cc8a4e703"
 		const data = {
 			user_name : this.state.user_name,
