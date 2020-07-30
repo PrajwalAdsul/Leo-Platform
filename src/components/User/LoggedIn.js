@@ -147,8 +147,12 @@ export default class LoggedIn extends Component {
 					ec4 : response.data.emergencyContacts[3],
 					ec5 : response.data.emergencyContacts[4],
 					area : temparea,
+					latitude: response.data.latitude,
+					longitude: response.data.longitude,
 					data : response.data
 				});
+
+				console.log(response.data)
 			})
 			.catch(error => {
 				//console.log(error.response);
@@ -237,6 +241,7 @@ export default class LoggedIn extends Component {
 		}
 
 		console.log(this.state.area);
+		console.log("https://maps.google.it/maps?q="+this.state.area+"&output=embed");
 		return (
 			<div className="user-panel">			
 				<nav className='navbar navbar-expand-lg navbar-light header navbar-border'>
@@ -352,7 +357,7 @@ export default class LoggedIn extends Component {
 
 								<div className="col-md-6">
 									<div className="google-map-code">
-          								<iframe src={"https://maps.google.it/maps?q=+this.state.area+&output=embed"} width="600" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          								<iframe src={"https://maps.google.it/maps?q="+this.state.latitude+","+this.state.longitude+"&output=embed"} width="600" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
        								</div>
 								</div>
 							</div>
