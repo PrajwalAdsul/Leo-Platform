@@ -137,6 +137,8 @@ export default class LoggedIn extends Component {
 			};
 			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/get', data)
 			.then(response => {
+				var temparea=""
+				temparea = response.data.area.replace(/ /g, "+");
 				this.setState({
 					inTrouble : response.data.inTrouble,
 					ec1 : response.data.emergencyContacts[0],
@@ -144,7 +146,7 @@ export default class LoggedIn extends Component {
 					ec3 : response.data.emergencyContacts[2],
 					ec4 : response.data.emergencyContacts[3],
 					ec5 : response.data.emergencyContacts[4],
-					area : response.data.area,
+					area : temparea,
 					data : response.data
 				});
 			})
@@ -233,6 +235,8 @@ export default class LoggedIn extends Component {
 		  ){
 			return <Redirect push to = "/UserSignIn" />;
 		}
+
+		console.log(this.state.area);
 		return (
 			<div className="user-panel">			
 				<nav className='navbar navbar-expand-lg navbar-light header navbar-border'>
@@ -270,18 +274,16 @@ export default class LoggedIn extends Component {
 							<div className="jumbotron new-jumbotron">
 							<center>
 								<div className='location-link'>
-									<a href = {"https://www.google.com/maps?q=" + this.state.data.area} target="_blank">Current location</a>
+									<a href = {"https://www.google.com/maps?key=AIzaSyDL3uz9nY1JEYsk23daSNCKykKGuRkolPM&q=" + this.state.data.area} target="_blank">Current location</a>
 								</div>
 							</center>
 
 							<div className="row">
-								<div className="col-md-6">
-									<ShowECs user_name = {this.state.user_name} token = {this.state.token} />
-								</div>
+								
 								<div className="col-md-6">
 									<div className="container">
 										<center>
-										<h2>UPDATE <span className="change-color">CONTACTS</span></h2>
+										<h2>EMERGENCY <span className="change-color">CONTACTS</span></h2>
 										<hr/>
 										<form onSubmit = {this.handleSubmit}>
 											<div className="form-group">
@@ -347,6 +349,12 @@ export default class LoggedIn extends Component {
 									</center>
 									</div>
 								</div>
+
+								<div className="col-md-6">
+									<div className="google-map-code">
+          								<iframe src={"https://maps.google.it/maps?q=+this.state.area+&output=embed"} width="600" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+       								</div>
+								</div>
 							</div>
 							</div>
 							
@@ -361,6 +369,8 @@ export default class LoggedIn extends Component {
 
 /*
 Showing location
+
+<ShowECs user_name = {this.state.user_name} token = {this.state.token} />
 
 <div className="col-md-9">
 					<center><h3 className="map"><b>CURRENT <span className="change-color">LOCATION</span></b></h3>

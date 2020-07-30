@@ -237,7 +237,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	color: red;
 }
 
-.user-panel {
+.user-panel, .dro-panel {
 	background: white;
 	width:auto;
 	height:auto;
@@ -253,28 +253,6 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	padding:20px;
 	width: 60%;
 
-}
-
-.danger .btn {
-	background-color: #dae1e7 !important;
-	height:35px;
-	width: 150px;
-	border-radius: 1000px !important;
-	font-weight: bold !important;
-	font-size:15px !important;
-	color: #000000 !important;
-	border-color: #dae1e7 !important;
-}
-
-.danger .btn:hover {
-	background-color: #27496d !important;
-	height:35px;
-	width: 150px;
-	border-radius: 1000px !important;
-	font-weight: bold !important;
-	font-size:15px !important;
-	color: #ffffff !important;
-	border-color: #27496d !important;
 }
 
 .whitebutton {
@@ -514,26 +492,35 @@ small {
 }
 
 .markTrouble-btn {
-	background-color: transparent !important;
 	height:200px;
 	width: 200px;
 	border-radius: 50% !important;
 	font-weight: 200 !important;
 	font-size:30px !important;
-	color: #142850 !important;
-	border-color: #142850 !important;
 	border-width: 3px !important;
 	margin-top: 20px;
 	margin-bottom: 40px;
 }
 
-.markTrouble-btn:hover {
+.not-in-danger .markTrouble-btn {
+	background-color: transparent !important;
+	color: #142850 !important;
+	border-color: #142850 !important;
+}
+
+.danger .markTrouble-btn {
 	color: #ffffff !important;
 	background-color: #142850 !important;
 	border-color: #142850 !important;
 }
 
-.user-btn {
+.not-in-danger .markTrouble-btn:hover {
+	color: #ffffff !important;
+	background-color: #142850 !important;
+	border-color: #142850 !important;
+}
+
+.user-btn,.danger .user-unmark {
 	background-color: transparent !important;
 	height:50px;
 	width: 200px;
@@ -544,10 +531,14 @@ small {
 	border-width: 2px !important;
 }
 
-.user-btn:hover {
+.user-btn:hover,.danger .user-unmark:hover  {
 	color: #ffffff !important;
 	background-color: #00909e !important;
 	border-color: #00909e !important;
+}
+
+.not-in-danger .user-unmark {
+	visibility: hidden;
 }
 
 .location-link {

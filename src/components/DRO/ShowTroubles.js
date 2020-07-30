@@ -120,8 +120,9 @@ export default class ShowTroubles extends Component {
               <Tabs onSelect={(index, label) => console.log(label + ' selected')}>
                     <Tab label="Platform">           
                        <div className = 'container list'>  
-                                <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
-                                <table className = 'table table-striped table-hover' style={{marginTop: 20}}>
+                            <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
+                            <div className="table-responsive">
+                                <table className = 'table table-hover' style={{marginTop: 20}}>
                                     <thead>
                                         <tr>
                                             <th>USERNAME</th>
@@ -135,12 +136,14 @@ export default class ShowTroubles extends Component {
                                         {this.troublesListPlatform()}
                                     </tbody>
                                 </table>
+                            </div>
                         </div>
                     </Tab>
                     <Tab label="Bot">
                         <div className = 'container list'>  
-                                <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
-                                <table className = 'table table-striped table-hover' style={{marginTop: 20}}>
+                            <h2>USERS IN <span className="change-color">TROUBLE</span></h2>
+                            <div className="table-responsive">
+                                <table className = 'table table-hover' style={{marginTop: 20}}>
                                     <thead>
                                         <tr>
                                             <th>USERNAME</th>
@@ -154,6 +157,7 @@ export default class ShowTroubles extends Component {
                                         {this.troublesListBot()}
                                     </tbody>
                                 </table>
+                            </div>
                         </div>
                     </Tab>
                 </Tabs>

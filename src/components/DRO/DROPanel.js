@@ -13,7 +13,7 @@ class DROPanel extends Component {
 			return <Redirect push to = "/DROSignIn" />;
 		}
 		return (
-			<div className="user-panel">
+			<div className="dro-panel">
 				<DROHeader />
 				<br/>
 				<center>
