@@ -64,26 +64,42 @@ export default class UserProfile extends Component {
 		return (
 			<div className="user-panel">
             	<DROHeader/>
+
+            	<div className="container">
 				<Link  
 	             to={{
 	              pathname: '/DROPanel'
 	          	}}
-	             className='nav-item nav-link'>Back</Link>
+	             className='back-btn'>Back</Link>
 				<div className="card-text">
-					User_name : {this.state.user_name} <br/><br/>
-					Phone No : {this.state.phone} <br/><br/>
-					Email ID : {this.state.email} <br/><br/>
-					Area : {this.state.area} <br/><br/>
-					Emergency Contacts : <br/>
+					<div className="row">
+						<div className="col-md-6">
+							<span className="user-profile-heading">Username :</span> {this.state.user_name}
+						</div>
+						<div className="col-md-6">
+							<span className="user-profile-heading">Phone No :</span> {this.state.phone}
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-md-6">
+							<span className="user-profile-heading">Email ID :</span> {this.state.email}
+						</div>
+						<div className="col-md-6">
+							<span className="user-profile-heading">Area :</span> {this.state.area}
+						</div>
+					</div>
+					<br/>
+					<span className="user-profile-heading">Emergency Contacts :</span> <br/>
 					<ol>
 				      {this.state.emergencyContacts.map(reptile => <li>{reptile}</li>)}
 				    </ol><br/><br/>
 
-					User Log : <br/>
+					<span className="user-profile-heading">User Log :</span> <br/>
 					<ul>
 					 {this.state.log.map(reptile => <li>{reptile}<br/><br/></li>)}
 					</ul>
 					<br/><br/>
+				</div>
 				</div>
 			</div>
 		)

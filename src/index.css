@@ -158,13 +158,14 @@ textarea:focus {
 .btn-primary {
 	background-color: #ffffff !important;
 	height:45px;
-	width: 150px;
 	border-radius: 1000px !important;
 	font-weight: bold !important;
 	font-size:20px !important;
 	color: #00909e !important;
 	border-color: #00909e !important;
 	border-width: 2px !important;
+	padding-left: 30px !important;
+	padding-right: 30px !important;
 }
 
 .btn-primary:hover {
@@ -677,6 +678,52 @@ small {
 
 .team-members {
 	margin-top: 60px !important;
+}
+
+.table-link {
+	color: #00909e;
+}
+
+.table-link:hover {
+	color: #27496d;
+	text-decoration: none;
+}
+
+.back-btn {
+	color: #00909e;
+	font-weight: 800;
+	font-size: 18px;
+	box-shadow:0px 8px 10px 0px #dae1e7;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-top: 20px;
+}
+
+.back-btn:hover {
+	color: #27496d;
+	text-decoration: none;
+}
+
+td, th {
+	font-size: 17px;
+}
+
+.unmarktrouble-btn {
+	font-size: 15px !important;
+	background-color: transparent !important;
+	height: auto;
+}
+
+.user-profile-heading {
+	color: #27496d;
+	font-weight: 800;
+	font-size: 18px;
+}
+
+.user-panel .card-text {
+	font-size: 17px !important;
 }
 
 @media only screen and (max-width: 768px) {

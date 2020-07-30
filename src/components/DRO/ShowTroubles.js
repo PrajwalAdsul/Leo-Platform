@@ -10,7 +10,7 @@ const SList = props => (
         <td>{props.data.user_name}</td>
         <td>{props.data.area}</td>
         <td>
-            <a className='nav-item nav-link' href = {"https://www.google.com/maps?q=" + props.data.area} target="_blank">Location</a>
+            <a className='table-link' href = {"https://www.google.com/maps?q=" + props.data.area} target="_blank">Location</a>
         </td>
         <td>
             <Link  
@@ -20,7 +20,7 @@ const SList = props => (
                 user_name : props.data.user_name,
                 token : props.token
               }}}
-             className='nav-item nav-link'>View Profile</Link>
+             className='table-link'>View Profile</Link>
         </td>
         <td>
             <UnMarkTrouble user_name = {props.data.user_name} latitude = {props.data.latitude} longitude = {props.data.longitude}

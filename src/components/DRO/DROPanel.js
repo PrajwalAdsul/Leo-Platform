@@ -19,8 +19,11 @@ class DROPanel extends Component {
 				<center>
 					<button type="button" onClick={this.onSubmit} className="btn btn-primary">Refresh</button>
 					<br/><br/>
-				</center>	
-				<ShowTroubles/>
+				</center>
+				<div className="container">
+					<ShowTroubles/>
+				</div>
+				
 			</div>
 		);
 	}
