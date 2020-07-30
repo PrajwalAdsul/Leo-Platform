@@ -68,13 +68,15 @@ class Article extends React.Component {
             };
 
         return (
-            <article className="article">
-                <h4 className="article__category" style={styles}>{details.crime}</h4>
-                <h4 className="article__category" style={styles}>{details.city}</h4>
-                <h3 className="article__title">{details.headline}</h3>
-                <a href={details.url} target = "_blank"><h4 className="article_url">{details.url}</h4></a>
-                <h4 className="article__date">{details.date.toString()}</h4>
-            </article>
+            <div className="container">
+                <article className="article">
+                    <h4 className="article__category" style={styles}>{details.crime}</h4>
+                    <h4 className="article__category" style={styles}>{details.city}</h4>
+                    <h3 className="article__title">{details.headline}</h3>
+                    <a href={details.url} target = "_blank"><h4 className="article_url">{details.url}</h4></a>
+                    <h4 className="article__date">{details.date.toString()}</h4>
+                </article>
+            </div>
         )
     }
 }
