@@ -333,6 +333,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	background-color: #ffffff !important;
 	padding-top: 80px;
 	margin-top: 0px !important;
+	padding-bottom: 50px;
 }
 
 #contact-section {
@@ -678,10 +679,6 @@ small {
 	font-size: 24px !important;
 	margin-top: 10px;
 	margin-bottom: 40px !important;
-}
-
-.team-members {
-	margin-top: 60px !important;
 }
 
 .table-link {

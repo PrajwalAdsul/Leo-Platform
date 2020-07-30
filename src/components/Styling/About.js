@@ -26,23 +26,6 @@ export default class About extends Component {
               		<p>Coming together is the beginning. Keeping together is progress. Working together is success.</p>
         			<cite>Henry Ford</cite>
             	</blockquote>
-
-            	<div className="team-members">
-	            	<div className="line"></div>
-					<p className="section-heading">TEAM MEMBERS</p>
-					<div className="row">
-						<div className="col-md-6 col1">
-							<p>Prajwal Adsul</p>
-							<p>Mayank Jain</p>
-							<p>Gouri Nangliya</p>
-						</div>
-						<div className="col-md-6">
-							<p>Priyanka Kankal</p>
-							<p>Rohit Chaudhari</p>
-							<p>Akanksha Mahajan</p>
-						</div>
-					</div>
-				</div>
         
 			</div>
 		)

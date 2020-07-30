@@ -31,9 +31,9 @@ export default class AppFeatures extends Component {
 					</div>
 					<div className="col-md-4 col2-img">
 						<div className="card">
-							<img className="card-img d-block w-100" src={require('../Features-Images/Leo-App-live-location-tracking.png')} alt="Live location tracking" />
+							<img className="card-img d-block w-100" src={require('../Features-Images/Leo-Bot-recent-news.png')} alt="Live location tracking" />
 							<div className="card-body">
-								<p className="card-text">Live location tracking</p>
+								<p className="card-text">Get latest crime incidents in your region</p>
 							</div>
 						</div>
 					</div>
@@ -41,7 +41,7 @@ export default class AppFeatures extends Component {
 						<div className="card">
 							<img className="card-img d-block w-100" src={require('../Features-Images/Leo-App-crime-hotspots.png')} alt="Get latest crime incidents and hotspots in your region" />
 							<div className="card-body">
-								<p className="card-text">Get latest crime incidents and hotspots in your region</p>
+								<p className="card-text">See nearby hotspots</p>
 							</div>
 						</div>
 					</div>
