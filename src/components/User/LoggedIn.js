@@ -263,11 +263,9 @@ export default class LoggedIn extends Component {
 								<h2>  </h2>
 							}
 							{this.state.inTrouble == true && 
-								<h2> You are currently marked in Trouble. Leo is taking appropriate actions. </h2>
+								<h2 className="danger-text"> You are currently marked in Trouble. Leo is taking appropriate actions. </h2>
 							}
-							{this.state.inTrouble == false && 
-								<h2> You are not in Trouble </h2>
-							}
+							{this.state.inTrouble == false}
 							<br/>						
 							{this.state.heading}
 								
@@ -277,19 +275,15 @@ export default class LoggedIn extends Component {
 						</div>
 						<div className="bottom">
 							<div className="jumbotron new-jumbotron">
-							<center>
-								<div className='location-link'>
-									<a href = {"https://www.google.com/maps?key=AIzaSyDL3uz9nY1JEYsk23daSNCKykKGuRkolPM&q=" + this.state.data.area} target="_blank">Current location</a>
-								</div>
-							</center>
 
 							<div className="row">
 								
 								<div className="col-md-6">
-									<div className="container">
-										<center>
+									
+										
 										<h2>EMERGENCY <span className="change-color">CONTACTS</span></h2>
 										<hr/>
+									<div className="updateform-container">
 										<form onSubmit = {this.handleSubmit}>
 											<div className="form-group">
 												<div className="row">
@@ -351,11 +345,14 @@ export default class LoggedIn extends Component {
 											<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">UPDATE</button>
 											</center>	
 										</form>
-									</center>
 									</div>
+									
 								</div>
 
 								<div className="col-md-6">
+									<h2>YOUR <span className="change-color">LOCATION</span></h2>
+									<hr/>
+									<p className="user-location-p">{this.state.data.area}</p>
 									<div className="google-map-code">
           								<iframe src={"https://maps.google.it/maps?q="+this.state.latitude+","+this.state.longitude+"&output=embed"} width="600" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
        								</div>
