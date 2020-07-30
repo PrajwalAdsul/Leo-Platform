@@ -101,12 +101,12 @@ export default class DROSignIn extends React.Component {
 	}
 
 	componentDidMount(){
-		if(!localStorage.getItem('user_name') || !localStorage.getItem('password')){
-			this.onSubmit();
-		}
-		else{
-			//console.log('Using data from localStorage');
-		}
+		// if(!localStorage.getItem('user_name') || !localStorage.getItem('password')){
+		// 	this.onSubmit();
+		// }
+		// else{
+		// 	//console.log('Using data from localStorage');
+		// }
 	}
 
 	componentWillUpdate(nextProps, nextState) {

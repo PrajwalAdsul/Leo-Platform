@@ -30,7 +30,7 @@ export default class UnMarkTrouble extends Component {
 			latitude : this.state.latitude,
 			longitude : this.state.longitude,
 			inTrouble : false,
-			token : this.props.token
+			token : localStorage.getItem('token')
 		};
 		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/unmark_trouble', data)
 		.then(response => {
