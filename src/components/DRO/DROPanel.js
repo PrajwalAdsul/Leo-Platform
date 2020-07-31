@@ -14,7 +14,7 @@ class DROPanel extends Component {
 		}
 		return (
 			<div className="dro-panel">
-				<DROHeader />
+				<DROHeader active_page = "ShowTroubles" />
 				<br/>
 				<center>
 					<button type="button" onClick={this.onSubmit} className="btn btn-primary">Refresh</button>

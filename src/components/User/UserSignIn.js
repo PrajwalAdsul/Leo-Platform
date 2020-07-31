@@ -112,7 +112,7 @@ export default class UserSignIn extends React.Component {
 
 		return (
 			<div>
-			<Header />
+			<Header active_page = "UserSignIn" />
  			<center>
 				<div className="jumbotron shadow-lg login-jumbotron">
 					<h2>USER <span className="change-color">LOGIN</span> </h2>

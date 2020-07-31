@@ -209,7 +209,7 @@ export default class UserSignUp extends React.Component {
 		}
 		return (
 			<div>
-			<Header />
+			<Header active_page = "UserSignIn" />
 				<center>
 					<div className="jumbotron shadow-lg new-jumbotron">
 				

@@ -53,7 +53,7 @@ export default class DRONews extends React.Component {
         console.log(this.state);
         return (
             <div className="app">
-                <DROHeader />
+                <DROHeader active_page = "DRONews" />
                 <div className="container">
                       {this.troublesListPlatform()}
                 </div>

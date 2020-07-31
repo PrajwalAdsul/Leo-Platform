@@ -10,7 +10,8 @@ export default class Header extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			collapse_click: false
+			collapse_click: false,
+			active_page : this.props.active_page
 		};
 	}
 
@@ -40,8 +41,8 @@ export default class Header extends Component {
 
 				<div className={this.state.collapse_click === true ?"collapse navbar-collapse show":"collapse navbar-collapse"} id="DROmainheader">
 					<div className="nav navbar-nav ml-auto">
-			          	<Link to="/ShowTroubles" className='nav-item nav-link'>SHOW TROUBLES</Link>
-			          	<Link to="/DRONews" className='nav-item nav-link'>NEWS</Link>
+			          	<Link to="/ShowTroubles" className={this.state.active_page === "ShowTroubles" ?"nav-item nav-link is-active":"nav-item nav-link"}>SHOW TROUBLES</Link>
+			          	<Link to="/DRONews" className={this.state.active_page === "DRONews" ?"nav-item nav-link is-active":"nav-item nav-link"}>NEWS</Link>
 			            <Logout />
 		            </div>
 	            </div>

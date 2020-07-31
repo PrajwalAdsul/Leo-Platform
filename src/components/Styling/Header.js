@@ -11,7 +11,8 @@ export default class Header extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			collapse_click: false
+			collapse_click: false,
+			active_page : this.props.active_page
 		};
 		//	<b><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"}>Download Leo App</a></b>
 	}
@@ -27,6 +28,7 @@ export default class Header extends Component {
 		}
 	}
 	render() {
+		console.log(this.state.active_page);
 		return (
 			<div>
 				<nav className='navbar navbar-expand-lg navbar-light header' id="scrolled-yes">
@@ -39,17 +41,15 @@ export default class Header extends Component {
 					    <span className="navbar-toggler-icon"></span>
 					 </button>	
 
-					<div className={
-							this.state.collapse_click === true ?"collapse navbar-collapse show":"collapse navbar-collapse"
-						} id="signinheader">
+					<div className={this.state.collapse_click === true ?"collapse navbar-collapse show":"collapse navbar-collapse"} id="signinheader">
 		          	
 			          	<div className="nav navbar-nav ml-auto">
 			          		<Link to="/HomePage#home-section" className='nav-item nav-link'>HOME</Link>
 			          		<Link to="/HomePage#features-section" className='nav-item nav-link'>FEATURES</Link>
 			          		<Link to="/HomePage#about-section" className='nav-item nav-link'>ABOUT</Link> 
 			          		<Link to="/HomePage#contact-section" className='nav-item nav-link'>CONTACT</Link>	
-				          	<Link to="/UserSignIn" className='nav-item nav-link'>USER LOGIN</Link>
-				            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link> 			
+				          	<Link to="/UserSignIn" className={this.state.active_page === "UserSignIn" ?"nav-item nav-link is-active":"nav-item nav-link"}>USER LOGIN</Link>
+				            <Link to="/DROSignIn" className={this.state.active_page === "DROSignIn" ?"nav-item nav-link is-active":"nav-item nav-link"}>DRO LOGIN</Link> 			
 			            </div>
 
 		            </div>

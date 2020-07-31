@@ -73,7 +73,7 @@ export default class HomeHeader extends Component {
 			        </div>
 
 			        <ScrollspyNav
-	                    scrollTargetIds={["home-section", "features-section", "contact-section", "about-section"]}
+	                    scrollTargetIds={["home-section", "features-section", "about-section", "contact-section"]}
 	                    offset={100}
 	                    activeNavClass="is-active"
 	                    scrollDuration="1000"

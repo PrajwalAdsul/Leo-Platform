@@ -128,7 +128,7 @@ export default class DROSignIn extends React.Component {
 		}
 		return (
 			<div>
-			<Header />
+			<Header active_page = "DROSignIn" />
 			<center>
 				<div className="jumbotron shadow-lg login-jumbotron">
 					<h2>DRO <span className="change-color">LOGIN</span> </h2>
