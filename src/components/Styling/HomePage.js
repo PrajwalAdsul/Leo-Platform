@@ -32,9 +32,9 @@ export default class HomePage extends React.Component {
 	 						</div>
 	 						<div className="col-md-4 my-auto">
 	 							
-	 								<div className="container">
+	 								
 	 									<span className="main-tagline"><span className="color-lightblue">PROTECTING</span> YOU<br/> LIKE <span className="color-lightblue">FAMILY</span></span>
-	 								</div>
+	 			
 	 							
 	 								<div className="container">
 	 								<a className="download-app-btn" href={"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank">

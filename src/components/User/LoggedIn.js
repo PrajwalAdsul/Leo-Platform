@@ -354,7 +354,7 @@ export default class LoggedIn extends Component {
 									<hr/>
 									<p className="user-location-p">{this.state.data.area}</p>
 									<div className="google-map-code">
-          								<iframe src={"https://maps.google.it/maps?q="+this.state.latitude+","+this.state.longitude+"&output=embed"} width="600" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          								<iframe src={"https://maps.google.it/maps?q="+this.state.latitude+","+this.state.longitude+"&output=embed"} width="450" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
        								</div>
 								</div>
 							</div>

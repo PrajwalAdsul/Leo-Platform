@@ -15,6 +15,10 @@ code {
 		monospace;
 }
 
+.jumbotron p {
+	font-weight: 400;
+}
+
 .Registration, .Login {
 	display: flex;
 	flex-direction: column;
@@ -147,7 +151,7 @@ form {
 	text-align: left;
 }
 h2 {
-	font-size: 30px !important;
+	font-size: 28px !important;
 	font-weight: bold !important;
 }
 
@@ -597,7 +601,7 @@ small {
 }
 
 .aboutsection-heading {
-	font-size: 45px;
+	font-size: 42px;
 	font-weight: 800;
 	color: #00909e;
 }
@@ -765,11 +769,15 @@ td, th {
 	}
 
 	.section-jumbotron h2 {
-		font-size: 30px !important;
+		font-size: 25px !important;
 	}
 
 	.not-in-danger, .danger {
 		width: 100%;
+	}
+
+	h2 {
+		font-size: 25px !important;
 	}
 
 }
