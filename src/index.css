@@ -76,6 +76,21 @@ code {
 	background-color: #ffffff;
 }
 
+.collapse.show {
+	margin-top: 0px !important;
+	text-align: center;
+	z-index: 3;
+	border-bottom: 2px solid rgb(218, 225, 231, 0.6) !important;
+}
+
+#scrolled-no .collapse.show {
+	background-color: rgb(218, 225, 231);
+}
+
+#scrolled-yes .collapse.show {
+	background-color: #ffffff;
+}
+
 .nav-item.nav-link {
 	margin-right: 15px;
 	margin-left: 15px;
@@ -125,7 +140,7 @@ code {
 	overflow: auto;
 }
 
-.jumbotron.new-jumbotron .container {
+.jumbotron.new-jumbotron .col-md-6 {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -778,6 +793,21 @@ td, th {
 
 	h2 {
 		font-size: 25px !important;
+	}
+
+	#scrolled-yes, #scrolled-no {
+		padding-left: 5px !important;
+		padding-right: 5px !important;
+	}
+
+	.navbar-brand {
+		margin-left: 0px !important;
+		padding-left: 0px !important;
+	}
+
+	.navbar-text {
+		margin-right: 0px !important;
+		padding-right: 0px !important;
 	}
 
 }

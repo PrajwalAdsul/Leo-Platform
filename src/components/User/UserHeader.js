@@ -29,24 +29,24 @@ export default class Header extends Component {
 
 		return (
 			<div>			
-			<nav className='navbar navbar-expand-lg navbar-light header navbar-border' id="scrolled-yes">
-				<a className="navbar-brand" href="#">
-	            <img className="logo" src = {require('../Logo1.png')} />
-	          	</a>
-	          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
-	          	<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#DROmainheader" aria-controls="DROmainheader" aria-expanded={this.state.collapse_click === true ?"true":"false"} onClick={this.togglebtn} aria-label="Toggle navigation">
+			<nav className='navbar navbar-expand-lg navbar-light header navbar-border scrolled-yes' id="scrolled-yes">
+					<a className="navbar-brand" href="#">
+		            	<img className="logo" src = {require('../Logo1.png')} />
+		          	</a>
+		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
+		          	<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#usermainheader" aria-controls="usermainheader" aria-expanded={this.state.collapse_click === true ?"true":"false"} onClick={this.togglebtn} aria-label="Toggle navigation">
 					    <span className="navbar-toggler-icon"></span>
 					 </button>	
 
-				<div className={this.state.collapse_click === true ?"collapse navbar-collapse show":"collapse navbar-collapse"} id="DROmainheader">
-					<div className="nav navbar-nav ml-auto">
-			          	<Link to="/ShowTroubles" className='nav-item nav-link'>SHOW TROUBLES</Link>
-			          	<Link to="/DRONews" className='nav-item nav-link'>NEWS</Link>
-			            <Logout />
+					<div className={this.state.collapse_click === true ?"collapse navbar-collapse show":"collapse navbar-collapse"} id="usermainheader">
+			          	<div className="nav navbar-nav ml-auto">
+							<Link to="/UserNews" className='nav-item nav-link' target="_blank">NEWS</Link>
+							<Logout/>
+			            </div>
+
 		            </div>
-	            </div>
-	              
-			</nav>
+	
+				</nav>
 			
 			</div>
 		)

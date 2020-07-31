@@ -14,7 +14,8 @@ export default class HomeHeader extends Component {
 
 		this.listener = null;
 		this.state = {
-			status: "top"
+			status: "top",
+			collapse_click: false
 		};
 		//	<b><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"}>Download Leo App</a></b>
 	}
@@ -38,6 +39,17 @@ export default class HomeHeader extends Component {
 		document.removeEventListener("scroll", this.listener);
 	}
 
+	togglebtn = async e => {		
+		e.preventDefault();
+		if (this.state.collapse_click == false) {
+			this.setState({ collapse_click: true });
+			console.log(this.state.collapse_click);
+		} else {
+			this.setState({ collapse_click: false });
+			console.log(this.state.collapse_click);
+		}
+	}
+
 	render() {
 		return (
 			<div>
@@ -47,8 +59,15 @@ export default class HomeHeader extends Component {
 					<a className="navbar-brand" href="#">
 		            	<img className="logo" src = {require('../Logo1.png')} /> 
 		          	</a>
-		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>  	
+		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
 
+		          	<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded={this.state.collapse_click === true ?"true":"false"} onClick={this.togglebtn} aria-label="Toggle navigation">
+					    <span className="navbar-toggler-icon"></span>
+					 </button>	
+
+					<div className={
+							this.state.collapse_click === true ?"collapse navbar-collapse show":"collapse navbar-collapse"
+						} id="navbarNavAltMarkup">
                		<div className="nav navbar-nav ml-auto">
 			        
 			        </div>
@@ -71,6 +90,7 @@ export default class HomeHeader extends Component {
                		<div className="nav navbar-nav">
 			          	<Link to="/UserSignIn" className='nav-item nav-link'>USER LOGIN</Link>
 			            <Link to="/DROSignIn" className='nav-item nav-link'>DRO LOGIN</Link>
+			        </div>
 			        </div>
 		        </nav>
 

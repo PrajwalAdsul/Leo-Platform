@@ -10,7 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ShowECs from './ShowECs';
 import MarkTrouble from './MarkTrouble';
 import LoggedInUnMarkTrouble from './LoggedInUnMarkTrouble';
-import Logout from './Logout'; 
+import Logout from './Logout';
+import UserHeader from './UserHeader'; 
 
 export default class LoggedIn extends Component {
 	constructor(props) {
@@ -244,17 +245,7 @@ export default class LoggedIn extends Component {
 		console.log("https://maps.google.it/maps?q="+this.state.area+"&output=embed");
 		return (
 			<div className="user-panel">			
-				<nav className='navbar navbar-expand-lg navbar-light header navbar-border'>
-					<a className="navbar-brand" href="#">
-		            	<img className="logo" src = {require('../Logo1.png')} />
-		          	</a>
-		          	<h1 className="navbar-text"><b>LEO PLATFORM</b></h1>
-		          	<div className="nav navbar-nav ml-auto">
-						<Link to="/UserNews" className='nav-item nav-link' target="_blank">NEWS</Link>
-						<Logout/>
-		            </div>
-	
-				</nav>
+				<UserHeader />
 
 				<div className="user">
 					<center>
