@@ -71,6 +71,10 @@ export default class UserProfile extends Component {
 	              pathname: '/DROPanel'
 	          	}}
 	             className='back-btn'>Back</Link>
+	             </div>
+
+	             <div className="container">
+
 				<div className="card-text">
 					<div className="row">
 						<div className="col-md-6">
@@ -95,9 +99,7 @@ export default class UserProfile extends Component {
 				    </ol><br/><br/>
 
 					<span className="user-profile-heading">User Log :</span> <br/>
-					<ul>
-					 {this.state.log.map(reptile => <li>{reptile}<br/><br/></li>)}
-					</ul>
+					 {this.state.log.map(reptile => <p>{reptile}<br/><br/></p>)}
 					<br/><br/>
 				</div>
 				</div>
