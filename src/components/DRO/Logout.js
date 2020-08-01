@@ -37,7 +37,7 @@ export default class Logout extends Component {
 	render() {	
 		return (
 			<div>
-			<Link to="/UserSignIn" className='nav-item nav-link' onClick={this.onSubmit} >LOGOUT</Link>
+			<Link to="/DROSignIn" className='nav-item nav-link' onClick={this.onSubmit} >LOGOUT</Link>
 			</div>
 			);
 		}
