@@ -50,7 +50,7 @@ def DumpIntoDb(db, json_news) :
     '''
     result = db.news.insert_many(json_news)
     print("Number of news saved into database:", len(result.inserted_ids))
-            
+
     with open("./database/data.json") as handle:
         # Load data from JSON to dict
         file_data = json.load(handle)
@@ -89,10 +89,7 @@ def DumpIntoDb(db, json_news) :
                     "$set": {
                         "region": data["Regions"],
                         "city": data["City"],
-                        "loc": {
-                            "type": "Point",
-                            "coordinates": [longitude, latitude],
-                        },
+                        "loc": {"type": "Point", "coordinates": [longitude, latitude],},
                         "murder": data["Murder"],
                         "rape": data["Rape"],
                         "kidnapping": data["Kidnapping"],
@@ -109,44 +106,45 @@ def DumpIntoDb(db, json_news) :
             results.append(result.upserted_id)
             #print("bhnm")
         print("Number of crimes upserted into database:", len(results))
-            
+
         print("done")
+
 
 def LeoMineScraper(db):
     '''
         Scrap news articles from various sources and check for duplicates
     '''
     retVal = DeccanChronicleScrapper()
-    if not(retVal.empty) :
+    if not (retVal.empty):
         df = retVal
     retVal = NdtvScrapper()
-    if not(retVal.empty) :
+    if not (retVal.empty):
         if not df.empty:
             df = df.append(retVal, ignore_index=True)
-        else :
+        else:
             df = df.append(retVal)
     print(df.shape)
     retVal = HindustanTimesScrapper()
-    if not(retVal.empty) :
+    if not (retVal.empty):
         if not df.empty:
             df = df.append(retVal, ignore_index=True)
-        else :
+        else:
             df = df.append(retVal)
     print(df.shape)
-            
+
     retVal = TheHinduScrapper()
-    if not(retVal.empty) :
+    if not (retVal.empty):
         if not df.empty:
             df = df.append(retVal, ignore_index=True)
-        else :
+        else:
             df = df.append(retVal)
     print(df.shape)
-            
+
     retVal = TweetsScrapper()
-    if not(retVal.empty) :
+    if not (retVal.empty):
         if not df.empty:
             df = df.append(retVal, ignore_index=True)
-        else :
+        else:
             df = df.append(retVal)
     print(df.shape)
             
@@ -191,13 +189,18 @@ def LeoMineScraper(db):
         query = {"url": row["url"]}
         cursor = db.news.find(query)
         lst = list(cursor)
-        if(len(lst) == 0) :
-            query = { "date": row["date"],"crime": row["crime"], "region": re.compile(row["region"], re.IGNORECASE), "city": re.compile(row["city"], re.IGNORECASE)  }
+        if len(lst) == 0:
+            query = {
+                "date": row["date"],
+                "crime": row["crime"],
+                "region": re.compile(row["region"], re.IGNORECASE),
+                "city": re.compile(row["city"], re.IGNORECASE),
+            }
             cursor = db.news.find(query)
             lst = list(cursor)
             if len(lst) == 0:
                 final_df = final_df.append(row, ignore_index=True)
-    #saving_articles(final_df, "./database/headlines.csv")
+    # saving_articles(final_df, "./database/headlines.csv")
     print(final_df.shape)
     return final_df
     
