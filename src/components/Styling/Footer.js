@@ -39,7 +39,7 @@ export default class Footer extends Component {
 							</div>
 						</div>
 						<div className="col-md-4">
-							<p><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank" className="footer-link">Download Leo App</a></p>
+							<p><a href = {"https://drive.google.com/file/d/1m0mQhot7L2yPQsz6VxDuFUJsqTXqXMUX/view?usp=sharing"} target="_blank" className="footer-link">Download Leo App</a></p>
 						</div>
 					</div>
 					<hr className="footer-hr" />

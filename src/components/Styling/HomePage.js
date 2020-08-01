@@ -37,7 +37,7 @@ export default class HomePage extends React.Component {
 	 			
 	 							
 	 								<div className="container">
-	 								<a className="download-app-btn" href={"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank">
+	 								<a className="download-app-btn" href={"https://drive.google.com/file/d/1m0mQhot7L2yPQsz6VxDuFUJsqTXqXMUX/view?usp=sharing"} target="_blank">
 	 									<img className="d-block w-50 download-app-btn" src = {require('./download-img.png')} />
 	 								</a>
 	 								</div>
