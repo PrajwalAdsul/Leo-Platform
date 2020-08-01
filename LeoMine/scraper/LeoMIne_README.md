@@ -10,9 +10,8 @@ Run the following commands :
 >cd LeoMine
 >cd scraper
 If you want to scrap daily news :
->python LeoMine_NewSources.py
-If you want to scrap archives (very first time) :
->python crimewise.py
+>python LeoMine_NewsSources.py
+
 
 ## Screenshots
 
@@ -40,7 +39,6 @@ If some other part of our own project is using your functions or if you are serv
 
 ├── bin                     --> For tweet scrapper
 │   ├── GetOldTweets3.py
-│   └── __pycache__
 ├── database                --> database to store stat, articles, city, regions, speelings, crimes data
 │   ├── articles_crimewise.csv
 │   ├── country.txt
@@ -58,19 +56,17 @@ If some other part of our own project is using your functions or if you are serv
 │   ├── __init__.py
 │   ├── manager
 │   ├── models
-│   └── __pycache__
-├── LeoMine_NewSources.py   --> entry point to scrap daily news
+├── LeoMine_NewsSources.py   --> entry point to scrap daily news
+├── crimewise.py             --> archives news scrapper
 ├── news_extractor.py       --> functions for LeoBot
 ├── README.md
 ├── server.py 
 ├── sources                 --> contains scrapper to scrape various sources
-│   ├── crimewise.py
 │   ├── deccan_chronicle.py
 │   ├── hindustan_times.py
 │   ├── main_tweet_scraper.py
 │   ├── ndtv.py
 │   ├── newscrape_common.py
-│   ├── __pycache__
 │   ├── settings.py
 │   ├── sources.py
 │   ├── the_hindu.py
@@ -78,15 +74,8 @@ If some other part of our own project is using your functions or if you are serv
 │   └── tweets_scrapper.py
 └── utils                   --> contains main logic to extract locatons as well as some preprocessing tasks
     ├── modules.py
-    ├── __pycache__
     └── utils.py
 
-
-## Running the tests
-
-Delete this section if you don't have tests.
-
-Explain how to run the automated tests for this system
 
 ## Deployment
 

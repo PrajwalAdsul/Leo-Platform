@@ -14,35 +14,24 @@ def CrimewiseScrapper() :
     print(df.shape)
     df_ = get_locations(df, data, nlp, cities, spellings, 0)
     print(df_)
+    print("entering")
     df = preprocessing2(df, data)
-    df_with_date = get_date(df)
+    df["date"] = None
+    df_with_date = df
     # df_final = check_for_duplicates(df_with_date, "./database/headlines.csv")
     df_final = df_with_date
     headlines_lst = []
     for index, row in df_final.iterrows():
-        try:
-            article = Article(row["url"])
-            article.download()
-            article.parse()
-            article.nlp()
-            # print(article.publish_date)
-            headline = article.title
-            # print(headline)
-            if headline == "":
-                # print("nothing")
-                row["text"] = row["text"].replace("\n\n", " ")
-                row["text"] = row["text"].replace("\n", " ")
-                headline = row["text"].split(".")[0]
-
-        except:
-            row["text"] = row["text"].replace("\n\n", " ")
-            row["text"] = row["text"].replace("\n", " ")
-            headline = row["text"].split(".")[0]
+        print(index)
+        row["text"] = row["text"].replace("\n\n", " ")
+        row["text"] = row["text"].replace("\n", " ")
+        headline = row["text"].split(".")[0]
         headlines_lst.append(headline)
     df_final["headline"] = headlines_lst
     #saving_articles(df_final, "./database/headlines.csv")
     data_ = preprocessing(df_, data)
     save_data(data_, "./database/data.json")
+    print("done scrappimg..")
     return df_final
     
 

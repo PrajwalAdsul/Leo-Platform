@@ -1,3 +1,6 @@
+"""
+Citywise Toi news scrapper
+"""
 import time
 import urllib.request
 from urllib.parse import quote
@@ -120,7 +123,12 @@ def extracting_city_crime(articles):
                 continue
             article = Article(link)
             article.download()
-            article.parse()
+            while True :
+                try:
+                    article.parse()
+                    break
+                except :
+                    continue
             article.nlp()
             text = article.text
             crime = find_crime(text)
@@ -138,8 +146,8 @@ def extracting_city_crime(articles):
 
 
 def ToiScrapper():
-    data = get_data("../database/data.json")
-    spellings = get_spelling_list("../database/spell.csv")
+    data = get_data("./database/data.json")
+    spellings = get_spelling_list("./database/spell.csv")
     locs = get_locations_list(data)
     nlp = load_locations(locs, spellings)
     cities = get_cities(data)

@@ -6,6 +6,7 @@ from datetime import datetime
 import re
 import requests
 from crimewise import CrimewiseScrapper
+import os
 
 from sources.deccan_chronicle import DeccanChronicleScrapper
 from sources.hindustan_times import HindustanTimesScrapper
@@ -15,7 +16,15 @@ from sources.toi import ToiScrapper
 from sources.tweets_scrapper import TweetsScrapper
 from utils.modules import saving_articles
 
+from dotenv import load_dotenv
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
+
 def MakeConnections()  :
+    '''
+        Make Database connection
+    '''
     client = pymongo.MongoClient(
         "mongodb+srv://praj:pra@cluster0-jpt7l.mongodb.net/test?retryWrites=true&w=majority"
     )
@@ -36,6 +45,9 @@ def MakeConnections()  :
     return db
 
 def DumpIntoDb(db, json_news) :
+    '''
+        Dump the data scrapped and processed into database
+    '''
     result = db.news.insert_many(json_news)
     print("Number of news saved into database:", len(result.inserted_ids))
             
@@ -49,7 +61,7 @@ def DumpIntoDb(db, json_news) :
             location_details = requests.get(
                 "https://api.opencagedata.com/geocode/v1/json?q="
                 + data["Regions"].strip()
-                + "&key=4a4590286e2c474ca287e179cd718be9"
+                + "&key="+API_KEY
             ).json()
 
             # Try removing white spaces and retry
@@ -57,7 +69,7 @@ def DumpIntoDb(db, json_news) :
                 location_details = requests.get(
                     "https://api.opencagedata.com/geocode/v1/json?q="
                     + data["Regions"].replace(" ", "")
-                    + "&key=4a4590286e2c474ca287e179cd718be9"
+                    + "&key="+API_KEY
                 ).json()
                 if len(location_details["results"]) == 0:
                     latitude, longitude = 0.0, 0.0
@@ -95,12 +107,15 @@ def DumpIntoDb(db, json_news) :
                 upsert=True,
             )
             results.append(result.upserted_id)
-            print("bhnm")
+            #print("bhnm")
         print("Number of crimes upserted into database:", len(results))
             
         print("done")
 
 def LeoMineScraper(db):
+    '''
+        Scrap news articles from various sources and check for duplicates
+    '''
     retVal = DeccanChronicleScrapper()
     if not(retVal.empty) :
         df = retVal
@@ -135,12 +150,13 @@ def LeoMineScraper(db):
             df = df.append(retVal)
     print(df.shape)
             
-    '''retVal = ToiScrapper()
-    if not df.empty:
+    retVal = ToiScrapper()
+    if not(retVal.empty) :
+        if not df.empty:
             df = df.append(retVal, ignore_index=True)
         else :
             df = df.append(retVal)
-    '''
+    print(df.shape)
 
     headlines_lst = []
     for index, row in df.iterrows():
@@ -185,20 +201,79 @@ def LeoMineScraper(db):
     print(final_df.shape)
     return final_df
     
+def DumpingStats(db) :
+    with open("./database/data.json") as handle:
+        # Load data from JSON to dict
+        file_data = json.load(handle)
+        # Iterate over list of crime objects
+        results = []
+        for data in file_data:
+            # Fetch approximate coordinates of region
+            location_details = requests.get(
+                "https://api.opencagedata.com/geocode/v1/json?q="
+                + data["Regions"].strip()
+                + "&key="+API_KEY
+            ).json()
 
-def scrapper() :
+            # Try removing white spaces and retry
+            if len(location_details["results"]) == 0:
+                location_details = requests.get(
+                    "https://api.opencagedata.com/geocode/v1/json?q="
+                    + data["Regions"].replace(" ", "")
+                    + "&key="+API_KEY
+                ).json()
+                if len(location_details["results"]) == 0:
+                    latitude, longitude = 0.0, 0.0
+                else:
+                    latitude, longitude = location_details["results"][0][
+                        "geometry"
+                    ].values()
+            else:
+                latitude, longitude = location_details["results"][0][
+                    "geometry"
+                ].values()
+
+            # Make an UPSERT query
+            result = db.crimes.update_one(
+                {"region": data["Regions"]},
+                {
+                    "$set": {
+                        "region": data["Regions"],
+                        "city": data["City"],
+                        "loc": {
+                            "type": "Point",
+                            "coordinates": [longitude, latitude],
+                        },
+                        "murder": data["Murder"],
+                        "rape": data["Rape"],
+                        "kidnapping": data["Kidnapping"],
+                        "robbery": data["Robbery"],
+                        "holding hostage": data["Holding hostage"],
+                        "riot": data["Riot"],
+                        "arson": data["Arson"],
+                        "assault": data["Assault"],
+                        "covid": data["Covid"],
+                    }
+                },
+                upsert=True,
+            )
+            results.append(result.upserted_id)
+            #print("bhnm")
+        print("Number of crimes upserted into database:", len(results))
+            
+        print("done")
+        
+if __name__ == "__main__":
     print("start")
     db = MakeConnections()
     print("setup done")
     print("scrapping...")
     final_df = LeoMineScraper(db)
-    #final_df = CrimewiseScrapper(db)
+    #final_df = CrimewiseScrapper()
     if(final_df.empty) :
         print("exit")
-        return
-    json_news = final_df.to_dict(orient="records")
-    print("dumping into db")
-    DumpIntoDb(db, json_news)
-    print("exit")
-    
-scrapper()
+    else :
+        json_news = final_df.to_dict(orient="records")
+        print("dumping into db")
+        DumpIntoDb(db, json_news)
+        print("exit")

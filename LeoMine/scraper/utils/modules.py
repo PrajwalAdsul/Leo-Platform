@@ -10,6 +10,7 @@ from newspaper import Article
 from nltk.stem.porter import *
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Span
+from datetime import datetime
 
 porterStemmer = PorterStemmer()
 
@@ -204,7 +205,10 @@ def find_in_spell(loc, spellings, data):
 
 
 def get_articles(mode, crime_list, articles_fname):
-    """mode = 0 read from file, mode = 1 scrap"""
+    """
+        scrap articles 
+        mode = 0 read from file, mode = 1 scrap
+    """
     print(mode)
     if mode:
         # saves in list [[cime, url, text],..]
@@ -339,7 +343,11 @@ def get_articles(mode, crime_list, articles_fname):
 
 
 def get_locations(articles_df, data, loc_model, cities_lst, spellings, present):
-    """data=origianl db"""
+    """
+        Extract locations from news articles
+        (main algorithm for location extraction)
+        data=origianl db
+    """
     extra_locs = []
     ultra_found = []
     # [[loc,link]]
@@ -392,6 +400,8 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present):
 
     nlp = loc_model
     for article in articles_df.iterrows():
+        print(article)
+        print("")
         post = []
         post.append(article[1].text)
         # print(post)
@@ -508,14 +518,18 @@ def get_locations(articles_df, data, loc_model, cities_lst, spellings, present):
 
 
 def preprocessing2(df, data):
+    print("entered")
     df = df[df["location"] != ""].reset_index(drop=True)
+    print("ok")
     for i, loc in enumerate(df["location"]):
+        print(i)
         if isinstance(loc, int) == True:
             string = "/" + data[loc]["Regions"] + ":" + data[loc]["City"]
             df["location"][i] = string
     region_lst = []
     city_lst = []
     for loc in df["location"]:
+        print(loc)
         try:
             s = loc.split("/")[1].split(":")
             city_lst.append(s[1])
@@ -536,11 +550,18 @@ def preprocessing2(df, data):
 
 
 def saving_articles(df, filename):
+    """
+        Save articles in csv file
+    """
     with open(filename, "w") as f:
         df.to_csv(f)
 
 
 def preprocessing(articles_df, data):
+    """
+        Does some preprocessing before putting into json file
+        
+    """
     df = articles_df
     # saving_articles(df, data)
     index = -1
@@ -615,18 +636,30 @@ def save_data(data, data_fname):
 def get_date(df):
     date_lst = []
     for _, row in df.iterrows():
+        print(_)
         link = row["url"]
         article = Article(link)
         article.download()
-        article.parse()
+        while True :
+            try:
+                article.parse()
+                break
+            except:
+                continue
         article.nlp()
-        date_lst.append(article.publish_date)
+        date = article.publish_date
+        if(date == None) :
+            date = datetime.now()
+        date_lst.append(date)
         #print(type(article.publish_date))
     df["date"] = date_lst
     return df
 
 
 def check_for_duplicates(df, filename):
+    """
+        Main algorithm for duplicate detection
+    """
     # cols = ["level_0", "index", "text", "url", "crime", "location", "region", "city", "date"]
     try:
         df_org = pd.read_csv(filename)
