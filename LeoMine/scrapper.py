@@ -51,7 +51,7 @@ def DumpIntoDb(db, json_news) :
     result = db.news.insert_many(json_news)
     print("Number of news saved into database:", len(result.inserted_ids))
 
-    with open("./database/data.json") as handle:
+    ''' with open("./database/data.json") as handle:
         # Load data from JSON to dict
         file_data = json.load(handle)
         # Iterate over list of crime objects
@@ -105,9 +105,9 @@ def DumpIntoDb(db, json_news) :
             )
             results.append(result.upserted_id)
             #print("bhnm")
-        print("Number of crimes upserted into database:", len(results))
+        print("Number of crimes upserted into database:", len(results))'''
 
-        print("done")
+    print("done")
 
 
 def LeoMineScraper(db):
@@ -148,13 +148,13 @@ def LeoMineScraper(db):
             df = df.append(retVal)
     print(df.shape)
             
-    retVal = ToiScrapper()
+    '''retVal = ToiScrapper()
     if not(retVal.empty) :
         if not df.empty:
             df = df.append(retVal, ignore_index=True)
         else :
             df = df.append(retVal)
-    print(df.shape)
+    print(df.shape)'''
 
     headlines_lst = []
     for index, row in df.iterrows():
