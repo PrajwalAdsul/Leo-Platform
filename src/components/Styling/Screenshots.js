@@ -67,31 +67,51 @@ export default class Screenshots extends Component {
 						>
 
 						<div className="container">
-							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot1.jpeg')} className="d-block w-100" /></div>
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot1.jpg')} className="d-block w-100" /></div>
 						</div>
 						
 						<div className="container">
-							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot2.jpeg')} className="d-block w-100" /></div>
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot2.jpg')} className="d-block w-100" /></div>
 						</div>
 						
 						<div className="container">
-							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot3.jpeg')} className="d-block w-100" /></div>
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot3.jpg')} className="d-block w-100" /></div>
 						</div>
 						
 						<div className="container">
-							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot4.jpeg')} className="d-block w-100" /></div>
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot4.jpg')} className="d-block w-100" /></div>
 						</div>
 						
 						<div className="container">
-							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot5.jpeg')} className="d-block w-100" /></div>
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot5.jpg')} className="d-block w-100" /></div>
 						</div>
 						
 						<div className="container">
-							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot6.jpeg')} className="d-block w-100" /></div>
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot6.jpg')} className="d-block w-100" /></div>
 						</div>
 						
 						<div className="container">
-							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot7.jpeg')} className="d-block w-100" /></div>
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot7.jpg')} className="d-block w-100" /></div>
+						</div>
+
+						<div className="container">
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot8.jpg')} className="d-block w-100" /></div>
+						</div>
+
+						<div className="container">
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot9.jpg')} className="d-block w-100" /></div>
+						</div>
+
+						<div className="container">
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot10.jpg')} className="d-block w-100" /></div>
+						</div>
+
+						<div className="container">
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot11.jpg')} className="d-block w-100" /></div>
+						</div>
+
+						<div className="container">
+							<div className="container img-container"><img src = {require('../App-Screenshots/Screenshot12.jpg')} className="d-block w-100" /></div>
 						</div>
 					</Carousel>;
 				</div>
