@@ -12,6 +12,7 @@ import MarkTrouble from './MarkTrouble';
 import LoggedInUnMarkTrouble from './LoggedInUnMarkTrouble';
 import Logout from './Logout';
 import UserHeader from './UserHeader'; 
+import Form from './Form';
 
 /*
  * Class to showcase functionalities of user once he has logged in
@@ -342,6 +343,7 @@ export default class LoggedIn extends Component {
           								<iframe src={"https://maps.google.it/maps?q="+this.state.latitude+","+this.state.longitude+"&output=embed"} width="450" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
        								</div>
 								</div>
+								<Form user_name = {this.state.user_name}/>
 							</div>
 							</div>		
 	   					</div>
