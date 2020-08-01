@@ -266,6 +266,13 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 	color: red;
 }
 
+.passwordCorrect{
+	display : block;
+	padding-top: 10px;
+	font-size:17px;
+	color: green;
+}
+
 .user-panel, .dro-panel {
 	background: white;
 	width:auto;

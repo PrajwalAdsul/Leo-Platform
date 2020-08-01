@@ -36,7 +36,8 @@ export default class UserSignUp extends React.Component {
 		        email: '',
 		        password: '',
 		        phone: ''
-		      }
+		      },
+		     css_error : "errorMessage"
 		}
 		this.handleChange = this.handleChange.bind(this)
 	}
@@ -93,12 +94,14 @@ export default class UserSignUp extends React.Component {
 		});
 		if(this.state.password != this.state.confirmpassword) {
 			this.setState({
-				passwordError: "Passwords don't match"
+				passwordError: "Passwords don't match",
+				css_error : "errorMessage"
 			});
 		}
 		else{
 			this.setState({
-				passwordError : "Passwords match :)"
+				passwordError : "Passwords match :)",
+				css_error : "passwordCorrect"
 			});
 		}
 	}
@@ -206,6 +209,8 @@ export default class UserSignUp extends React.Component {
 			});	
 				
 		}
+		//	<span className="errorMessage">{this.state.passwordError}</span>
+						
 	render() {
 		const {errors} = this.state;
 		if (this.state.loginSuccess == true) {
@@ -270,7 +275,9 @@ export default class UserSignUp extends React.Component {
 					<div className="form-group col-md-6">
 						<label htmlFor="confirmpassword" >Confirm Password:</label>
 						<input type="password" className="form-control" name="confirmpassword" id="confirmpassword" value={this.state.confirmpassword} placeholder="Confirm Password" onChange={this.handleOnChangeConfirmPassword} />
-							<span className="errorMessage">{this.state.passwordError}</span>
+						
+								<span className={this.state.css_error}>{this.state.passwordError}</span>
+						
 						</div>
 					</div>
 
