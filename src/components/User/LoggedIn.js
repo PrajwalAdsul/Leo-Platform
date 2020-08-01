@@ -13,6 +13,9 @@ import LoggedInUnMarkTrouble from './LoggedInUnMarkTrouble';
 import Logout from './Logout';
 import UserHeader from './UserHeader'; 
 
+/*
+ * Class to showcase functionalities of user once he has logged in
+ */
 export default class LoggedIn extends Component {
 	constructor(props) {
 		super(props)
@@ -128,9 +131,7 @@ export default class LoggedIn extends Component {
 		try{
 			this.setState({
 				user_name : this.props.location.state.user_name,
-				// token : this.props.location.state.token
-				token : localStorage.getItem('token')
-			
+				token : localStorage.getItem('token')	
 			});
 			const data = {
 				"user_name" : this.state.user_name,
@@ -156,7 +157,7 @@ export default class LoggedIn extends Component {
 				console.log(response.data)
 			})
 			.catch(error => {
-				//console.log(error.response);
+				console.log(error.response);
 			});
 		}
 		catch(e){
@@ -203,9 +204,7 @@ export default class LoggedIn extends Component {
 			}
 		}
 		let res;
-		console.log("*****great");
-		console.log(data);
-		console.log("*****great");
+		
 		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/update/emergency_contacts', data)
 		.then(response => {
 			res = response.status;
@@ -219,10 +218,7 @@ export default class LoggedIn extends Component {
 		});
 
 		if(res === 200) {
-			// this.setState({
-			// 	user_name : "",
-			// 	ec1 : 0, ec2 : 0, ec3 : 0, ec4 : 0, ec5 : 0
-			// });
+			// will change
 		} else
 		{
 			this.setState({
@@ -237,7 +233,8 @@ export default class LoggedIn extends Component {
 			localStorage.getItem('session') != "start" 
 			&&
 			localStorage.getItem('token') != null
-		  ){
+		  )
+		{
 			return <Redirect push to = "/UserSignIn" />;
 		}
 
@@ -270,8 +267,6 @@ export default class LoggedIn extends Component {
 							<div className="row">
 								
 								<div className="col-md-6">
-									
-										
 										<h2>EMERGENCY <span className="change-color">CONTACTS</span></h2>
 										<hr/>
 									<div className="updateform-container">
@@ -336,8 +331,7 @@ export default class LoggedIn extends Component {
 											<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">UPDATE</button>
 											</center>	
 										</form>
-									</div>
-									
+									</div>									
 								</div>
 
 								<div className="col-md-6">
@@ -349,26 +343,11 @@ export default class LoggedIn extends Component {
        								</div>
 								</div>
 							</div>
-							</div>
-							
+							</div>		
 	   					</div>
 	   				</center>
-				</div>
-			
+				</div>		
 			</div>
 		)
 	}
 }
-
-/*
-Showing location
-
-<ShowECs user_name = {this.state.user_name} token = {this.state.token} />
-
-<div className="col-md-9">
-					<center><h3 className="map"><b>CURRENT <span className="change-color">LOCATION</span></b></h3>
-					<SimpleMap latitude = {18.1213} longitude = {73.1232} /></center>
-
-				</div>
-
-*/

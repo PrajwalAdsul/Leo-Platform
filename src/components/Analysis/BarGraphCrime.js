@@ -3,7 +3,10 @@ import './index.css';
 import { Bar } from 'react-chartjs-2';
 import 'bootstrap/dist/css/bootstrap.css';
 
-export default class BarGraohCrime extends React.Component {
+/*
+ * Class to implement bar graph
+ */
+export default class BarGraphCrime extends React.Component {
 	constructor(props) {
 	super(props)
 	this.state = {

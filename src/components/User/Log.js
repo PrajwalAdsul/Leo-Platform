@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+/*
+ * Class to showcase Log of user
+ */
 class Log extends Component {
     render() {
         return (

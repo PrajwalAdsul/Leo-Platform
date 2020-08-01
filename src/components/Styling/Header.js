@@ -6,7 +6,9 @@ import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
 
-
+/*
+ * Class to implement header section
+ */
 export default class Header extends Component {
 	constructor(props) {
 		super(props);
@@ -14,7 +16,6 @@ export default class Header extends Component {
 			collapse_click: false,
 			active_page : this.props.active_page
 		};
-		//	<b><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"}>Download Leo App</a></b>
 	}
 
 	togglebtn = async e => {		
@@ -32,6 +33,7 @@ export default class Header extends Component {
 		return (
 			<div>
 				<nav className='navbar navbar-expand-lg navbar-light header' id="scrolled-yes">
+					
 					<a className="navbar-brand" href="#">
 		            	<img className="logo" src = {require('../Logo1.png')} /> 
 		          	</a>
@@ -51,22 +53,9 @@ export default class Header extends Component {
 				          	<Link to="/UserSignIn" className={this.state.active_page === "UserSignIn" ?"nav-item nav-link is-active":"nav-item nav-link"}>USER LOGIN</Link>
 				            <Link to="/DROSignIn" className={this.state.active_page === "DROSignIn" ?"nav-item nav-link is-active":"nav-item nav-link"}>DRO LOGIN</Link> 			
 			            </div>
-
 		            </div>
-		        </nav>
-
-			
-					
+		        </nav>					
 			</div>
 		)
 	}
 }
-
-/*
-
-<Link to="/DoctorSignIn" className='nav-item nav-link'>DOCTOR LOGIN</Link>
-            <Link to="/DoctorSignUp" className='nav-item nav-link'> DOCTOR SIGNUP</Link>
-			<Link to="/DoctorSignInAdmin" className='nav-item nav-link'> ADMIN DOCTOR</Link>
- 			
-
-*/

@@ -9,6 +9,12 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import DROPanel from './DROPanel';
 import Header from '../Styling/Header';
 
+
+
+/* 
+ * Class to implement sign up functionality for DRO
+ * Note - not to be shown on universal web app
+ */
 export default class DROSignUp extends React.Component {
 	constructor(props) {
 		super(props)
@@ -89,14 +95,13 @@ export default class DROSignUp extends React.Component {
 		var res;
 		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/addDRO', data)
 		.then(response => {
-			//console.log(response);
 			res = response.status;
 		})
 		.catch(error => {
-			//console.log(error.response);
+			// log the error on user side too
+			console.log(error.response);
 		});
 			if(res === 200) {
-				//console.log("IN");
 					this.setState({
 					loginSuccess : true
 					});
@@ -116,28 +121,36 @@ export default class DROSignUp extends React.Component {
 			<Header />
 			<center>
 			<form onSubmit={this.handleSubmit}>
+				
 				<h1>DRO Sign Up</h1>
+				
 				<h3>Name: </h3>
 				<input type="text" name="name" value={this.state.name} placeholder="name" onChange={this.handleChange} />
+				
 				<h3>Mobile No: </h3>
 				<input type="number" name="phone" value={this.state.phone} placeholder="phone" onChange={this.handleChange} />
+				
 				<h3>Email: </h3>
 				<input type="email" name="email" value={this.state.email} placeholder="email" onChange={this.handleChange} />
+				
 				<h3>username: </h3>
 				<input type="text" name="user_name" value={this.state.user_name} placeholder="user_name" onChange={this.handleChange}/>
+				
 				<h3>Password: </h3>
 				<input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleOnChangePassword} />
+				
 				<h3>Confirm Password: </h3>
 				<input type="password" name="confirmpassword" value={this.state.confirmpassword} placeholder="Password" onChange={this.handleOnChangeConfirmPassword} />
 
 				<h3>Latitude: </h3>
 				<input type="number" name="latitude" value={this.state.latitude} placeholder="latitude" onChange={this.handleChange} />
+				
 				<h3>Longitude: </h3>
 				<input type="number" name="longitude" value={this.state.longitude} placeholder="longitude" onChange={this.handleChange} />
+				
 				<h3>Area: </h3>
 				<input type="text" name="area" value={this.state.area} placeholder="area" onChange={this.handleChange} />
 		
-				
 				<button type="button" onClick={this.onSubmit} className="btn btn-primary">Sign Up</button>
 				<h3>{this.state.passwordError}</h3>
 							

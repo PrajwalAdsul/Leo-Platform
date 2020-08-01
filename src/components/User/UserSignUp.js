@@ -11,6 +11,10 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import LoggedIn from './LoggedIn';
 import Header from '../Styling/Header';
 
+
+/*
+ * Class to implement sign up functionality for user
+ */
 export default class UserSignUp extends React.Component {
 	constructor(props) {
 		super(props)

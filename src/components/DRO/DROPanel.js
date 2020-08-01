@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import ShowTroubles from './ShowTroubles';
 import DROHeader from './DROHeader';
+
+
+/*
+ * Class for DRO(delagative responsible operatior) panel
+ */
 class DROPanel extends Component {
 	onSubmit = async e => {
 			e.preventDefault();

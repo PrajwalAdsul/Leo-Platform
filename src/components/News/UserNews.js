@@ -2,6 +2,10 @@ import React from "react"
 import axios from 'axios';
 import "./News.scss"
 
+
+/*
+ * Class to showcase news to users
+ */
 export default class DRONews extends React.Component {
     constructor(props) {
         super(props);

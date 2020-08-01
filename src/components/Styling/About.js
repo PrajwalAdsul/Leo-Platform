@@ -8,7 +8,9 @@ import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
 
-
+/*
+ * Class to implement about section of homepage
+ */
 export default class About extends Component {
 	constructor(props) {
 		super(props);
@@ -25,8 +27,7 @@ export default class About extends Component {
 				<blockquote className="quote-card blue-card">
               		<p>Coming together is the beginning. Keeping together is progress. Working together is success.</p>
         			<cite>Henry Ford</cite>
-            	</blockquote>
-        
+            	</blockquote>    
 			</div>
 		)
 	}

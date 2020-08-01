@@ -7,15 +7,18 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import 'bootstrap/dist/css/bootstrap.css';
 
- 
+
+/*
+ * Class to implement marking toruble functionality for user
+ */
 export default class MarkTrouble extends Component {
 	constructor(props) {
 		super(props);
 		this.onSubmit = this.onSubmit.bind(this);
 		this.state = {
 			user_name : this.props.user_name,
-			latitude : 18.5293,
-			longitude : 73.8565,
+			latitude : 0,
+			longitude : 0,
 			status : 0
 		};
 	}
@@ -24,21 +27,19 @@ export default class MarkTrouble extends Component {
 		
 		e.preventDefault();
 		const data = {
-			// user_name: localStorage.getItem('user_name'),
 			token : localStorage.getItem('token'),
 			latitude : this.state.latitude,
 			longitude : this.state.longitude,
 			user_name: this.props.user_name,
 			type : "app",
-			// token : this.state.token,
 			inTrouble : true
 		};
 		await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/mark_trouble', data)
 		.then(response => {
-			//console.log(response);
+			// console.log(response);
 		})
 		.catch(error => {
-			//console.log(error.response);
+			console.log(error.response);
 		});
 		window.location.reload(false);
 	}

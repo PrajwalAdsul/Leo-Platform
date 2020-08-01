@@ -3,6 +3,11 @@ import axios from 'axios';
 import "./News.scss"
 import DROHeader from '../DRO/DROHeader';
 
+
+/*
+ * Class to showcase news to DRO
+ */
+
 export default class DRONews extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +26,6 @@ export default class DRONews extends React.Component {
                 });
                 let ll = []   
                 for(var i = 0; i < this.state.alist.length; i++){
-                    // console.log(this.state.alist[i]);
                     let y = this.state.alist[i];
                     let a = {
                             "headline" : y.headline,

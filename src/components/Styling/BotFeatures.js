@@ -6,7 +6,9 @@ import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
 
-
+/*
+ * Class to implement bot features section of homepage
+ */
 export default class BotFeatures extends Component {
 	constructor(props) {
 		super(props);

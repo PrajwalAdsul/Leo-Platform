@@ -7,7 +7,9 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import 'bootstrap/dist/css/bootstrap.css';
 
- 
+/*
+ * Class to provide functionality for user to unmark himself from trouble
+ */
 export default class LoggedInUnMarkTrouble extends Component {
 	constructor(props) {
 		super(props);
@@ -15,8 +17,8 @@ export default class LoggedInUnMarkTrouble extends Component {
 
 		this.state = {
 			user_name : '',
-			latitude : 18.5293,
-			longitude : 73.8565,
+			latitude : 0,
+			longitude : 0,
 			status : 0,
 			unmarkTrouble : false
 		};

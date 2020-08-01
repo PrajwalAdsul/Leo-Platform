@@ -5,6 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Tabs, Tab} from 'react-bootstrap-tabs';
 import UnMarkTrouble from './UnMarkTrouble';
 
+/*
+ * Class to showcase user marked in trouble
+ */
 const SList = props => (
     <tr>
         <td>{props.data.user_name}</td>
@@ -60,20 +63,21 @@ export default class ShowTroubles extends Component {
             password : localStorage.getItem('password'),
             token : localStorage.getItem('token')    
         });
+
+        // immediate state change is not froced hence reading data from localStorage
         let data = {
             user_name : localStorage.getItem('user_name'),
             password : localStorage.getItem('password'),
             token : localStorage.getItem('token')
         };
-        console.log("*****");
-        console.log(data);
-        console.log("*****");
+        
         axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/dro/all_users', data)
             .then(response => {
                 this.setState({
                     troubleslist : response.data,
                 });
-            console.log(this.state.troubleslist);
+        
+            // sort users on basis of time and date, and show recent users at the top
             let a = this.state.troubleslist.sort(function(a, b) {
               var keyA = new Date(a.datetime),
                 keyB = new Date(b.datetime);
@@ -87,6 +91,7 @@ export default class ShowTroubles extends Component {
             });
             })
             .catch(function(error) {
+                // log the error at user side
                 console.log(error);
             })
     }
@@ -165,5 +170,3 @@ export default class ShowTroubles extends Component {
         )
     }
 }
-
-//https://www.google.com/maps?q=Pune

@@ -8,6 +8,9 @@ import Button from '@material-ui/core/Button';
 import 'bootstrap/dist/css/bootstrap.css';
 
  
+/*
+ * Class to implement funcitonality of unmarking a user from trouble
+ */ 
 export default class UnMarkTrouble extends Component {
 	constructor(props) {
 		super(props);

@@ -11,6 +11,10 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import DROPanel from './DROPanel';
 import Header from '../Styling/Header';
 
+
+/*
+ * Class implementing sign in functionality for DRO
+ */
 export default class DROSignIn extends React.Component {
 	constructor(props) {
 		super(props)
@@ -51,13 +55,12 @@ export default class DROSignIn extends React.Component {
 
 	onSubmit = async e => {
 		let hash = await this.sha256(this.state.user_name + this.state.password);
-		// 256 hash of password "drodrodro" 3e23d25887299c5b47a11e68aa600b6e9bb78d775ce09babfbfae14cc8a4e703"
 		const data = {
 			user_name : this.state.user_name,
 			password : hash
 		};
 		var res;
-		// await axios.post('http://localhost:5000/LeoHelp/DROloginIn', data)
+		
 		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/dro/login', data)
 		.then(response => {
 			res = response.status;
@@ -65,11 +68,6 @@ export default class DROSignIn extends React.Component {
 			this.setState({
 				token : response.data.token
 			});
-			// console.log("************");
-			// console.log(localStorage.getItem('password'));
-			// console.log("************");
-			
-			//console.log(response.data);
 		})
 		.catch(error => {
 			this.setState({
@@ -100,20 +98,6 @@ export default class DROSignIn extends React.Component {
 		}
 	}
 
-	componentDidMount(){
-		// if(!localStorage.getItem('user_name') || !localStorage.getItem('password')){
-		// 	this.onSubmit();
-		// }
-		// else{
-		// 	//console.log('Using data from localStorage');
-		// }
-	}
-
-	componentWillUpdate(nextProps, nextState) {
-		// localStorage.setItem('user_name', JSON.stringify(nextState.user_name));
-		// localStorage.setItem('password', JSON.stringify(nextState.password));
-	}
-
 	render() {
 		const { loginSuccess, error } = this.state;
 		if (this.state.loginSuccess == true) {
@@ -121,9 +105,6 @@ export default class DROSignIn extends React.Component {
 			localStorage.setItem('DRO_start', "start");
 			localStorage.setItem('user_name', this.state.user_name);
 			localStorage.setItem('token', this.state.token);
-			console.log("************");
-			console.log(this.state.user_name + " " + this.state.token + " " + this.sha256(this.state.password));
-			console.log("************");
 			return <Redirect push to = "/DROPanel" />;
 		}
 		return (
@@ -131,8 +112,10 @@ export default class DROSignIn extends React.Component {
 			<Header active_page = "DROSignIn" />
 			<center>
 				<div className="jumbotron shadow-lg login-jumbotron">
+				
 					<h2>DRO <span className="change-color">LOGIN</span> </h2>
 					<hr />
+				
 					<form onSubmit = {this.handleSubmit} className="login-form">
 					<div className="form-group">
 						<div class="input-group mb-2">
@@ -160,6 +143,7 @@ export default class DROSignIn extends React.Component {
 						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">LOGIN</button><br /><br />
 						</center>	
 					</form>
+				
 				</div>
 				</center>
 			</div>

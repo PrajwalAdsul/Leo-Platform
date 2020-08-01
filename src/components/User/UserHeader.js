@@ -6,6 +6,9 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import axios from 'axios';
 import Logout from './Logout';
 
+/*
+ * Class for header section for user
+ */
 export default class Header extends Component {
 	constructor(props) {
 		super(props);
@@ -52,6 +55,3 @@ export default class Header extends Component {
 		)
 	}	
 }
-
-//     <Link to="/ShowAuthorities" className='nav-item nav-link'> SHOW AUTHORITIES</Link>
-		       
