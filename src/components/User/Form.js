@@ -11,7 +11,6 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import LoggedIn from './LoggedIn';
 import Header from '../Styling/Header';
 
-
 /*
  * Class to implement sign up functionality for user
  */
@@ -64,7 +63,17 @@ export default class Form extends React.Component {
 					});
 			});
 			
-		}
+	}
+
+	uploadImage = async e => {
+		// do uploading to firebase here
+		// firebase will return url of uploaded image
+
+		// at the end
+		this.setState({
+			"image_url" : "firebase iamge url"
+		});
+	}
 
 	render() {
 		return (
@@ -72,7 +81,7 @@ export default class Form extends React.Component {
 				<center>
 					<div className="jumbotron shadow-lg new-jumbotron">
 				
-					<h2>FO <span className="change-color">RM</span></h2>
+					<h2>FO<span className="change-color">RM</span></h2>
 					<hr />
 
 					<form onSubmit = {this.onSubmit}  className="login-form">
@@ -99,8 +108,8 @@ export default class Form extends React.Component {
 					</div>
 					</div>
 
-					<button >Upload Image </button>
-
+					<center> <button type="button" onClick={this.uploadImage} className="btn btn-primary">uploadImage</button></center>
+				
 					<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">Submit</button></center>
 										
 					</form>
