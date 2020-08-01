@@ -74,7 +74,7 @@ class Article extends React.Component {
             };
 
         return (
-            <div className="container">
+            <div className="container d-block w-100">
                 <article className="article">
                     <h4 className="article__category" style={styles}>{details.crime}</h4>
                     <h4 className="article__category" style={styles}>{details.city}</h4>
