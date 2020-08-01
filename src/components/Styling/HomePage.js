@@ -16,6 +16,9 @@ import WebFeatures from './WebFeatures';
 import Screenshots from './Screenshots';
 import Footer from './Footer';
 
+/*
+ * Class to showcase homepage
+ */
 export default class HomePage extends React.Component {
 	render() {
 		return (
@@ -30,12 +33,8 @@ export default class HomePage extends React.Component {
 	 						<div className="col-md-6 my-auto">
 	 							<img className="d-block w-100" src = {require('../triangle4.jpg')} /> 
 	 						</div>
-	 						<div className="col-md-4 my-auto">
-	 							
-	 								
-	 									<span className="main-tagline"><span className="color-lightblue">PROTECTING</span> YOU<br/> LIKE <span className="color-lightblue">FAMILY</span></span>
-	 			
-	 							
+	 						<div className="col-md-4 my-auto">	 								
+	 									<span className="main-tagline"><span className="color-lightblue">PROTECTING</span> YOU<br/> LIKE <span className="color-lightblue">FAMILY</span></span> 							
 	 								<div className="container">
 	 								<a className="download-app-btn" href={"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"} target="_blank">
 	 									<img className="d-block w-50 download-app-btn" src = {require('./download-img.png')} />

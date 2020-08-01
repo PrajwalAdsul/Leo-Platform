@@ -7,6 +7,9 @@ import { COMMON_FIELDS, REGISTRATION_FIELDS, LOGIN_FIELDS, LOGIN_MESSAGE, ERROR_
 import axios from 'axios';
 import Button from '@material-ui/core/Button'
  
+/*
+ * Class to implement Logout functionality for user
+ */
 export default class Logout extends Component {
 	constructor(props) {
 		super(props);
@@ -22,10 +25,7 @@ export default class Logout extends Component {
 				});
 			})
 			.catch(error => {
-				//console.log(error.response);
-				this.setState({
-					
-					});
+				console.log(error.response);
 				return;
 			});
 		await localStorage.setItem('user_name', "");

@@ -8,7 +8,9 @@ import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
 
-
+/*
+ * Class to implement contact section of homepage
+ */
 export default class Contact extends Component {
 	constructor(props) {
 		super(props);
@@ -42,14 +44,12 @@ export default class Contact extends Component {
 		.then(response => {
 			console.log(response);
 			res = response.status;
-			
 		})
 		.catch(error => {
 			console.log(error.response);
 		});
 		
 		if(res === 200) {
-			//console.log("IN");
 			this.setState({
 				email : "",
 				msg : "",
@@ -58,14 +58,11 @@ export default class Contact extends Component {
 				errorMessage: ""
 			});
 		} else {
-			console.log("1234");
 			this.setState({
 				errorMessage: "Error: Message not sent",
 				successfulMessage: ""
-			});
-			
+			});	
 		}
-	
 	}
 
 	render() {

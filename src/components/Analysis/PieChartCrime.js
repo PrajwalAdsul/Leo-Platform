@@ -4,6 +4,9 @@ import { Pie } from 'react-chartjs-2';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Nav } from 'react-bootstrap';
 
+/*
+ * Class to implement PeiChart
+ */
 export default class PieChartCrime extends React.Component {
 	constructor(props) {
 	super(props);
@@ -71,9 +74,7 @@ export default class PieChartCrime extends React.Component {
 					height='50%'
 				/>
 			</div>
-			<br/>
-
-		      
+			<br/>     
 		</div>
 		);
 	}

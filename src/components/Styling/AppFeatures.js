@@ -6,7 +6,9 @@ import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
 
-
+/*
+ * Class to implement app features section of homepage
+ */
 export default class AppFeatures extends Component {
 	constructor(props) {
 		super(props);

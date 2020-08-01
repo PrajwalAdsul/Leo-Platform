@@ -8,6 +8,9 @@ import axios from 'axios';
 import ScrollspyNav from "react-scrollspy-nav";
 
 
+/*
+ * Class to implement homepage header
+ */
 export default class HomeHeader extends Component {
 	constructor(props) {
 		super(props);
@@ -17,7 +20,6 @@ export default class HomeHeader extends Component {
 			status: "top",
 			collapse_click: false
 		};
-		//	<b><a href = {"https://drive.google.com/file/d/1YEWIcoh58igjnjy5nPN87WoCQ4DBXY6f/view?usp=sharing"}>Download Leo App</a></b>
 	}
 
 	componentDidMount() {
@@ -93,11 +95,6 @@ export default class HomeHeader extends Component {
 			        </div>
 			        </div>
 		        </nav>
-
-		        
-
-			
-					
 			</div>
 		)
 	}

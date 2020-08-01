@@ -4,20 +4,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import PieChartCrime from './PieChartCrime.js';
 import BarGraphCrime from './BarGraphCrime.js';
 
+/*
+ * Base class to showcase analysis
+ */
 class Analysis extends Component {
   
   render () {
   return (
     <div className="App">
-		<PieChartCrime/>
+	   <PieChartCrime/>
 	   <BarGraphCrime/>
-   
     </div>
   );
   }
 }
 
 export default Analysis;
-
-// <PieChartCrime/>
-//     <BarGraphCrime/>

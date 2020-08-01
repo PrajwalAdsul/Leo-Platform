@@ -11,6 +11,9 @@ import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGI
 import LoggedIn from './LoggedIn';
 import Header from '../Styling/Header';
 
+/*
+ * Class to implement sign in functionality for user
+ */
 export default class UserSignIn extends React.Component {
 	constructor(props) {
 		super(props)
@@ -61,7 +64,6 @@ export default class UserSignIn extends React.Component {
 		
 		await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/login', data)
 		.then(response => {
-			//console.log(response);
 			res = response.status;
 			this.setState({
 				inTrouble : response.data.inTrouble,
@@ -70,25 +72,22 @@ export default class UserSignIn extends React.Component {
 			});
 		})
 		.catch(error => {
-			//console.log(error.response);
+			console.log(error.response);
 			this.setState({
 				password: ""
 			});
 		});
 		
 		if(res === 200) {
-			//console.log("IN");
 				this.setState({
 				loginSuccess : true
 				});
 		} else {
-			//console.log("1234")
 			this.setState({
 				errorMessage: "Username or password is incorrect",
 				password: ""
 			});
 		}
-	
 	} 
 
 	componentWillMount() {

@@ -10,6 +10,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Logout from './Logout'; 
 import DROHeader from './DROHeader';
 
+/*
+ * Class to showcase user profile with required information
+ */
 export default class UserProfile extends Component {
 	constructor(props) {
 		super(props)
@@ -27,8 +30,6 @@ export default class UserProfile extends Component {
 	componentDidMount = async e => {
 		try{
 			const data = {user_name : this.props.location.state.user_name, token : localStorage.getItem("token")};
-			let res;
-			//console.log(data);
 			await axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/get', data)
 			.then(response => {
 				this.setState({
@@ -38,10 +39,11 @@ export default class UserProfile extends Component {
 					area : response.data.area,
 					emergencyContacts : response.data.emergencyContacts,
 				});
+
 				let log = response.data.log;
 				let logv  = [];
+
 				for(var i = 0; i < log.length; i++){
-					//console.log(log[i]);
 					logv.push("datetime " + log[i]["datetime"] + " operation " + log[i]["operation"] + " text " + log[i]["text"] + "\n");
 				}
 					
@@ -50,11 +52,11 @@ export default class UserProfile extends Component {
 				});
 			})
 			.catch(error => {
-				//console.log(error.response);
+				console.log(error.response);
 			});
 		}
 		catch(e){
-			//console.log(e);
+			console.log(e);
 		}
 	}
 	render() {
@@ -74,8 +76,7 @@ export default class UserProfile extends Component {
 	             </div>
 
 	             <div className="container">
-
-				<div className="card-text">
+		 		 <div className="card-text">
 					<div className="row">
 						<div className="col-md-6">
 							<span className="user-profile-heading">Username :</span> {this.state.user_name}
@@ -97,7 +98,6 @@ export default class UserProfile extends Component {
 					<ol>
 				      {this.state.emergencyContacts.map(reptile => <li>{reptile}</li>)}
 				    </ol><br/><br/>
-
 					<span className="user-profile-heading">User Log :</span> <br/>
 					 {this.state.log.map(reptile => <p>{reptile}<br/><br/></p>)}
 					<br/><br/>

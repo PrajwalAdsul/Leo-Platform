@@ -8,7 +8,9 @@ import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
 
-
+/*
+ * Class to implement footer section
+ */
 export default class Footer extends Component {
 	constructor(props) {
 		super(props);

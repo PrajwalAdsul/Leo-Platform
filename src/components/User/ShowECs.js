@@ -9,6 +9,9 @@ const SList = props => (
     </tr>
 )
 
+/*
+ * Class to showcase emergency contacts of user
+ */
 export default class ShowECs extends Component {
     constructor(props) {
         super(props);
@@ -18,10 +21,8 @@ export default class ShowECs extends Component {
     }
     componentDidMount() {
         const data = {
-            // user_name : localStorage.getItem('user_name'),
             user_name: this.props.user_name,
             token : localStorage.getItem('token')
-            // token : this.props.token
         }
         console.log(data);
         axios.post('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/emergency_contacts', data)
@@ -40,6 +41,7 @@ export default class ShowECs extends Component {
             return <SList data = {data} key={i} />;
         });
     }
+    
     render() {
         return (
                 <div className = "container">

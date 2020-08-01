@@ -6,7 +6,9 @@ import Error from '../../elements/Error';
 import { REGISTRATION_FIELDS, REGISTRATION_MESSAGE, COMMON_FIELDS, ERROR_IN_REGISTRATION } from '../../MessageBundle';
 import axios from 'axios';
 
-
+/* 
+ * Class to implement web features section of homepage
+ */
 export default class WebFeatures extends Component {
 	constructor(props) {
 		super(props);
@@ -29,6 +31,7 @@ export default class WebFeatures extends Component {
 							</div>
 						</div>
 					</div>
+
 					<div className="col-md-4 col2-img">
 						<div className="card">
 							<img className="card-img d-block w-100" src={require('../Features-Images/Leo-Web-latest-crime-news.png')} alt="View latest crime news" />
@@ -37,6 +40,7 @@ export default class WebFeatures extends Component {
 							</div>
 						</div>
 					</div>
+					
 					<div className="col-md-4 col1-img">
 						<div className="card">
 							<img className="card-img d-block w-100" src={require('../Features-Images/Leo-Web-crime-analysis.png')} alt="Crime analysis for reducing crimes" />

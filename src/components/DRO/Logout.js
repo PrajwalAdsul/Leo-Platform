@@ -7,6 +7,9 @@ import { COMMON_FIELDS, REGISTRATION_FIELDS, LOGIN_FIELDS, LOGIN_MESSAGE, ERROR_
 import axios from 'axios';
 import Button from '@material-ui/core/Button'
  
+/*
+ * Class to implement log out functionality for DRO
+ */
 export default class Logout extends Component {
 	constructor(props) {
 		super(props);
