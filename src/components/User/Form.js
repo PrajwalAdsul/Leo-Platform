@@ -29,7 +29,7 @@ var uploadTask = null;
 var filenames = new Set();
 
 /*
- * Class to implement sign up functionality for user
+ * Class to implement complaint registration facility for user
  */
 export default class Form extends React.Component {
 	constructor(props) {
