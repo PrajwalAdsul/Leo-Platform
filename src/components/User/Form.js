@@ -40,29 +40,34 @@ export default class Form extends React.Component {
 			category : "",
 			description : "",
 			image_url : "",
-			token : null
+			token : null,
+			contact_back : false
 		}
 		this.handleChange = this.handleChange.bind(this)
 	}
 
 	handleChange(event) {
-		const {name, value} = event.target
+
+		var {name, value} = event.target
+		if (name == "contact_back"){
+			value = !this.state.contact_back
+		}
 		this.setState({
 			[name]: value
 		})
 	}
 
 	onSubmit = async e => {
-		
 			const data = {
 				user_name : this.props.user_name,
 				token :  await localStorage.getItem('token'),
 				category : this.state.category,
 				description : this.state.description,
-				image_url : this.state.image_url
+				image_url : this.state.image_url,
+				contact_back : this.state.contact_back
 			}
 			// await axios.post('http://localhost:5000/LeoHelp/addUser', data)
-			console.log(data)
+			console.log(data.contact_back)
 			await axios.put('https://peaceful-refuge-01419.herokuapp.com/LeoHelp/user/complaint', data)
 			.then(response => {
 				this.setState({
@@ -70,7 +75,8 @@ export default class Form extends React.Component {
 					complaint : "",
 					category : "",
 					description : "",
-					image_url : ""
+					image_url : "",
+					contact_back : false
 				});
 				window.location.reload();
 			})
@@ -185,7 +191,6 @@ export default class Form extends React.Component {
 	        console.log(error.code);
 	      }
 	    }
-	    console.log("Hi");
 		// at the end
 		this.setState({
 			"image_url" : image_url
@@ -203,56 +208,53 @@ export default class Form extends React.Component {
 					<hr />
 
 					<form onSubmit = {this.onSubmit}  className="login-form">
-					<div className="form-group">
-					<div className="row">
-					<div className="col-md-2">
-						<label htmlFor="name">category:</label>
+						<div className="form-group">
+							<div className="row">
+								<div className="col-md-5">
+									<label htmlFor="name">category:</label>
+								</div>
+								<div className="col-md-7">
+									<input type="text" className="form-control" value={this.state.category} name="category" id="category" placeholder="category" onChange={this.handleChange} required/>
+								</div>
+							</div>
 						</div>
-						<div className="col-md-10">
-						<input type="text" className="form-control" value={this.state.category} name="category" id="category" placeholder="category" onChange={this.handleChange} required/>
+
+						<div className="form-group">
+							<div className="row">
+								<div className="col-md-5">
+									<label htmlFor="name">description:</label>
+								</div>
+								<div className="col-md-7">
+									<input type="text" className="form-control" value={this.state.description} name="description" id="description" placeholder="description" onChange={this.handleChange} required/>
+								</div>
+							</div>
 						</div>
-					</div>
-					</div>
 
+						<div className="form-group">
+							<div className="row">
+								<div className="col-md-5">
+									<label htmlFor="name">Select a file to upload:</label>
+								</div>
+								<div className="col-md-7" id="storage">
+									<input type = "file" className="form-control" id = "myid" onChange={this.onChange} multiple/>
+								</div>
+							</div>
+						</div>					
+						<center> <button type="button" onClick={this.uploadImage} >uploadImage</button></center>
 
-					<div className="form-group">
-					<div className="row">
-					<div className="col-md-2">
-						<label htmlFor="name">description:</label>
+						<div className="form-group">
+							<div className="row">
+								<div className="col-md-10">
+									<label htmlFor="name">Do you want us to contact you back?</label>
+								</div>
+								<div className="col-md-2">
+									<input type="checkbox" className="form-control" name="contact_back" id="contact_back" onChange={this.handleChange} required/>
+								</div>
+							</div>
 						</div>
-						<div className="col-md-10">
-						<input type="text" className="form-control" value={this.state.description} name="description" id="description" placeholder="description" onChange={this.handleChange} required/>
-						</div>
-					</div>
-					</div>
 
-					<div className="form-group">
-					<div className="row">
-						<div className="col-md-2">
-							<label htmlFor="name">Select a file to upload:</label>
-						</div>
-		
-
-
-
-
-
-						<div className="col-md-10" id="storage">
-							<input type = "file" id = "myid" onChange={this.onChange} multiple/>
-						</div>
-					</div>
-					</div>
-
-
-		
-
-
-
-					
-					<center> <button type="button" onClick={this.uploadImage} className="btn btn-primary">uploadImage</button></center>
-				
-					<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">Submit</button></center>
-										
+						<center> <button type="button" onClick={this.onSubmit} className="btn btn-primary">Submit</button></center>
+											
 					</form>
 				
 				</div>
