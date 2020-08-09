@@ -1,0 +1,460 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "hey", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "hello", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "hi", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "hello there", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "good morning", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "good evening", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "moin", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "hey there", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "let's go", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "hey dude", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "goodmorning", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "goodevening", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "good afternoon", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "hey bot", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "how you doing", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "what's up", 
+        "intent": "greet"
+      }, 
+      {
+        "text": "cu", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "good by", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "cee you later", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "good night", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "good afternoon", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "bye", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "goodbye", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "have a nice day", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "see you around", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "bye bye", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "see you later", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "see ya", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "see you", 
+        "intent": "goodbye"
+      }, 
+      {
+        "text": "yes", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "indeed", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "of course", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "that sounds good", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "correct", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "sure", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "yup", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "yesss", 
+        "intent": "mood_affirm"
+      }, 
+      {
+        "text": "no", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "never", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "I don't think so", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "don't like that", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "no way", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "nope", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "nah", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "nooo", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "don't want it", 
+        "intent": "mood_deny"
+      }, 
+      {
+        "text": "perfect", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "very good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "great", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "amazing", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "feeling like a king", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "wonderful", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I am feeling very good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I am great", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I am amazing", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I am going to save the world", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "super", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "extremely good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "so so perfect", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "so good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "so perfect", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I'm extremely happy", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "Life's going good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I'm really happy with myself", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I'm good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "good feels", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "perfect feeling", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "feeling great", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I'm in a state of satisfaction", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I'm well", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "All good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "Feeling positive", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "Positive vibes", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "feeling good about myself", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "always happy", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "life's good", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "I feel amazing", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "Happy happy vibes", 
+        "intent": "mood_great"
+      }, 
+      {
+        "text": "my day was horrible", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I am sad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I don't feel very well", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I am disappointed", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "super sad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I'm so sad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "sad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "very sad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "unhappy", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "not so good", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "not very good", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "extremly sad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "so saad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "so sad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "bad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "horrible", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "my day was bad", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I feel so horrible about myself sometimes", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I feel so horrible about myself always.", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I'm feeling very depressed", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I'm depressed", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I'm disappointed with myself", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I want to die", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I don't want to live", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I'm so frsutrated with life", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I'm a horrible person", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I really don't feel like spending time with anyone", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I feel lonely", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I am always alone", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I don't want anyone in my life.", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I had a break up", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I don't get good vibes at all", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I really have no interest to live", 
+        "intent": "mood_unhappy"
+      }, 
+      {
+        "text": "I'm extremely unhappy", 
+        "intent": "mood_unhappy"
+      }
+    ], 
+    "entity_synonyms": [], 
+    "regex_features": []
+  }
+}

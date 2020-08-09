@@ -1,0 +1,131 @@
+actions:
+- action_mark_trouble
+- action_show_description
+- action_show_news
+- action_show_precautions
+- action_unmark_trouble
+- patient_consultation_info
+- patient_general_info
+- respond_chitchat
+- utter_acutet
+- utter_age
+- utter_agree
+- utter_approve
+- utter_ask_crimetype
+- utter_ask_location
+- utter_ask_name
+- utter_cheer_up
+- utter_decline
+- utter_default
+- utter_fetching
+- utter_gender
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_history_question
+- utter_next_question
+- utter_time_for_recurrence
+- utter_welcome
+- utter_whatcanIdo
+entities:
+- crime_type
+- location
+- name
+intents:
+- greet
+- unmark_trouble
+- ask_help
+- thanks
+- get_location
+- get_name
+- news
+- affirm
+- precautions
+- description
+- goodbye
+- deny
+- chitchat
+- mood_affirm
+- mood_deny
+- mood_great
+- mood_unhappy
+- mood_decline
+responses:
+  utter_acutet:
+  - text: For how many days have you been dealing with depression?
+  utter_age:
+  - text: What's your age?
+  utter_agree:
+  - text: 👍
+  utter_approve:
+  - text: Yes
+  - text: Ya
+  - text: Yeah
+  - text: Hmmm
+  - text: Yup
+  utter_ask_crimetype:
+  - text: Select the type of crime
+  utter_ask_location:
+  - text: What's your location?
+  utter_ask_name:
+  - text: What's your name?
+  utter_cheer_up:
+  - text: Don't worry. It's going to be alright. Just follow the instruction of the
+      psychiatrist
+  utter_decline:
+  - text: No
+  - text: Nope
+  - text: Nah
+  - text: Hmm
+  utter_default:
+  - text: Sorry, I didn't understand that
+  utter_fetching:
+  - text: Getting patient info
+  utter_gender:
+  - text: Are you a male or a female?
+  utter_goodbye:
+  - text: Bye
+  utter_greet:
+  - text: "Hey there, I am *Leo*. I am here to help. \U0001F60A\n \nDuring extreme\
+      \ emergency, say *'help'* or *'sos'*.\n"
+  utter_happy:
+  - text: Great carry on!
+  utter_history_question:
+  - text: Did you ever have a history of such events?
+  utter_next_question:
+  - text: Is there any reason for this?
+  utter_time_for_recurrence:
+  - text: ''
+  utter_welcome:
+  - text: You are welcome
+  utter_whatcanIdo:
+  - text: "Here are few things I can help you with:\n \n1. Get *news* updates and\
+      \ alerts for your locality\n  \U0001F449 Type \"News in Pune\"\n \n2. Get *precautions*\
+      \ to avoid getting in trouble\n  \U0001F449 Type \"Precautions to avoid robbery\"\
+      \n \n3. Get *help* of designated authorithy in case of emergency\n  \U0001F449\
+      \ Type \"Help. I am *your name*. My location is *your address*\"\n"
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 60
+slots:
+  crime_type:
+    type: categorical
+    values:
+    - murder
+    - rape
+    - arson
+    - assault
+    - riot
+    - hostage
+    - kidnapping
+    - robbery
+    - covid
+    - __other__
+  in_trouble:
+    type: bool
+  location:
+    type: unfeaturized
+  name:
+    type: unfeaturized
+  requested_slot:
+    type: unfeaturized

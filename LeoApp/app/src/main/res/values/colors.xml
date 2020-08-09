@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#27496d</color>
+    <color name="colorPrimaryDark">#142850</color>
+    <color name="colorAccent">#00909e</color>
+
+    <!-- colors for button style -->
+
+    <color name="gradient_start_color">#4c84ff</color>
+    <color name="gradient_end_color">#18a3fe</color>
+
+
+    <!-- colors for tab and screent text -->
+    <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="intro_title_color">#000000</color>
+    <color name="intro_description_color">#656565</color>
+    <color name="leo_maps_red_color1">#20c43b3b</color>
+    <color name="leo_maps_red_color2">#40c43b3b</color>
+    <color name="leo_maps_red_color3">#60c43b3b</color>
+    <color name="leo_maps_red_color4">#80c43b3b</color>
+    <color name="leo_maps_red_color5">#A0c43b3b</color>
+    <color name="leo_maps_orange_color">#40ee6352</color>
+    <color name="leo_maps_yellow_color">#40FFFF00</color>
+</resources>
