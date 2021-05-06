@@ -19,7 +19,7 @@ en-core-web-sm==2.3.1
 feedfinder2==0.0.4
 feedparser==5.2.1
 Flask==1.1.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 flask-ngrok==0.0.25
 gensim==3.8.3
 idna==2.10
