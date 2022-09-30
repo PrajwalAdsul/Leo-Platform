@@ -29,7 +29,7 @@ itsdangerous==1.1.0
 jieba3k==0.35.1
 Jinja2==2.11.2
 jmespath==0.10.0
-joblib==0.16.0
+joblib==1.2.0
 lxml==4.6.2
 MarkupSafe==1.1.1
 murmurhash==1.0.2
